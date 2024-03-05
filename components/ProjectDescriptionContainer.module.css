@@ -1,0 +1,94 @@
+.descriptionContainer {
+  color: var(--color__text-main-contrast);
+  position: relative;
+}
+
+.descriptionContainer p {
+  font-size: 27px;
+  margin-top: 41px;
+}
+
+.innerWrapper {
+  height: 100%;
+  background-color: #8eb8a3;
+  border-radius: 30px;
+  padding: 46px 33px 31px;
+  transition: all 0.5s ease;
+  width: 100%;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.innerWrapper.active {
+  width: calc(100vw - 76px);
+}
+
+.innerWrapper.active .descriptionText {
+  opacity: 1;
+  animation: fade 0.7s ease-in;
+}
+
+@keyframes fade {
+  0%{
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.closeBio {
+  background-color: #b5dfca;
+  border-radius: 20px;
+  min-width: 78px;
+  max-width: 318.5px;
+  width: 78px;
+  height: 78px;
+  position: absolute;
+  bottom: 41px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 200;
+  cursor: pointer;
+  transition: width 0.3s ease;
+  padding: 17px 30px;
+}
+
+.active .closeBio {
+  max-width: 78px;
+  width: 78px;
+}
+
+.closeBio:hover {
+  width: 100%;
+}
+
+.closeBio > span {
+  font-size: 32px;
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  white-space: nowrap;
+}
+
+.closeBio:hover > span {
+  opacity: 1;
+  visibility: visible;
+  width: auto;
+  transition: all 0.5s ease;
+  transition-delay: 0.2s;
+}
+
+.closeBio svg {
+  transform: rotate(0deg);
+  transition: all 0.2s ease;
+  width: 18px;
+}
+
+.active .closeBio svg {
+  transform: rotate(180deg);
+}

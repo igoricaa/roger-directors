@@ -1,0 +1,117 @@
+.article {
+  overflow: hidden;
+}
+
+.article p {
+  color: rgb(255 255 255 / 66%);
+}
+
+.article.active {
+  opacity: 1;
+}
+
+.article:not(:nth-of-type(2)) {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.article .accordionBottom {
+  opacity: 0;
+  visibility: hidden;
+  padding: 0;
+  transition: all 0.5s ease;
+  height: 0;
+}
+
+.article.active .accordionBottom {
+  opacity: 1;
+  visibility: visible;
+  height: 108px;
+  padding-bottom: 45px;
+}
+
+.accordionTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.accordionButton {
+  color: #8eb8a3;
+  border: 3px solid #8eb8a3;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 74px 4px 37px;
+  width: 290px;
+  font-size: 30px;
+  line-height: 40px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.accordionButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMy4xMzEiIGhlaWdodD0iMTMuMDY2IiB2aWV3Qm94PSIwIDAgMjMuMTMxIDEzLjA2NiI+CiAgPHBhdGggaWQ9IlBhdGhfMTEiIGRhdGEtbmFtZT0iUGF0aCAxMSIgZD0iTTAsMCw5LjQ0NCw5LjQ0NCwwLDE4Ljg4OCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjEuMDEgMi4xMjEpIHJvdGF0ZSg5MCkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhlYjhhMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMiLz4KPC9zdmc+Cg==');
+  background-size: cover;
+  width: 23px;
+  height: 13px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.accordionButton:hover {
+  background-color: #8eb8a3;
+  color: var(--color__text-main-contrast);
+}
+
+.article.active .accordionButton::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.accordionButton:hover:after {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMy4xMzEiIGhlaWdodD0iMTMuMDY2IiB2aWV3Qm94PSIwIDAgMjMuMTMxIDEzLjA2NiI+CiAgPHBhdGggaWQ9IlBhdGhfMTEiIGRhdGEtbmFtZT0iUGF0aCAxMSIgZD0iTTAsMCw5LjQ0NCw5LjQ0NCwwLDE4Ljg4OCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjEuMDEgMi4xMjEpIHJvdGF0ZSg5MCkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIzMjMyMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMiLz4KPC9zdmc+Cg==');
+}
+
+.accordionButton span {
+  transition: opacity 0.3s ease;
+}
+
+.accordionButton span.faded {
+  opacity: 0;
+}
+
+@media screen and (max-width: 680px) {
+  .accordionTop {
+    padding: 24px 0;
+  }
+
+  .accordionButton {
+    width: 161px;
+    height: 43px;
+    padding: 0 0 0 19px;
+    justify-content: start;
+    border-width: 2px;
+  }
+
+  .accordionButton span {
+    font-size: 17px;
+  }
+
+  .accordionButton::after {
+    width: 14px;
+    height: 8px;
+    right: 16px;
+  }
+
+  .article.active .accordionBottom {
+    height: 151px;
+  }
+}

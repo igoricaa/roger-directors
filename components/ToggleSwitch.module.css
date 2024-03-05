@@ -1,0 +1,96 @@
+.switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider {
+  position: relative;
+  width: 133px;
+  height: 66px;
+  border-radius: 30px;
+  background-color: #dfdfdf;
+  cursor: pointer;
+  transition: 0.5s;
+  z-index: 99;
+}
+
+.slider:before {
+  position: absolute;
+  left: 12px;
+  bottom: 50%;
+  transform: translate(0px, 50%) rotate(180deg);
+  width: 42px;
+  height: 42px;
+  content: '';
+  border-radius: 50%;
+  background-color: #232323;
+  transition: width 0.1s, height 0.1s, box-shadow 0.5s, left 0.5s, right 0.5s;
+}
+
+#toggle {
+  opacity: 0;
+  touch-action: none;
+  visibility: hidden;
+  width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#toggle:checked ~ .slider {
+  background-color: #dfdfdf;
+}
+
+#toggle:checked ~ .slider:before {
+  background-color: #dfdfdf;
+  box-shadow: inset -10px 10px 0 0px #232323;
+  width: 27px;
+  height: 27px;
+  left: unset;
+  right: 22px;
+  bottom: 50%;
+}
+
+@media screen and (max-width: 991px) {
+  .slider {
+    width: 100px;
+    height: 50px;
+  }
+
+  .slider:before {
+    width: 32px;
+    height: 32px;
+  }
+
+  #toggle:checked ~ .slider:before {
+    width: 21px;
+    height: 21px;
+  }
+
+  #toggle:checked ~ .slider:before {
+    box-shadow: inset -7px 7px 0 0px #232323;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .slider {
+    width: 78px;
+    height: 39px;
+  }
+
+  .slider:before {
+    width: 23px;
+    height: 23px;
+    left: 7px;
+  }
+
+  #toggle:checked ~ .slider:before {
+    width: 16px;
+    height: 16px;
+    right: 12.5px;
+  }
+
+  #toggle:checked ~ .slider:before {
+    box-shadow: inset -5px 5px 0 0px #232323;
+  }
+}

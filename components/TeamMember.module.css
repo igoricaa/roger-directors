@@ -1,0 +1,296 @@
+.teamMember {
+  /* --columnWidth: calc((100% - 46px) / 3);
+    width: var(--columnWidth);
+    max-width: var(--columnWidth); */
+  /* flex-grow: 1; */
+  aspect-ratio: 1 / 1;
+  max-height: calc(100vw / 3 - var(--gap));
+  position: relative;
+}
+
+.teamMember .overlay {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 31px 37px;
+  background-color: rgba(42, 49, 51, 0.5);
+  transition: all 0.3s ease;
+}
+
+.teamMember:hover .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.teamMember .overlay h2 {
+  word-spacing: 100vw;
+}
+
+.bgImageWrapper img {
+  border-radius: 30px;
+}
+
+.bioWrapper {
+  display: flex;
+  width: calc(100vw - 2 * var(--padding));
+  height: 100%;
+  padding: 38px;
+  background-color: #8eb8a3;
+  border-radius: 30px;
+  position: absolute;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.bioImageWrapper {
+  width: calc(33.33% - 2 * var(--padding));
+  position: relative;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.bioImageWrapper img {
+  border-radius: 30px;
+}
+
+.teamMember.active .bioImageWrapper {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.1s;
+  transition-delay: 0.1s;
+}
+
+.bioWrapper.slideRight {
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.teamMember.active .bioWrapper.slideRight {
+  transform: scaleX(1);
+}
+
+.bioWrapper.slideCenter {
+  transform-origin: center;
+  transform: scaleX(0.33);
+  left: calc((-100% - var(--gap)));
+}
+
+.teamMember.active .bioWrapper.slideCenter {
+  transform: scaleX(1);
+}
+
+.bioWrapper.slideLeft {
+  transform-origin: right;
+  transform: scaleX(0.33);
+  right: 0;
+}
+
+.teamMember.active .bioWrapper.slideLeft {
+  transform: scaleX(1);
+}
+
+.teamMember.active .bioWrapper {
+  opacity: 1;
+  visibility: visible;
+}
+
+.memberInfoWrapper {
+  width: 66.66%;
+  padding-left: 124px;
+  color: var(--color__text-main-contrast);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.teamMember.active .memberInfoWrapper {
+  opacity: 1;
+  visibility: visible;
+  transition-timing-function: linear;
+  transition-duration: 0.1s;
+  transition-delay: 0.3s;
+  transition-property: opacity, visibility;
+}
+
+.memberInfoWrapper p {
+  font-size: 22px;
+  line-height: 30px;
+  column-count: 2;
+  column-gap: 84px;
+  margin-top: 33px;
+}
+
+.closeBio {
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 78px;
+  height: 78px;
+  position: absolute;
+  bottom: 41px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: rotate(0deg);
+}
+
+.teamMember:hover .closeBio {
+  opacity: 1;
+  visibility: visible;
+}
+
+.teamMember.active .closeBio {
+  opacity: 1;
+  visibility: visible;
+  transform: rotate(180deg);
+}
+
+.teamMember.active .bioWrapper.slideRight ~ .closeBio {
+  right: calc(-100vw / 3 * 2 + 69px);
+}
+
+.teamMember.active .bioWrapper.slideCenter ~ .closeBio {
+  right: calc((-100vw - 62px) / 3 + 39px + 33px);
+}
+
+@media screen and (max-width: 1024px) {
+  .teamMember {
+    width: calc(50% - var(--gap) / 2);
+    aspect-ratio: 1;
+    max-height: 100%;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .teamMember.active {
+    width: 100%;
+    aspect-ratio: unset;
+  }
+
+  .bioWrapper {
+    --height: calc(100vw / 2 - var(--gap));
+    height: calc(var(--height) * 2);
+    flex-direction: column;
+    padding: 13px 13px 96px;
+    width: calc(100vw - 2 * var(--padding));
+    transition: all 0.2s ease-in-out;
+  }
+
+  .closeBio {
+    right: 13px;
+    bottom: 13px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .teamMember.active .bioWrapper {
+    position: relative;
+    height: auto;
+  }
+
+  .teamMember.active .bioWrapper.slideRight ~ .closeBio {
+    right: 13px;
+    bottom: 13px;
+  }
+
+  .teamMember.active .bioWrapper.slideLeft ~ .closeBio {
+    right: unset;
+    left: 13px;
+    bottom: 13px;
+  }
+
+  .teamMember.active .bioWrapper.slideLeft ~ .closeBio svg {
+    transform: scale(0.8) rotate(135deg);
+  }
+
+  .bioWrapper.slideRight {
+    transform-origin: top left;
+    transform: scale(0);
+  }
+
+  .teamMember.active .bioWrapper.slideRight {
+    transform: scale(1);
+  }
+
+  .bioWrapper.slideLeft {
+    transform-origin: top right;
+    transform: scale(0.33);
+  }
+
+  .teamMember.active .bioWrapper.slideLeft {
+    transform: scale(1);
+  }
+
+  .bioWrapper.slideLeft .memberInfoWrapper > div {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  .memberInfoWrapper {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .memberInfoWrapper p {
+    font-size: 20px;
+  }
+
+  .memberInfoWrapper > div {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+  }
+
+  .bioImageWrapper {
+    position: relative;
+    width: 48%;
+    aspect-ratio: 1;
+  }
+
+  .memberInfoWrapper p {
+    column-count: 1;
+  }
+
+  .teamMember.active .closeBio {
+    transform: rotate(180deg);
+  }
+
+  .teamMember .closeBio svg {
+    transform: scale(0.8) rotate(0deg);
+    transition: all 0.3s ease;
+  }
+
+  .teamMember.active .closeBio svg {
+    transform: scale(0.8) rotate(45deg);
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .bioWrapper {
+    padding-bottom: 151px;
+  }
+
+  .memberInfoWrapper p {
+    font-size: 17px;
+    line-height: 23px;
+  }
+
+  .closeBio {
+    width: 43px;
+    height: 43px;
+    border-radius: 15px;
+  }
+
+  .closeBio svg {
+    max-width: 14px;
+  }
+}

@@ -1,0 +1,95 @@
+.card {
+  padding: 0;
+  border-radius: 30px;
+}
+
+.card > a {
+  display: flex;
+  position: relative;
+  height: 100%;
+}
+
+.card img {
+  width: 100%;
+}
+
+.pageCard {
+  padding: 50px 40px 33px 33px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--color__cards-text);
+}
+
+.pageCard h2 {
+  font-size: 2.85vw;
+}
+
+.pageCard a {
+  color: inherit;
+  padding: 13px 36px 9px;
+  border-radius: 22px;
+  width: fit-content;
+  margin-left: auto;
+  font-size: 2rem;
+  transition: border-radius ease 0.4s;
+  height: auto;
+}
+
+.pageCard a:hover {
+  border-radius: 35px;
+}
+
+.aboutus {
+  background-color: #8eb8a3;
+}
+
+.aboutus a {
+  background-color: #b5dfca;
+}
+
+.aboutus a:hover {
+  background-color: #d9ffec;
+}
+
+.meettheteam {
+  background-color: #f0dd3d;
+}
+
+.meettheteam a {
+  background-color: #fff5a5;
+}
+
+.meettheteam a:hover {
+  background-color: #fffad6;
+}
+
+.contact {
+  background-color: #8b8c8e;
+}
+
+.contact a {
+  background-color: #b9b9b9;
+}
+
+.contact a:hover {
+  background-color: #e9e9e9;
+}
+
+.small {
+  grid-row-end: span 14;
+  /* aspect-ratio: 599 / 444; */
+  height: 23.13vw;
+}
+
+.medium {
+  grid-row-end: span 22;
+  /* aspect-ratio: 599 / 700; */
+  height: 36.5vw;
+}
+
+.large {
+  grid-row-end: span 29;
+  /* aspect-ratio: 599 / 952; */
+  height: 49.584vw;
+}

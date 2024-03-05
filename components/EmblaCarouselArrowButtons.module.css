@@ -1,0 +1,33 @@
+.emblaButton {
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.emblaButton > span {
+  background-color: #535353;
+  border-radius: 20px;
+  width: 78px;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.emblaButtonPrev > span {
+  transform: rotate(180deg);
+}
+
+.emblaButton:hover > span {
+  border-radius: 50%;
+  background-color: #979797;
+}

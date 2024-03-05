@@ -1,95 +1,117 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { PinterestLayout } from '@/components/PinterestLayout';
+import styles from './page.module.css';
+import { Card } from '@/components/Card';
+import BackToTopButton from '@/components/BackToTopButton';
 
 export default function Home() {
+  const projects: any = [
+    {
+      title: 'Project 1',
+      description: 'This is a description of project 1',
+      image: '/small.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 2',
+      description: 'This is a description of project 2',
+      image: '/medium.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 3',
+      description: 'This is a description of project 3',
+      image: '/large.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 4',
+      description: 'This is a description of project 4',
+      image: '/small.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 5',
+      description: 'This is a description of project 5',
+      image: '/medium.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 6',
+      description: 'This is a description of project 6',
+      image: '/large.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 7',
+      description: 'This is a description of project 7',
+      image: '/small.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 8',
+      description: 'This is a description of project 8',
+      image: '/medium.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 9',
+      description: 'This is a description of project 9',
+      image: '/large.png',
+      url: '/project-9',
+    },
+    {
+      title: 'Project 10',
+      description: 'This is a description of project 10',
+      image: '/small.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 11',
+      description: 'This is a description of project 11',
+      image: '/medium.png',
+      url: '/projects/project-1',
+    },
+    {
+      title: 'Project 12',
+      description: 'This is a description of project 12',
+      image: '/large.png',
+      url: '/projects/project-1',
+    },
+  ];
+
+  const fixedCards: any = [
+    {
+      type: 'page',
+      title: 'About Us',
+      description: 'Lorem ipsum dolor sit amet, conse ctetur adipis cing elit',
+    },
+    {
+      type: 'page',
+      title: 'Meet the Team',
+      description: 'Lorem ipsum dolor sit amet, conse ctetur adipis cing elit',
+    },
+    {
+      type: 'page',
+      title: 'Contact',
+      description: 'Lorem ipsum dolor sit amet, conse ctetur adipis cing elit',
+    },
+  ];
+
+  const spot = projects.length / 3;
+
+  projects.splice(spot + 3, 0, fixedCards[0]);
+  projects.splice(spot * 2 + 2, 0, fixedCards[1]);
+  projects.splice(spot * 3 + 2, 0, fixedCards[2]);
+
+  const sizes = ['small', 'medium', 'large'];
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <PinterestLayout>
+        {projects.map((project: any, index: number) => {
+          return <Card key={index} content={project} size={sizes[index % 3]} />;
+        })}
+      </PinterestLayout>
     </main>
   );
 }

@@ -1,0 +1,105 @@
+.embla {
+  margin: auto;
+  --slide-spacing: 20px;
+  --slide-size: 98%;
+  position: relative;
+}
+.emblaViewport {
+  overflow: hidden;
+}
+.emblaContainer {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.emblaSlide {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  display: flex;
+  position: relative;
+}
+.emblaControls {
+  position: absolute;
+  bottom: -39px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+.emblaButtons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+.emblaDots {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 34px;
+  padding-bottom: 32px;
+}
+.emblaDot {
+  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.emblaDot:after {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  content: '';
+}
+.emblaDotSelected:after {
+  background-color: #fff;
+  width: 16px;
+  height: 16px;
+}
+
+/* Custom */
+.emblaSlide video {
+  aspect-ratio: 1843 / 911;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.muteButton {
+  position: absolute;
+  z-index: 10;
+  background-color: #535353;
+  border-radius: 20px;
+  width: 78px;
+  height: 78px;
+  border: none;
+  outline: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 27px;
+  right: 31px;
+  cursor: pointer;
+  appearance: none;
+  transition: all 0.3s ease;
+}
+
+.muteButton:hover {
+  border-radius: 50%;
+  background-color: #979797;
+}

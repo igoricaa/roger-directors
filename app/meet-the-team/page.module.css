@@ -1,0 +1,28 @@
+.teamMembers {
+  /* display: flex;
+  flex-wrap: wrap; */
+  --gap: 23px;
+  --padding: 38px;
+  gap: var(--gap);
+  margin: 85px 0 55px;
+  display: grid;
+  grid-template-columns: repeat(3, minMax(0, 1fr));
+}
+
+@media screen and (max-width: 1024px) {
+  .teamMembers {
+    display: flex;
+    flex-wrap: wrap;
+    --gap: 16px;
+    --padding: 24px;
+    margin: 60px 0 0;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .teamMembers {
+    --gap: 8px;
+    --padding: 17px;
+    margin: 35px 0 0;
+  }
+}

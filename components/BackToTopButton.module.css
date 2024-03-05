@@ -1,0 +1,82 @@
+.backToTopButton {
+  background-color: rgba(83, 83, 83, 0.5);
+  max-width: 78px;
+  width: 100%;
+  height: 78px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 38px;
+  bottom: 60px;
+  border: none;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.backToTopButton > span {
+  font-size: 32px;
+  color: var(--color__text-main-contrast);
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  white-space: nowrap;
+  transition: all 0.5s ease;
+}
+
+.backToTopButton.transformed {
+  max-width: 279px;
+  padding: 13px 36px 9px;
+  background-color: #b9b9b9;
+  transition: all 0.5s ease;
+}
+
+.backToTopButton.transformed > span {
+  opacity: 1;
+  visibility: visible;
+  width: auto;
+}
+
+.backToTopButton.transformed svg {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+}
+
+.backToTopButton.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.backToTopButton:hover {
+  background-color: rgba(185, 185, 185, 1);
+  border-radius: 50px;
+}
+
+.backToTopButton.mobile {
+  opacity: 1;
+  visibility: visible;
+  position: unset;
+  max-width: calc(100% - 34px);
+  margin-left: 17px;
+  height: unset;
+  padding: 11px 20px 9px;
+  background-color: #B9B9B9;
+  border-radius: 15px;
+}
+
+.backToTopButton.mobile span {
+  opacity: 1;
+  visibility: visible;
+  width: auto;
+  font-size: 17px;
+  line-height: 23px;
+}

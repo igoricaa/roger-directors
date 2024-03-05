@@ -1,0 +1,425 @@
+.mainNavigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 900;
+}
+
+.navLinks {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 127px 38px 80px;
+  z-index: 10;
+}
+
+.navLinksWrapper {
+  position: relative;
+  width: 100%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 94.5px;
+}
+
+.logoWrapper {
+  position: relative;
+  transition: transform var(--animation-primary), opacity 0.3s ease,
+    visibility 0.3s ease, left 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  width: 284px;
+  height: 94.5px;
+}
+
+.logoWrapper.active {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(0);
+  left: 0;
+}
+
+.logoMarkWrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform var(--animation-primary), opacity 0.3s ease,
+    visibility 0.3s ease, left 0.3s ease;
+  pointer-events: all;
+}
+
+.logoMarkWrapper.active {
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+  transform: translateX(0);
+}
+
+.wrapRightCorner {
+  right: 0;
+  position: absolute;
+  height: 67px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-width: 7em;
+  pointer-events: all;
+}
+
+.burgerWrap {
+  position: absolute;
+  right: 0;
+  padding: 0.75em 0;
+  transform: translateY(0%) scale(1) rotate(0.001deg);
+  transition: transform var(--animation-smooth) 0s;
+}
+
+.burger {
+  display: flex;
+  height: 67px;
+  width: 67px;
+  background-color: var(--burger__background-color);
+  position: relative;
+  right: 0;
+  border-radius: 50%;
+  transition: var(--animation-smooth), background-color 0.2s ease-in-out;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0%, 0%) rotate(0.001deg);
+  cursor: pointer;
+  top: 0;
+}
+
+.burger .bar {
+  position: absolute;
+  width: 33px;
+  height: 1.5px;
+  background-color: var(--burger__bar-color);
+  transition: var(--animation-smooth), background-color 0.2s ease-in-out;
+}
+
+.burger .bar:nth-child(1) {
+  transform: translateY(-3px) rotate(0.001deg);
+}
+
+.burger .bar:nth-child(2) {
+  transform: translateY(3px) rotate(0.001deg);
+}
+
+.burger:hover .bar:nth-child(1) {
+  transform: translateY(3px) rotate(0.001deg);
+}
+
+.burger:hover .bar:nth-child(2) {
+  transform: translateY(-3px) rotate(0.001deg);
+}
+
+.mainNavigation.active .burger .bar:nth-child(1) {
+  transform: translateY(0em) rotate(45deg);
+}
+
+.mainNavigation.active .burger .bar:nth-child(2) {
+  transform: translateY(0em) rotate(-45deg);
+}
+
+.modalNavMobile {
+  top: 141px;
+  bottom: 140px;
+  left: 38px;
+  right: 38px;
+  z-index: 5;
+  position: fixed;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  pointer-events: none;
+  height: 100vh;
+}
+
+.modalNavBackground {
+  z-index: 4;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  transition: var(--animation-smooth);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: all;
+}
+
+.mainNavigation.active .modalNavBackground {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modalBlock {
+  border-radius: 1.5em;
+  padding: 40px 30px 30px;
+  pointer-events: none;
+  position: relative;
+}
+
+.mainNavigation.active .modalBlock {
+  pointer-events: all;
+}
+
+.modalBlockBackground {
+  background-color: var(--color_main_contrast);
+  border-radius: 2em;
+  transition: all var(--animation-smooth), background-color 0.2s ease-in-out,
+    transform var(--animation-smooth) 0s;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 67px;
+  height: 67px;
+  transform: scale(1) rotate(0.001deg);
+}
+
+[data-theme='light'] .modalBlockBackground {
+  width: 65px;
+  height: 65px;
+  right: 1px;
+  top: 1px;
+}
+
+.mainNavigation.active .modalBlockBackground {
+  width: 100%;
+  height: 100%;
+  transform: scale(1) rotate(0.001deg);
+  top: 0;
+  right: 0;
+}
+
+.ulMobile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0) scale(0.1) rotate(0.001deg);
+  transition: all var(--animation-smooth);
+  transform-origin: top right;
+  opacity: 0;
+}
+
+.mainNavigation.active .ulMobile,
+.mainNavigation.active .modalBlockFooter {
+  transform: translateY(0) scale(1) rotate(0.001deg);
+  opacity: 1;
+}
+
+.modalBlockFooter {
+  position: relative;
+  display: flex;
+  transform: translateY(0) scale(0.1) rotate(0.001deg);
+  transition: all var(--animation-smooth);
+  transform-origin: top right;
+  margin-top: 44px;
+  opacity: 0;
+}
+
+.modalSmallTitle {
+  color: #a3a3a3;
+  transform: translateY(0em);
+  text-transform: uppercase;
+  font-size: 1.13em;
+  margin-bottom: 2em;
+}
+
+.ulMobile li:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+.ulMobile li a {
+  display: block;
+}
+
+.ulMobile li.active a {
+  opacity: 0.4;
+}
+
+.ulMobile li a > span {
+  font-size: calc(var(--menu__font-size) * 0.25);
+  color: var(--color__text-main-contrast);
+  transition: all var(--animation-smooth), color 0.2s ease-in-out;
+  position: relative;
+  padding-right: 1em;
+  display: block;
+  text-transform: uppercase;
+}
+
+.ulMobile li.active a > span {
+  text-transform: none;
+}
+
+.ulMobile li a span::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(calc(50%), -50%) scale(0) rotate(0.001deg);
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 50%;
+  background-color: var(--color_main);
+  transition: all var(--animation-smooth), transform var(--animation-primary),
+    background-color 0.2s ease-in-out;
+}
+
+.ulMobile li:hover a span::before {
+  transform: translate(calc(50%), -50%) scale(1) rotate(0.001deg);
+}
+
+.ulMobile li.active a span::before {
+  transform: translate(calc(50%), -50%) scale(1) rotate(0.001deg);
+  opacity: 0.5;
+}
+
+.backButton {
+  position: absolute;
+  left: 0;
+  width: 67px;
+  height: 67px;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+@media screen and (max-width: 991px) {
+  .navLinks {
+    padding: 85px 24px 55px;
+  }
+
+  .logoWrapper {
+    width: 200px;
+    height: 66.5px;
+  }
+
+  .burger {
+    width: 55px;
+    height: 55px;
+  }
+
+  .burger .bar {
+    width: 24px;
+  }
+
+  .modalNavMobile {
+    top: 105px;
+    bottom: 140px;
+    right: 24px;
+    left: 24px;
+  }
+
+  .modalBlockBackground {
+    width: 55px;
+    height: 55px;
+  }
+
+  [data-theme='light'] .modalBlockBackground {
+    width: 53px;
+    height: 53px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .navLinks {
+    padding: 38px 17px 34px;
+  }
+
+  .logoWrapper {
+    left: 0;
+    transform: translateX(0);
+  }
+
+  .navLinksWrapper {
+    justify-content: start;
+    height: 37px;
+  }
+
+  .logoWrapper {
+    position: relative;
+    width: 110px;
+    height: 37px;
+  }
+
+  .burger {
+    width: 48px;
+    height: 48px;
+  }
+
+  .burger .bar {
+    width: 17.5px;
+  }
+
+  .burger .bar:nth-child(1) {
+    transform: translateY(-2px) rotate(0.001deg);
+  }
+
+  .burger .bar:nth-child(2) {
+    transform: translateY(2px) rotate(0.001deg);
+  }
+
+  .burger:hover .bar:nth-child(1) {
+    transform: translateY(2px) rotate(0.001deg);
+  }
+
+  .burger:hover .bar:nth-child(2) {
+    transform: translateY(-2px) rotate(0.001deg);
+  }
+
+  .modalNavMobile {
+    top: 33px;
+    bottom: 33px;
+    left: unset;
+    right: 17px;
+  }
+
+  .modalBlock {
+    padding: 17px;
+  }
+
+  .modalBlockBackground {
+    width: 48px;
+    height: 48px;
+  }
+
+  .modalSmallTitle {
+    font-size: 10px;
+  }
+
+  .ulMobile li a > span {
+    font-size: 22px;
+  }
+
+  .ulMobile li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .ulMobile li a span::before {
+    width: 6px;
+    height: 6px;
+  }
+
+  .modalBlockFooter {
+    margin-top: 28px;
+  }
+}

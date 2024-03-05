@@ -1,0 +1,10 @@
+.accordions {
+  margin-bottom: 81px;
+}
+
+@media screen and (max-width: 680px) {
+  .accordions {
+    margin-bottom: 31px;
+  }
+  
+}
