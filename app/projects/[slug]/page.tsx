@@ -107,7 +107,7 @@ export default function Project() {
   );
 }
 
-export const AdjacentProject = ({
+const AdjacentProject = ({
   type,
   projectUrl,
   projectTitle,
