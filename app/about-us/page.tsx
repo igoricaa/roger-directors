@@ -47,6 +47,7 @@ export default function AboutUs() {
           <h2>Let&apos;s start a project together</h2>
           <h2>Let&apos;s start a project together</h2>
           <h2>Let&apos;s start a project together</h2>
+          <h2>Let&apos;s start a project together</h2>
         </div>
         <section className={styles.innerWrapper}>
           <Accordion />

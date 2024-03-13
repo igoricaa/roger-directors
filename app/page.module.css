@@ -1,3 +1,19 @@
 .main {
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 23px;
+}
+
+@media screen and (max-width: 991px) {
+  .main {
+    grid-template-columns: repeat(2, minMax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .main {
+    gap: 8px;
+  }
 }

@@ -1,5 +1,6 @@
 .footer {
   padding-top: 105px;
+  position: relative;
 }
 
 .footerTop {
@@ -55,6 +56,10 @@
 
 .footer .contact > div > a:first-of-type {
   margin-bottom: 48px;
+}
+
+.footerTop a:hover {
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 991px) {

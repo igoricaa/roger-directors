@@ -1,117 +1,202 @@
-import { PinterestLayout } from '@/components/PinterestLayout';
 import styles from './page.module.css';
-import { Card } from '@/components/Card';
-import BackToTopButton from '@/components/BackToTopButton';
+import { PageCard } from '@/components/PageCard';
+import { ColumnLayout } from '@/components/ColumnLayout';
+import ProjectCard from '@/components/ProjectCard';
 
 export default function Home() {
   const projects: any = [
     {
-      title: 'Project 1',
+      id: 1,
+      title: 'Price iz Srbije',
       description: 'This is a description of project 1',
-      image: '/small.png',
-      url: '/projects/project-1',
+      image: '/price-main.jpg',
+      url: '/projects/price-iz-srbije',
+      video: '/price-iz-srbije.mp4',
+      size: 'medium',
+      priority: true,
     },
     {
-      title: 'Project 2',
+      id: 2,
+      title: 'Events',
       description: 'This is a description of project 2',
-      image: '/medium.png',
-      url: '/projects/project-1',
+      image: '/events.jpg',
+      url: '/projects/events',
+      video: '/events.mp4',
+      size: 'small',
+      priority: true,
     },
     {
-      title: 'Project 3',
+      id: 3,
+      title: 'Femicid',
       description: 'This is a description of project 3',
-      image: '/large.png',
-      url: '/projects/project-1',
+      image: '/femicid.jpg',
+      url: '/projects/femicid',
+      video: '/femicid.mp4',
+      size: 'large',
+      priority: true,
     },
     {
-      title: 'Project 4',
+      id: 4,
+      title: 'Muzika nade',
       description: 'This is a description of project 4',
-      image: '/small.png',
-      url: '/projects/project-1',
+      image: '/muzika-nade.jpg',
+      url: '/projects/muzika-nade',
+      video: '/muzika-nade.mp4',
+      size: 'square',
     },
     {
-      title: 'Project 5',
+      id: 5,
+      title: 'Haleon',
       description: 'This is a description of project 5',
-      image: '/medium.png',
-      url: '/projects/project-1',
+      image: '/femicid.jpg',
+      url: '/projects/haleon',
+      video: '/femicid.mp4',
+      size: 'large',
     },
     {
-      title: 'Project 6',
+      id: 6,
+      title: 'IDF',
       description: 'This is a description of project 6',
-      image: '/large.png',
-      url: '/projects/project-1',
+      image: '/idf.jpg',
+      url: '/projects/idf',
+      video: '/price-iz-srbije.mp4',
+      size: 'medium',
     },
     {
-      title: 'Project 7',
+      id: 7,
+      title: 'HYKO',
       description: 'This is a description of project 7',
-      image: '/small.png',
-      url: '/projects/project-1',
+      image: '/hyko.jpg',
+      url: '/projects/hyko',
+      video: '/hyko.mp4',
+      size: 'small',
     },
     {
-      title: 'Project 8',
+      id: 8,
+      title: 'Illy',
       description: 'This is a description of project 8',
-      image: '/medium.png',
-      url: '/projects/project-1',
+      image: '/illy.jpg',
+      url: '/projects/illy',
+      videp: '/events.mp4',
+      size: 'small',
     },
     {
-      title: 'Project 9',
+      id: 9,
+      title: 'Paralympics',
       description: 'This is a description of project 9',
-      image: '/large.png',
-      url: '/project-9',
+      image: '/para.jpg',
+      url: '/projects/paralympics',
+      video: '/para.mp4',
+      size: 'square',
     },
     {
-      title: 'Project 10',
+      id: 10,
+      title: 'Connectivity',
       description: 'This is a description of project 10',
-      image: '/small.png',
-      url: '/projects/project-1',
+      image: '/connectivity.jpg',
+      url: '/projects/connectivity',
+      video: '/connectivity.mp4',
+      size: 'square',
     },
     {
-      title: 'Project 11',
+      id: 11,
+      title: 'Education',
       description: 'This is a description of project 11',
-      image: '/medium.png',
-      url: '/projects/project-1',
+      image: '/education.jpg',
+      url: '/projects/education',
+      video: '/education.mp4',
+      size: 'small',
     },
     {
-      title: 'Project 12',
+      id: 12,
+      title: 'Corpo videos',
       description: 'This is a description of project 12',
-      image: '/large.png',
-      url: '/projects/project-1',
+      image: '/corpo.jpg',
+      url: '/projects/corpo-videos',
+      video: '/corpo.mp4',
+      size: 'medium',
     },
   ];
 
-  const fixedCards: any = [
+  const pagesCards: any = [
     {
       type: 'page',
       title: 'About Us',
-      description: 'Lorem ipsum dolor sit amet, conse ctetur adipis cing elit',
+      description: {
+        __html: 'Digital Dreams.<br>Analog Hearts.<br>Integrated Futures.',
+      },
+      size: 'medium',
     },
     {
       type: 'page',
       title: 'Meet the Team',
-      description: 'Lorem ipsum dolor sit amet, conse ctetur adipis cing elit',
+      description: { __html: 'Meet the People' },
+      size: 'square',
     },
     {
       type: 'page',
       title: 'Contact',
-      description: 'Lorem ipsum dolor sit amet, conse ctetur adipis cing elit',
+      description: { __html: 'Let&apos;s connect' },
+      size: 'square',
+    },
+    {
+      type: 'page',
+      title: 'Blog',
+      description: { __html: 'The reservoir' },
+      size: 'small',
     },
   ];
 
-  const spot = projects.length / 3;
+  const firstColumnIds: number[] = [1, 4, 5, 10];
+  const secondColumnIds: number[] = [2, 6, 7, 11];
+  const thirdColumnIds: number[] = [3, 8, 9, 12];
 
-  projects.splice(spot + 3, 0, fixedCards[0]);
-  projects.splice(spot * 2 + 2, 0, fixedCards[1]);
-  projects.splice(spot * 3 + 2, 0, fixedCards[2]);
+  let firstColumnCards: any[] = [];
+  let secondColumnCards: any[] = [];
+  let thirdColumnCards: any[] = [];
 
-  const sizes = ['small', 'medium', 'large'];
+  projects.forEach((project: any) => {
+    if (firstColumnIds.includes(project.id)) firstColumnCards.push(project);
+    if (secondColumnIds.includes(project.id)) secondColumnCards.push(project);
+    if (thirdColumnIds.includes(project.id)) thirdColumnCards.push(project);
+  });
+
+  firstColumnCards.splice(3, 0, pagesCards[3]);
+  secondColumnCards.splice(1, 0, pagesCards[0]);
+  secondColumnCards.splice(4, 0, pagesCards[1]);
+  thirdColumnCards.splice(1, 0, pagesCards[2]);
+
+  // za responsive podeli u 2 kolone
 
   return (
     <main className={styles.main}>
-      <PinterestLayout>
-        {projects.map((project: any, index: number) => {
-          return <Card key={index} content={project} size={sizes[index % 3]} />;
+      <ColumnLayout>
+        {firstColumnCards.map((card: any, index: number) => {
+          return card.type === 'page' ? (
+            <PageCard key={index} content={card} size={card.size} />
+          ) : (
+            <ProjectCard key={index} project={card} />
+          );
         })}
-      </PinterestLayout>
+      </ColumnLayout>
+      <ColumnLayout>
+        {secondColumnCards.map((card: any, index: number) => {
+          return card.type === 'page' ? (
+            <PageCard key={index} content={card} size={card.size} />
+          ) : (
+            <ProjectCard key={index} project={card} />
+          );
+        })}
+      </ColumnLayout>
+      <ColumnLayout>
+        {thirdColumnCards.map((card: any, index: number) => {
+          return card.type === 'page' ? (
+            <PageCard key={index} content={card} size={card.size} />
+          ) : (
+            <ProjectCard key={index} project={card} />
+          );
+        })}
+      </ColumnLayout>
     </main>
   );
 }

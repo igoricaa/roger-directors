@@ -61,6 +61,8 @@ export default function Header() {
             <button
               type='button'
               className={styles.backButton}
+              aria-label='Back button'
+              title='Back button'
               onClick={router.back}
             >
               <svg

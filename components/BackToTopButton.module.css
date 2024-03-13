@@ -37,6 +37,8 @@
   padding: 13px 36px 9px;
   background-color: #b9b9b9;
   transition: all 0.5s ease;
+  /* position: absolute; */
+  /* top: 105px; */
 }
 
 .backToTopButton.transformed > span {

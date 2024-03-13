@@ -34,30 +34,50 @@ export default function BackToTopButton() {
 
   const transformButton = () => {
     const footer: HTMLElement = document.getElementById('footer')!;
-    const backToTopButton: HTMLElement =
-      document.getElementById('backToTopButton')!;
+    const footerTop: HTMLElement = document.getElementById('footerTop')!;
+    // const backToTopButton: HTMLElement =
+    //   document.getElementById('backToTopButton')!;
 
-    const footerPosition = footer.getBoundingClientRect();
-    const backToTopButtonPosition =
-      backToTopButton.offsetTop + backToTopButton.offsetHeight;
+    // const footerPosition = footer.getBoundingClientRect();
+    // const backToTopButtonPosition =
+    //   backToTopButton.offsetTop + backToTopButton.offsetHeight;
 
-    let footerTopPadding = window
-      .getComputedStyle(footer)
-      .getPropertyValue('padding-top');
+    // let footerTopPadding = window
+    //   .getComputedStyle(footer)
+    //   .getPropertyValue('padding-top');
 
-    footerTopPadding = footerTopPadding.substring(
-      0,
-      footerTopPadding.length - 2
-    );
+    // footerTopPadding = footerTopPadding.substring(
+    //   0,
+    //   footerTopPadding.length - 2
+    // );
 
-    if (
-      backToTopButtonPosition >
-      footerPosition.y + Number(footerTopPadding) + backToTopButton.offsetHeight
-    ) {
-      setIsAtFooter(true);
-    } else {
-      setIsAtFooter(false);
+    // if (
+    //   backToTopButtonPosition >
+    //   footerPosition.y + Number(footerTopPadding) + backToTopButton.offsetHeight
+    // ) {
+    //   setIsAtFooter(true);
+    //   backToTopButton.style.bottom = `${footerPosition.height - 183}px`;
+    // } else {
+    //   setIsAtFooter(false);
+    // }
+
+    const callback = (entries: any[], observer: any) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsAtFooter(true);
+        } else {
+          setIsAtFooter(false);
+        }
+      });
     }
+
+    // const options = {
+    //   root: footer,
+    //   rootMargin: '105px 0px 0px 0px',
+    // }
+
+    const observer = new IntersectionObserver(callback);
+    observer.observe(footerTop);
   };
 
   if (!isMobile) {

@@ -3,8 +3,14 @@
   position: relative;
 }
 
+.descriptionContainer h2 {
+  font-size: 2.865vw;
+  line-height: 3.96vw;
+}
+
 .descriptionContainer p {
-  font-size: 27px;
+  /* font-size: 27px; */
+  font-size: 1.41vw;
   margin-top: 41px;
 }
 
@@ -31,7 +37,7 @@
 }
 
 @keyframes fade {
-  0%{
+  0% {
     opacity: 0;
   }
   50% {
@@ -54,17 +60,19 @@
   justify-content: space-between;
   z-index: 200;
   cursor: pointer;
-  transition: width 0.3s ease;
+  transition: all 0.8s ease;
   padding: 17px 30px;
 }
 
 .active .closeBio {
   max-width: 78px;
   width: 78px;
+  transition-delay: 0.2s;
 }
 
 .closeBio:hover {
   width: 100%;
+  border-radius: 39px;
 }
 
 .closeBio > span {
@@ -73,6 +81,7 @@
   visibility: hidden;
   width: 0;
   white-space: nowrap;
+  transition: all 0.5s ease;
 }
 
 .closeBio:hover > span {
@@ -80,15 +89,26 @@
   visibility: visible;
   width: auto;
   transition: all 0.5s ease;
-  transition-delay: 0.2s;
+  transition-delay: 0.4s;
 }
 
 .closeBio svg {
   transform: rotate(0deg);
-  transition: all 0.2s ease;
+  transition: all 0.4s ease;
   width: 18px;
 }
 
 .active .closeBio svg {
   transform: rotate(180deg);
+}
+
+@media screen and (max-width: 991px) {
+  .descriptionContainer h2 {
+    font-size: 55px;
+    line-height: 76px;
+  }
+
+  .descriptionContainer p {
+    font-size: 27px;
+  }
 }

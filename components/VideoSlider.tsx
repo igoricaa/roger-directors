@@ -59,7 +59,7 @@ export default function VideoSlider({ videos }: { videos: string[] }) {
                 muted
                 loop
                 playsInline
-                className={[styles.nextVideoContainer].join(' ')}
+                className={styles.nextVideoContainer}
                 onClick={(event) => {
                   togglePlay(event);
                 }}

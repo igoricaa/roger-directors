@@ -1,0 +1,128 @@
+.card {
+  margin-top: 23px;
+}
+
+.pageCard {
+  padding: 50px 40px 33px 33px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--color__cards-text);
+  border-radius: 30px;
+  width: 100%;
+}
+
+.pageCard h2 {
+  font-size: 2.85vw;
+  line-height: 3.96vw;
+}
+
+.pageCard a {
+  color: inherit;
+  padding: 0.68vw 1.88vw 0.68vw;
+  border-radius: 22px;
+  width: fit-content;
+  margin-left: auto;
+  font-size: 1.67vw;
+  transition: border-radius ease 0.4s;
+  height: auto;
+}
+
+.pageCard a:hover {
+  border-radius: 35px;
+}
+
+.aboutus {
+  background-color: #8eb8a3;
+}
+
+.aboutus a {
+  background-color: #b5dfca;
+}
+
+.aboutus a:hover {
+  background-color: #d9ffec;
+}
+
+.meettheteam {
+  background-color: #f0dd3d;
+}
+
+.meettheteam a {
+  background-color: #fff5a5;
+}
+
+.meettheteam a:hover {
+  background-color: #fffad6;
+}
+
+.contact,
+.blog {
+  background-color: #8b8c8e;
+}
+
+.contact h2,
+.blog h2 {
+  color: #fff;
+}
+
+.contact a,
+.blog a {
+  background-color: #b9b9b9;
+}
+
+.contact a:hover,
+.blog a:hover {
+  background-color: #e9e9e9;
+}
+
+.small {
+  aspect-ratio: 599 / 444;
+}
+
+.medium {
+  aspect-ratio: 599 / 700;
+}
+
+.large {
+  aspect-ratio: 599 / 952;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+}
+
+@media screen and (max-width: 991px) {
+  .card {
+    margin-top: 16px;
+  }
+  .pageCard {
+    padding: 15px 13px 13px 10px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .card {
+    margin-top: 8px;
+  }
+  .pageCard {
+    padding: 15px 13px 13px 10px;
+    border-radius: 15px;
+  }
+
+  .pageCard h2 {
+    font-size: 17px;
+    line-height: 23px;
+  }
+
+  .pageCard a {
+    font-size: 17px;
+    line-height: 23px;
+    padding: 10px 10px;
+    min-width: 109px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

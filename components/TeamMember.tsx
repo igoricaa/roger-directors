@@ -37,6 +37,7 @@ export function TeamMember({
         styles.teamMember,
         active !== null && active === index ? styles.active : '',
       ].join(' ')}
+      onClick={() => openBio(index)}
     >
       <div className={styles.hoverStateWrapper}>
         <div className={styles.bgImageWrapper}>
@@ -64,7 +65,7 @@ export function TeamMember({
           <p>{member.bio}</p>
         </div>
       </div>
-      <div className={styles.closeBio} onClick={() => openBio(index)}>
+      <button className={styles.closeBio} onClick={() => openBio(index)}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='18.593'
@@ -83,7 +84,7 @@ export function TeamMember({
             strokeWidth='3'
           />
         </svg>
-      </div>
+      </button>
     </div>
   );
 }

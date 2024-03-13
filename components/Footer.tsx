@@ -23,7 +23,7 @@ export const Footer = () => {
     <footer id='footer' className={styles.footer}>
       <BackToTopButton />
 
-      <div className={styles.footerTop}>
+      <div id='footerTop' className={styles.footerTop}>
         <ul className={styles.footerMenu}>
           <li>
             <Link href='/'>

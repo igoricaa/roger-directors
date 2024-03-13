@@ -20,7 +20,7 @@ export default function ProjectDescriptionContainer({
         className={[styles.innerWrapper, active ? styles.active : ''].join(' ')}
       >
         <h2>{descriptionTitle}</h2>
-        <p className={styles.descriptionText}>
+        <p>
           {active ? description : descriptionExceprt}
         </p>
         <div className={styles.closeBio} onClick={() => setActive(!active)}>

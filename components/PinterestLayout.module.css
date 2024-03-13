@@ -6,3 +6,10 @@
   grid-auto-rows: auto;
   gap: 23px;
 }
+
+@media screen and (max-width: 991px) {
+  .pinContainer {
+    grid-template-columns: repeat(2, minMax(0, 1fr));
+    gap: 8px;
+  }
+}

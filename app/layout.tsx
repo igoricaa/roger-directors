@@ -19,6 +19,16 @@ const mont = localFont({
   variable: '--font-mont',
 });
 
+const montBook = localFont({
+  src: [
+    {
+      path: './fonts/Mont-Book.woff2',
+      weight: '300',
+    },
+  ],
+  variable: '--font-mont-book',
+});
+
 export const metadata: Metadata = {
   title: 'Roger Directors',
   description: 'Official website of Roger Directors',
@@ -32,7 +42,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang='en'>
       <head></head>
-      <body className={`${mont.variable}`}>
+      <body className={[`${mont.variable}`, `${montBook.variable}`].join(' ')}>
         <Providers>
           <Header />
           {children}
