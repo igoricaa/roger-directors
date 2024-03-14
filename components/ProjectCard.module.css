@@ -49,7 +49,10 @@
 
 @media screen and (max-width: 991px) {
   .card {
-    margin-top: 16px;
+    margin-top: 1rem;
+  }
+  .card > a:hover img:not(.noVideo) {
+    opacity: 1;
   }
 }
 

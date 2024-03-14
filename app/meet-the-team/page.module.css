@@ -1,7 +1,7 @@
 .teamMembers {
   /* display: flex;
   flex-wrap: wrap; */
-  --gap: 23px;
+  --gap: 1.5rem;
   --padding: 38px;
   gap: var(--gap);
   margin: 85px 0 55px;
@@ -13,16 +13,16 @@
   .teamMembers {
     display: flex;
     flex-wrap: wrap;
-    --gap: 16px;
-    --padding: 24px;
+    --gap: 1rem;
+    --padding: 1.5rem;
     margin: 60px 0 0;
   }
 }
 
 @media screen and (max-width: 680px) {
   .teamMembers {
-    --gap: 8px;
-    --padding: 17px;
+    --gap: 0.5rem;
+    --padding: 1rem;
     margin: 35px 0 0;
   }
 }

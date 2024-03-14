@@ -25,13 +25,20 @@
   position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden;
 }
 
 .innerWrapper.active {
   width: calc(100vw - 76px);
 }
 
-.innerWrapper.active .descriptionText {
+.descriptionText {
+  opacity: 0;
+  /* transition: opacity 0.7s ease-in; */
+}
+
+.innerWrapper.active .descriptionText,
+.innerWrapper.active .descriptionExceprt {
   opacity: 1;
   animation: fade 0.7s ease-in;
 }
@@ -40,7 +47,7 @@
   0% {
     opacity: 0;
   }
-  50% {
+  100% {
     opacity: 1;
   }
 }
@@ -64,7 +71,7 @@
   padding: 17px 30px;
 }
 
-.active .closeBio {
+.innerWrapper.active .closeBio {
   max-width: 78px;
   width: 78px;
   transition-delay: 0.2s;
@@ -98,17 +105,110 @@
   width: 18px;
 }
 
-.active .closeBio svg {
+.innerWrapper.active .closeBio svg {
   transform: rotate(180deg);
 }
 
 @media screen and (max-width: 991px) {
+  .innerWrapper {
+    position: relative;
+    height: auto;
+    max-height: 360px;
+    border-radius: 15px;
+    padding-bottom: 70px;
+    transition: max-height 0.5s ease-out;
+  }
+  .innerWrapper.active {
+    width: 100%;
+    max-height: 2000px;
+    transition: max-height 0.5s ease-in;
+  }
+
   .descriptionContainer h2 {
-    font-size: 55px;
-    line-height: 76px;
+    font-size: 2.5rem;
+    line-height: 3rem;
   }
 
   .descriptionContainer p {
-    font-size: 27px;
+    font-size: 1.38rem;
+    line-height: 1.68rem;
+    margin-top: 1.3rem;
+  }
+
+  .descriptionText {
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+  }
+
+  .innerWrapper.active .descriptionText,
+  .innerWrapper.active .descriptionExceprt {
+    opacity: 1;
+    animation: none
+  }
+
+  .closeBio {
+    min-width: 60px;
+    width: 60px;
+    height: 60px;
+    max-width: 60px;
+    border-radius: 15px;
+    padding: 0;
+    justify-content: center;
+    bottom: 13px;
+    right: 13px;
+  }
+
+  .closeBio:hover {
+    border-radius: 15px;
+  }
+
+  .closeBio > span {
+    display: none;
+  }
+
+  .closeBio svg {
+    width: 13px;
+    transform: rotate(90deg);
+  }
+
+  .innerWrapper.active .closeBio {
+    max-width: 60px;
+  }
+
+  .innerWrapper.active .closeBio svg {
+    transform: rotate(225deg);
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .innerWrapper {
+    padding: 14px 13px 70px 9px;
+    max-height: 260px;
+  }
+
+  .descriptionContainer h2 {
+    font-size: 1.38rem;
+    line-height: 1.88rem;
+  }
+
+  .descriptionContainer p {
+    font-size: 1.1rem;
+    line-height: 1.44rem;
+    margin-top: 1rem;
+  }
+
+  .closeBio {
+    min-width: 43px;
+    width: 43px;
+    height: 43px;
+    max-width: 43px;
+  }
+
+  .closeBio svg {
+    width: 8px;
+  }
+
+  .innerWrapper.active .closeBio {
+    max-width: 43px;
   }
 }

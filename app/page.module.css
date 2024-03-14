@@ -8,7 +8,7 @@
 @media screen and (max-width: 991px) {
   .main {
     grid-template-columns: repeat(2, minMax(0, 1fr));
-    gap: 16px;
+    gap: 1rem;
   }
 }
 

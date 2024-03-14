@@ -2,7 +2,7 @@
 
 import styles from './Header.module.css';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ThemeChanger } from '@/components/ThemeChanger';
 import { useTheme } from 'next-themes';
@@ -16,6 +16,22 @@ export default function Header() {
   const { resolvedTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
+  const burgerRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = useCallback(
+    (event: any) => {
+      if (
+        menuOpen &&
+        menuRef.current &&
+        !menuRef.current!.contains(event.target) &&
+        !burgerRef.current!.contains(event.target)
+      ) {
+        setMenuOpen(false);
+      }
+    },
+    [menuOpen, menuRef, burgerRef]
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -25,7 +41,13 @@ export default function Header() {
     if (isDesktop) {
       window.addEventListener('scroll', toggleLogos);
     }
-  }, [isDesktop]);
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [handleClickOutside, isDesktop]);
 
   if (!mounted) {
     return null;
@@ -122,6 +144,7 @@ export default function Header() {
             <div className={styles.burgerWrap}>
               <div
                 className={styles.burger}
+                ref={burgerRef}
                 onClick={() => setMenuOpen(!menuOpen)}
               >
                 <div className={styles.bar}></div>
@@ -132,7 +155,7 @@ export default function Header() {
         </div>
       </div>
       <div className={styles.modalNavMobile}>
-        <div className={styles.modalBlock}>
+        <div className={styles.modalBlock} ref={menuRef}>
           <div className={styles.modalBlockBackground} />
           <ul className={styles.ulMobile}>
             <span className={styles.modalSmallTitle}>Menu</span>
@@ -146,12 +169,12 @@ export default function Header() {
                 </Link>
               </li>
             ))}
+            <div className={styles.switchersWrapper}>
+              <ThemeChanger />
+              <ThemeChanger />
+              {/* <div className={styles.langSwitcher}></div> */}
+            </div>
           </ul>
-          <div className={styles.modalBlockFooter}>
-            <ThemeChanger />
-
-            <div className={styles.langSwitcher}></div>
-          </div>
         </div>
       </div>
       <div className={styles.modalNavBackground} />

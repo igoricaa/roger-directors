@@ -214,20 +214,16 @@
   opacity: 0;
 }
 
-.mainNavigation.active .ulMobile,
-.mainNavigation.active .modalBlockFooter {
+.mainNavigation.active .ulMobile {
   transform: translateY(0) scale(1) rotate(0.001deg);
   opacity: 1;
 }
 
-.modalBlockFooter {
-  position: relative;
+.switchersWrapper {
   display: flex;
-  transform: translateY(0) scale(0.1) rotate(0.001deg);
-  transition: all var(--animation-smooth);
-  transform-origin: top right;
+  justify-content: space-between;
+  gap: 5.31vw;
   margin-top: 44px;
-  opacity: 0;
 }
 
 .modalSmallTitle {
@@ -301,6 +297,7 @@
   padding: 0;
   cursor: pointer;
   pointer-events: all;
+  padding-right: 3px;
 }
 
 @media screen and (max-width: 991px) {
@@ -337,6 +334,11 @@
   [data-theme='light'] .modalBlockBackground {
     width: 53px;
     height: 53px;
+  }
+
+  .switchersWrapper {
+    gap: 80px;
+    margin-top: 36px;
   }
 }
 
@@ -419,7 +421,8 @@
     height: 6px;
   }
 
-  .modalBlockFooter {
+  .switchersWrapper {
+    gap: 61px;
     margin-top: 28px;
   }
 }

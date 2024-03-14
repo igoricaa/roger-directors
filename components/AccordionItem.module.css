@@ -108,7 +108,7 @@
   .accordionButton::after {
     width: 14px;
     height: 8px;
-    right: 16px;
+    right: 1rem;
   }
 
   .article.active .accordionBottom {

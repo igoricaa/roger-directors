@@ -1,11 +1,10 @@
-import Image from 'next/image';
 import Video from 'next-video';
 import styles from './page.module.css';
 import ProjectDescriptionContainer from '@/components/ProjectDescriptionContainer';
 import Link from 'next/link';
 import projectVideo from '@/videos/projectVideo.mp4';
-import { Asset } from 'next-video/dist/assets.js';
 import VideoSlider from '@/components/VideoSlider';
+import ProjectImages from '@/components/ProjectImages';
 
 interface Project {
   id: string;
@@ -45,6 +44,23 @@ const project: Project = {
   nextProjectUrl: '/projects/project-2',
 };
 
+const media: any[] = [
+  {
+    src: '/project-1.jpg',
+  },
+  {
+    src: '/project-2.jpg',
+  },
+  {
+    src: '/project-3.jpg',
+  },
+  {
+    src: '/project-4.jpg',
+  },
+  {
+    src: '/project-5.jpg',
+  },
+];
 // export default function Project({ project }: { project: Project }) {
 export default function Project() {
   return (
@@ -52,13 +68,13 @@ export default function Project() {
       <header className={styles.header}>
         <h1>{project.title}</h1>
       </header>
-      <article className={styles.article}>
-        <div className={styles.videosWrapper}>
-          {/* <Video
+      {/* <Video
             className={styles.nextVideoContainer}
             height={911}
             src={project.video}
           /> */}
+      <article className={styles.article}>
+        <div className={styles.videosWrapper}>
           <VideoSlider videos={project.videos} />
         </div>
         <div className={styles.headingAnimated}>
@@ -74,21 +90,8 @@ export default function Project() {
             description={project.description}
             descriptionExceprt={project.descriptionExceprt}
           />
-          <div>
-            <Image src='/project-1.jpg' alt='Project 1 image' fill />
-          </div>
-          <div>
-            <Image src='/project-2.jpg' alt='Project 1 image' fill />
-          </div>
-          <div>
-            <Image src='/project-3.jpg' alt='Project 1 image' fill />
-          </div>
-          <div>
-            <Image src='/project-4.jpg' alt='Project 1 image' fill />
-          </div>
-          <div>
-            <Image src='/project-5.jpg' alt='Project 1 image' fill />
-          </div>
+
+          <ProjectImages images={media} />
         </div>
       </article>
       <section className={styles.adjacentProjects}>

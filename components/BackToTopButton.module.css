@@ -71,7 +71,7 @@
   margin-left: 17px;
   height: unset;
   padding: 11px 20px 9px;
-  background-color: #B9B9B9;
+  background-color: #b9b9b9;
   border-radius: 15px;
 }
 
@@ -81,4 +81,23 @@
   width: auto;
   font-size: 17px;
   line-height: 23px;
+}
+
+@media screen and (max-width: 991px) {
+  .backToTopButton {
+    height: 60px;
+    max-width: 60px;
+    padding: 1rem;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .backToTopButton.transformed {
+    max-width: 215px;
+    padding: 10px 28px 7px;
+  }
+
+  .backToTopButton > span {
+    font-size: 22px;
+  }
 }

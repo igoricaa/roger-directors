@@ -57,6 +57,11 @@ h2 {
   line-height: 76px;
 }
 
+h3 {
+  font-size: 50px;
+  line-height: 69px;
+}
+
 img {
   height: auto;
   max-width: 100%;
@@ -130,6 +135,11 @@ main {
     font-size: 35px;
     line-height: 48px;
   }
+
+  h3 {
+    font-size: 30px;
+    line-height: 41px;
+  }
 }
 
 @media screen and (max-width: 680px) {
@@ -141,6 +151,11 @@ main {
   h2 {
     font-size: 22px;
     line-height: 30px;
+  }
+
+  h3 {
+    font-size: 17px;
+    line-height: 23px;
   }
 
   main {

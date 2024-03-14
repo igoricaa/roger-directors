@@ -31,3 +31,20 @@
   border-radius: 50%;
   background-color: #979797;
 }
+
+@media screen and (max-width: 991px) {
+  .emblaButton > span {
+    width: 60px;
+    height: 60px;
+    padding: 1rem 18px 1rem 20px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .emblaButton > span {
+    width: 43px;
+    height: 43px;
+    border-radius: 15px;
+    padding: 13px 1rem 13px 18px;
+  }
+}

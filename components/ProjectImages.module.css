@@ -1,0 +1,57 @@
+.imageWrapper {
+  position: relative;
+}
+
+.imageWrapper img {
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 991px) {
+  .imageWrapper {
+    border-radius: 15px;
+  }
+  .imageWrapper img {
+    border-radius: 15px;
+  }
+
+  .imagesColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .imagesColumn:not(:last-of-type) {
+    width: calc(50% - var(--gap) / 2);
+  }
+
+  .imagesColumn:last-of-type {
+    width: 100%;
+  }
+
+  .image1 {
+    aspect-ratio: 186 / 272;
+  }
+
+  .image2 {
+    aspect-ratio: 186 / 133;
+  }
+
+  .image3 {
+    aspect-ratio: 1 / 1;
+  }
+
+  .image4 {
+    aspect-ratio: 186 / 218;
+  }
+
+  .image5 {
+    aspect-ratio: 1221 / 503;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .imagesColumn {
+    gap: 8px;
+  }
+}

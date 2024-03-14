@@ -68,8 +68,8 @@
 }
 .emblaDotSelected:after {
   background-color: #fff;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 
 /* Custom */
@@ -102,4 +102,69 @@
 .muteButton:hover {
   border-radius: 50%;
   background-color: #979797;
+}
+
+@media screen and (max-width: 991px) {
+  .embla {
+    --slide-size: calc(100% - 24px);
+    --slide-spacing: 9px;
+  }
+
+  .muteButton {
+    width: 60px;
+    height: 60px;
+    padding: 1rem 12px;
+    bottom: 0;
+    right: -160px;
+  }
+
+  .emblaControls {
+    margin-top: 19px;
+    bottom: unset;
+  }
+
+  .emblaDots {
+    gap: 10px;
+    padding-bottom: 28px;
+    margin: 0 24px;
+  }
+
+  .emblaDot:after {
+    width: 8px;
+    height: 8px;
+  }
+  .emblaDotSelected:after {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .embla {
+    --slide-size: calc(100% - 17px);
+    
+  }
+
+  .muteButton {
+    width: 43px;
+    height: 43px;
+    border-radius: 15px;
+    padding: 13px 10px;
+    right: -86px;
+  }
+
+  .emblaDots {
+    gap: 6px;
+    padding-bottom: 24px;
+    margin: 0 1rem;
+  }
+
+  .emblaDot:after {
+    width: 6px;
+    height: 6px;
+  }
+  .emblaDotSelected:after {
+    width: 10px;
+    height: 10px;
+  }
 }
