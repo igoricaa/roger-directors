@@ -52,7 +52,7 @@ export default function AccordionItem({
         </div>
 
         <div className={styles.accordionBottom}>
-          <p>{service.description}</p>
+          <p dangerouslySetInnerHTML={service.description}></p>
         </div>
       </div>
     </article>

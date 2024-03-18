@@ -1,7 +1,7 @@
 'use client';
 
-import { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel';
-import { useCallback, useEffect, useState } from 'react';
+import { EmblaOptionsType } from 'embla-carousel';
+import { useEffect, useState } from 'react';
 import styles from './VideoSlider.module.css';
 import useEmblaCarousel from 'embla-carousel-react';
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';

@@ -54,15 +54,15 @@ export const Footer = () => {
         <div className={styles.contact}>
           <h4>Contact</h4>
           <div>
-            <a href='https://maps.app.goo.gl/fKqcc55W631hDPdm6' target='_blank'>
-              <p>Bulevar Mihaila</p>
-              <p>Pupina 13/37</p>
-              <p>11070 Beograd,</p>
-              <p>Srbija</p>
+            <a href='https://maps.app.goo.gl/cXYtDYMmb9Ymaxqu8' target='_blank'>
+              <p>Resavska 33.</p>
+              <p>11000 Belgrade</p>
+              <p>Serbia</p>
             </a>
             <div>
               <a href='mailto:office@roger.rs'>office@roger.rs</a>
-              <a href='tel:555-555-5555'>555-555-5555</a>
+              <a href='tel:00381604200410'>+ 381 60 42 00 410</a>
+              <a href='tel:00381641177187'>+ 381 64 11 77 187</a>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className={styles.footerBottom}>
-        <a href='/' className={styles.logoWrapper}>
+        <Link href='/' className={styles.logoWrapper}>
           <Image
             src={`/roger-directors-logo-${
               resolvedTheme
@@ -90,7 +90,7 @@ export const Footer = () => {
             sizes='(max-width: 768px) 135px, 172px'
             alt='Roger Directors logo'
           />
-        </a>
+        </Link>
       </div>
     </footer>
   );

@@ -27,7 +27,7 @@ export default function ProjectDescriptionContainer({
           {description}
         </p>
 
-        <div className={styles.closeBio} onClick={() => setActive(!active)}>
+        <div className={styles.closeDescription} onClick={() => setActive(!active)}>
           <span onClick={() => setActive(!active)}>
             {active ? '' : 'Find out more'}
           </span>

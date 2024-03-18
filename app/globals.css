@@ -120,6 +120,13 @@ main {
   padding: 0 38px;
 }
 
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+} */
+
+
 @media screen and (max-width: 991px) {
   main {
     margin-top: 180px;

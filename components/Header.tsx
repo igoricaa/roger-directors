@@ -108,7 +108,7 @@ export default function Header() {
             </button>
           )}
           {isDesktop && (
-            <a
+            <Link
               href='/'
               className={[
                 styles.logoMarkWrapper,
@@ -123,9 +123,9 @@ export default function Header() {
                 height={67}
                 alt='Roger Directors logo mark'
               />
-            </a>
+            </Link>
           )}
-          <a
+          <Link
             href='/'
             className={[
               styles.logoWrapper,
@@ -139,7 +139,7 @@ export default function Header() {
               fill
               alt='Roger Directors logo'
             />
-          </a>
+          </Link>
           <div className={styles.wrapRightCorner}>
             <div className={styles.burgerWrap}>
               <div
