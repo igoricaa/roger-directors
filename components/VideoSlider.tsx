@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import styles from './VideoSlider.module.css';
 import useEmblaCarousel from 'embla-carousel-react';
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';
+import MuxPlayer from '@mux/mux-player-react';
 import {
   NextButton,
   PrevButton,
@@ -17,7 +18,12 @@ const OPTIONS: EmblaOptionsType = {
   align: 'start',
 };
 
-export default function VideoSlider({ videos }: { videos: string[] }) {
+type Video = {
+  title: string;
+  playbackId: string;
+};
+
+export default function VideoSlider({ videos }: { videos: Video[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS);
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
@@ -30,9 +36,9 @@ export default function VideoSlider({ videos }: { videos: string[] }) {
   }, []);
 
   const toggleMute = (videoIndex: number) => {
-    const video = document.getElementById(
+    const video = document.getElementsByClassName(
       `slide-${videoIndex}`
-    ) as HTMLVideoElement;
+    )[0] as HTMLVideoElement;
     if (video.muted) {
       video.muted = false;
     } else {
@@ -40,8 +46,10 @@ export default function VideoSlider({ videos }: { videos: string[] }) {
     }
   };
 
-  const togglePlay = (event: any) => {
-    const video = event.target as HTMLVideoElement;
+  const togglePlay = (videoIndex: number) => {
+    const video = document.getElementsByClassName(
+      `slide-${videoIndex}`
+    )[0] as HTMLVideoElement;
     if (video.paused) {
       video.play();
     } else {
@@ -55,7 +63,7 @@ export default function VideoSlider({ videos }: { videos: string[] }) {
         <div className={styles.emblaContainer}>
           {videos.map((video, index) => (
             <div className={styles.emblaSlide} key={index}>
-              <video
+              {/* <video
                 key={index}
                 width='100%'
                 id={`slide-${index + 1}`}
@@ -70,11 +78,31 @@ export default function VideoSlider({ videos }: { videos: string[] }) {
               >
                 <source src={video} type='video/mp4' />
                 Your browser does not support the video tag.
-              </video>
+              </video> */}
+
+              <div
+                className={styles.muxPlayerWrapper}
+                onClick={() => togglePlay(index + 1)}
+              >
+                <MuxPlayer
+                  playbackId={video.playbackId}
+                  metadata={{ video_title: video.title }}
+                  muted
+                  autoPlay={selectedIndex === index}
+                  loop
+                  minResolution='1080p'
+                  maxResolution='1440p'
+                  className={[
+                    styles.nextVideoContainer,
+                    `slide-${index + 1}`,
+                  ].join(' ')}
+                />
+              </div>
 
               {isDesktop && (
                 <button
                   type='button'
+                  id='muteButton'
                   className={styles.muteButton}
                   onClick={() => toggleMute(index + 1)}
                 >

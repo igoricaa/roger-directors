@@ -4,6 +4,14 @@ import Image from 'next/image';
 import styles from './ProjectImages.module.css';
 import { useEffect, useState } from 'react';
 
+// type Image = {
+//   _key: string;
+//   alt: string;
+//   asset: {
+//     _ref: string;
+//   };
+// };
+
 export default function ProjectImages({ images }: { images: any[] }) {
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -16,7 +24,7 @@ export default function ProjectImages({ images }: { images: any[] }) {
   const desktopImages = () => {
     return images.map((image, index) => (
       <div className={styles.imageWrapper} key={index}>
-        <Image src={image.src} alt={`Project image ${index + 1}`} fill />
+        <Image src={image.url} alt={`Project image ${index + 1}`} fill />
       </div>
     ));
   };
@@ -33,7 +41,7 @@ export default function ProjectImages({ images }: { images: any[] }) {
               ].join(' ')}
               key={index}
             >
-              <Image src={image.src} alt={`Project image ${index + 1}`} fill />
+              <Image src={image.url} alt={`Project image ${index + 1}`} fill />
             </div>
           ))}
         </div>
@@ -46,7 +54,7 @@ export default function ProjectImages({ images }: { images: any[] }) {
               ].join(' ')}
               key={index}
             >
-              <Image src={image.src} alt={`Project image ${index + 1}`} fill />
+              <Image src={image.url} alt={`Project image ${index + 1}`} fill />
             </div>
           ))}
         </div>
@@ -59,7 +67,7 @@ export default function ProjectImages({ images }: { images: any[] }) {
               ].join(' ')}
               key={index}
             >
-              <Image src={image.src} alt={`Project image ${index + 1}`} fill />
+              <Image src={image.url} alt={`Project image ${index + 1}`} fill />
             </div>
           ))}
         </div>

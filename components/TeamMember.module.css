@@ -33,6 +33,7 @@
 
 .bgImageWrapper img {
   border-radius: 30px;
+  object-fit: cover;
 }
 
 .bioWrapper {
@@ -58,6 +59,7 @@
 
 .bioImageWrapper img {
   border-radius: 30px;
+  object-fit: cover;
 }
 
 .teamMember.active .bioImageWrapper {

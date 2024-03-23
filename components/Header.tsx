@@ -171,7 +171,6 @@ export default function Header() {
             ))}
             <div className={styles.switchersWrapper}>
               <ThemeChanger />
-              <ThemeChanger />
               {/* <div className={styles.langSwitcher}></div> */}
             </div>
           </ul>

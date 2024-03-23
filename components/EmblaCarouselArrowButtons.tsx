@@ -1,24 +1,13 @@
 import React, { PropsWithChildren, useCallback } from 'react';
 import styles from './EmblaCarouselArrowButtons.module.css';
 import { EmblaCarouselType } from 'embla-carousel';
+import { toggleVideos } from '@/utils/helpers';
 
 type UsePrevNextButtonsType = {
   onPrevButtonClick: () => void;
   onNextButtonClick: () => void;
 };
 
-const toggleVideos = (currentSlideIndex: number, nextSlideIndex: number) => {
-  const currentVideo = document.getElementById(
-    `slide-${currentSlideIndex + 1}`
-  ) as HTMLVideoElement;
-
-  const nextVideo = document.getElementById(
-    `slide-${nextSlideIndex + 1}`
-  ) as HTMLVideoElement;
-
-  if (!currentVideo.paused) currentVideo.pause();
-  if (nextVideo.paused) nextVideo.play();
-};
 
 export const usePrevNextButtons = (
   emblaApi: EmblaCarouselType | undefined

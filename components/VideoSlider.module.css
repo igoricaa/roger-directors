@@ -104,6 +104,15 @@
   background-color: #979797;
 }
 
+.muxPlayerWrapper {
+  width: 100%;
+}
+
+.nextVideoContainer {
+  aspect-ratio: 1843 / 911 !important;
+  --controls: none;
+}
+
 @media screen and (max-width: 991px) {
   .embla {
     --slide-size: calc(100% - 24px);

@@ -5,12 +5,15 @@ import React, {
   useState,
 } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
+import { toggleVideos } from '@/utils/helpers';
 
 type UseDotButtonType = {
   selectedIndex: number;
   scrollSnaps: number[];
   onDotButtonClick: (index: number) => void;
 };
+
+
 
 export const useDotButton = (
   emblaApi: EmblaCarouselType | undefined
@@ -21,6 +24,7 @@ export const useDotButton = (
   const onDotButtonClick = useCallback(
     (index: number) => {
       if (!emblaApi) return;
+      toggleVideos(emblaApi.selectedScrollSnap(), index);
       emblaApi.scrollTo(index);
     },
     [emblaApi]

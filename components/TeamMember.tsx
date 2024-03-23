@@ -41,7 +41,7 @@ export function TeamMember({
     >
       <div className={styles.hoverStateWrapper}>
         <div className={styles.bgImageWrapper}>
-          <Image src={`/${member.image}`} alt={member.name} fill />
+          <Image src={`${member.image}`} alt={member.imageAlt} fill />
         </div>
         <div className={styles.overlay}>
           <h2>{member.name}</h2>
@@ -50,14 +50,14 @@ export function TeamMember({
       <div className={[styles.bioWrapper, slideClass].join(' ')}>
         {isDesktop && (
           <div className={styles.bioImageWrapper}>
-            <Image src={`/${member.image}`} alt={member.name} fill />
+            <Image src={`${member.image}`} alt={member.imageAlt} fill />
           </div>
         )}
         <div className={styles.memberInfoWrapper}>
           <div>
             {!isDesktop && (
               <div className={styles.bioImageWrapper}>
-                <Image src={`/${member.image}`} alt={member.name} fill />
+                <Image src={`${member.image}`} alt={member.imageAlt} fill />
               </div>
             )}
             <h2>{member.name}</h2>
