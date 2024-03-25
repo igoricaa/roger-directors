@@ -63,23 +63,6 @@ export default function VideoSlider({ videos }: { videos: Video[] }) {
         <div className={styles.emblaContainer}>
           {videos.map((video, index) => (
             <div className={styles.emblaSlide} key={index}>
-              {/* <video
-                key={index}
-                width='100%'
-                id={`slide-${index + 1}`}
-                autoPlay={selectedIndex === index}
-                muted
-                loop
-                playsInline
-                className={styles.nextVideoContainer}
-                onClick={(event) => {
-                  togglePlay(event);
-                }}
-              >
-                <source src={video} type='video/mp4' />
-                Your browser does not support the video tag.
-              </video> */}
-
               <div
                 className={styles.muxPlayerWrapper}
                 onClick={() => togglePlay(index + 1)}
@@ -90,8 +73,8 @@ export default function VideoSlider({ videos }: { videos: Video[] }) {
                   muted
                   autoPlay={selectedIndex === index}
                   loop
-                  minResolution='1080p'
-                  maxResolution='1440p'
+                  minResolution='1440p'
+                  maxResolution='2160p'
                   className={[
                     styles.nextVideoContainer,
                     `slide-${index + 1}`,

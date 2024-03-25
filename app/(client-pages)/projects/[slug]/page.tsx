@@ -5,63 +5,6 @@ import { client } from '@/utils/sanity/client';
 import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';
 
-// type Project = {
-//   id: string;
-//   title: string;
-//   slug: string;
-//   descriptionTitle: string;
-//   description: string;
-//   descriptionExceprt: string;
-//   videos: string[];
-//   images: string[];
-//   prevProjectTitle: string;
-//   prevProjectUrl: string;
-//   nextProjectTitle: string;
-//   nextProjectUrl: string;
-// };
-
-// const project: Project = {
-//   id: '1',
-//   title: 'Project 1',
-//   slug: 'project-1',
-//   descriptionTitle: 'This is a description title of project 1',
-//   description:
-//     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//   descriptionExceprt:
-//     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//   images: ['/small.png'],
-//   videos: [
-//     '/projectVideo.mp4',
-//     '/projectVideo2.mp4',
-//     '/projectVideo3.mp4',
-//     '/projectVideo4.mp4',
-//     '/projectVideo5.mp4',
-//   ],
-//   prevProjectTitle: 'Project 0',
-//   prevProjectUrl: '/projects/project-0',
-//   nextProjectTitle: 'Project 2',
-//   nextProjectUrl: '/projects/project-2',
-// };
-
-// const media: any[] = [
-//   {
-//     src: '/project-1.jpg',
-//   },
-//   {
-//     src: '/project-2.jpg',
-//   },
-//   {
-//     src: '/project-3.jpg',
-//   },
-//   {
-//     src: '/project-4.jpg',
-//   },
-//   {
-//     src: '/project-5.jpg',
-//   },
-// ];
-// export default function Project({ project }: { project: Project }) {
-
 type Project = {
   _id: string;
   title: string;
@@ -100,8 +43,14 @@ export default async function Project({
           title,
           'playbackId': video.asset->playbackId,
         },
-        'prev': *[_type == 'project' && !(_id in path('drafts.**')) && _createdAt < ^._createdAt]._id | order(_createdAt desc)[0],
-        'next': *[_type == 'project' && !(_id in path('drafts.**')) && _createdAt > ^._createdAt]._id | order(_createdAt desc)[0]
+        'prev': *[_type == 'project' && _createdAt < ^._createdAt] | order(_createdAt asc)[0] {
+          title,
+          slug
+        },
+        'next': *[_type == 'project' && ^._createdAt < _createdAt] | order(_createdAt asc)[0] {
+          title,
+          slug
+        }
       }`,
       { slug: params.slug },
       {
@@ -110,12 +59,10 @@ export default async function Project({
       }
     );
 
-    
     return project;
   }
 
   const project = await getProject();
-  console.log('PROJEKAT: ' + project);
 
   return (
     <main className={styles.main}>
@@ -144,30 +91,16 @@ export default async function Project({
         </div>
       </article>
       <section className={styles.adjacentProjects}>
-        {/* <AdjacentProject
-          type='prev'
-          projectUrl={project.prevProjectUrl}
-          projectTitle={project.prevProjectTitle}
-        />
-        <AdjacentProject
-          type='next'
-          projectUrl={project.nextProjectUrl}
-          projectTitle={project.nextProjectTitle}
-        /> */}
+        {project.prev && <AdjacentProject type='prev' project={project.prev} />}
+        {project.next && <AdjacentProject type='next' project={project.next} />}
       </section>
     </main>
   );
 }
 
-const AdjacentProject = ({
-  type,
-  projectUrl,
-  projectTitle,
-}: {
-  type: string;
-  projectUrl: string;
-  projectTitle: string;
-}) => {
+const AdjacentProject = ({ type, project }: { type: string; project: any }) => {
+  const projectUrl = `/projects/${project.slug}`;
+
   return (
     <article
       className={[styles.adjacentProjectWrapper, styles[type]].join(' ')}
@@ -195,7 +128,7 @@ const AdjacentProject = ({
             />
           </svg>
         </span>
-        <h3>{projectTitle}</h3>
+        <h3>{project.title}</h3>
       </Link>
     </article>
   );

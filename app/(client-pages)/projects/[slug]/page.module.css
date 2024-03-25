@@ -69,7 +69,8 @@
 
 .adjacentProjects {
   display: flex;
-  gap: 23px;
+  --gap: 23px;
+  gap: var(--gap);
   margin: 70px 0 28px;
 }
 
@@ -83,6 +84,7 @@
   width: 100%;
   height: 333px;
   transition: background-color 0.3s ease;
+  max-width: calc(50% - var(--gap) / 2);
 }
 
 .adjacentProjectWrapper:hover {
@@ -118,6 +120,18 @@
   text-transform: uppercase;
   padding-top: 8px;
   transition: color 0.3s ease;
+  padding: 48px;
+  text-align: end;
+}
+
+.adjacentProjectWrapper.prev h3 {
+  margin-left: auto;
+  padding-left: 150px;
+}
+
+.adjacentProjectWrapper.next h3 {
+  margin-right: auto;
+  padding-right: 150px;
 }
 
 .adjacentProjectWrapper:hover h3 {
@@ -168,7 +182,7 @@
   }
 
   .adjacentProjects {
-    gap: 1rem;
+    --gap: 1rem;
     margin: 0.5rem 0 0;
   }
 
@@ -201,6 +215,12 @@
     padding: 0;
   }
 
+  .adjacentProjectWrapper.prev h3,
+  .adjacentProjectWrapper.next h3 {
+    margin: 0;
+    padding: 0;
+  }
+
   .adjacentProjectWrapper > a > span:first-of-type {
     position: unset;
     order: 3;
@@ -218,7 +238,7 @@
   }
 
   .adjacentProjects {
-    gap: 8px;
+    --gap: 0.5rem;
   }
 
   .adjacentProjectWrapper {

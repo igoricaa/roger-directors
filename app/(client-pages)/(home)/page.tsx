@@ -1,123 +1,18 @@
 import styles from './page.module.css';
 import { PageCard } from '@/components/PageCard';
 import { ColumnLayout } from '@/components/ColumnLayout';
+import { client } from '@/utils/sanity/client';
 import ProjectCard from '@/components/ProjectCard';
 
-export default function Home() {
-  const projects: any = [
-    {
-      id: 1,
-      title: 'Price iz Srbije',
-      description: 'This is a description of project 1',
-      image: '/price-main.jpg',
-      url: '/projects/price-iz-srbije',
-      video: '/price-iz-srbije.mp4',
-      size: 'medium',
-      priority: true,
-    },
-    {
-      id: 2,
-      title: 'Events',
-      description: 'This is a description of project 2',
-      image: '/events.jpg',
-      url: '/projects/events',
-      video: '/events.mp4',
-      size: 'small',
-      priority: true,
-    },
-    {
-      id: 3,
-      title: 'Femicid',
-      description: 'This is a description of project 3',
-      image: '/femicid.jpg',
-      url: '/projects/femicid',
-      video: '/femicid.mp4',
-      size: 'large',
-      priority: true,
-    },
-    {
-      id: 4,
-      title: 'Muzika nade',
-      description: 'This is a description of project 4',
-      image: '/muzika-nade.jpg',
-      url: '/projects/muzika-nade',
-      video: '/muzika-nade.mp4',
-      size: 'square',
-    },
-    {
-      id: 5,
-      title: 'Haleon',
-      description: 'This is a description of project 5',
-      image: '/femicid.jpg',
-      url: '/projects/haleon',
-      video: '/femicid.mp4',
-      size: 'large',
-    },
-    {
-      id: 6,
-      title: 'IDF',
-      description: 'This is a description of project 6',
-      image: '/idf.jpg',
-      url: '/projects/idf',
-      video: '/price-iz-srbije.mp4',
-      size: 'medium',
-    },
-    {
-      id: 7,
-      title: 'HYKO',
-      description: 'This is a description of project 7',
-      image: '/hyko.jpg',
-      url: '/projects/hyko',
-      video: '/hyko.mp4',
-      size: 'small',
-    },
-    {
-      id: 8,
-      title: 'Illy',
-      description: 'This is a description of project 8',
-      image: '/illy.jpg',
-      url: '/projects/illy',
-      videp: '/events.mp4',
-      size: 'small',
-    },
-    {
-      id: 9,
-      title: 'Paralympics',
-      description: 'This is a description of project 9',
-      image: '/para.jpg',
-      url: '/projects/paralympics',
-      video: '/para.mp4',
-      size: 'square',
-    },
-    {
-      id: 10,
-      title: 'Connectivity',
-      description: 'This is a description of project 10',
-      image: '/connectivity.jpg',
-      url: '/projects/connectivity',
-      video: '/connectivity.mp4',
-      size: 'square',
-    },
-    {
-      id: 11,
-      title: 'Education',
-      description: 'This is a description of project 11',
-      image: '/education.jpg',
-      url: '/projects/education',
-      video: '/education.mp4',
-      size: 'small',
-    },
-    {
-      id: 12,
-      title: 'Corpo videos',
-      description: 'This is a description of project 12',
-      image: '/corpo.jpg',
-      url: '/projects/corpo-videos',
-      video: '/corpo.mp4',
-      size: 'medium',
-    },
-  ];
+type Project = {
+  _id: string;
+  title: string;
+  slug: string;
+  featuredImage: any;
+  featuredVideo: any;
+};
 
+export default async function Home() {
   const pagesCards: any = [
     {
       type: 'page',
@@ -147,18 +42,65 @@ export default function Home() {
     },
   ];
 
-  const firstColumnIds: number[] = [1, 4, 5, 10];
-  const secondColumnIds: number[] = [2, 6, 7, 11];
-  const thirdColumnIds: number[] = [3, 8, 9, 12];
+  async function getProjects() {
+    'use server';
+    const projects = await client.fetch<Project[]>(
+      `*[_type == "project"]{
+        'id': _id,
+        title,
+        slug,
+        size,
+        'featuredImage': featuredImage.asset->url,
+        'featuredImageAlt': featuredImage.alt,
+        'featuredVideoPlaybackId': featuredVideo.video.asset->playbackId,
+        'featuredVideoTitle': featuredVideo.title,
+      }`,
+      {},
+      {
+        cache: 'force-cache',
+        next: { tags: ['homeProjects'] },
+      }
+    );
+
+    projects.forEach((project: any) => {
+      console.log('HOME PROJEKTI: ' + JSON.stringify(projects[0]));
+    })
+    
+    return projects;
+  }
+
+  const firstColumnProjects: string[] = [
+    'price-iz-srbije',
+    'muzika-nade',
+    'hyko',
+    'connectivity',
+  ];
+  const secondColumnProjects: string[] = [
+    'events',
+    'idf',
+    'haleon',
+    'education',
+  ];
+  const thirdColumnProjects: string[] = [
+    'femicid',
+    'illy',
+    'serbian-paralympics-team',
+    'corpo-videos',
+  ];
 
   let firstColumnCards: any[] = [];
   let secondColumnCards: any[] = [];
   let thirdColumnCards: any[] = [];
 
+  const projects: Project[] = await getProjects();
+
   projects.forEach((project: any) => {
-    if (firstColumnIds.includes(project.id)) firstColumnCards.push(project);
-    if (secondColumnIds.includes(project.id)) secondColumnCards.push(project);
-    if (thirdColumnIds.includes(project.id)) thirdColumnCards.push(project);
+    if (firstColumnProjects.includes(project.slug))
+      firstColumnCards.push(project);
+    if (secondColumnProjects.includes(project.slug))
+      secondColumnCards.push(project);
+    if (thirdColumnProjects.includes(project.slug))
+      thirdColumnCards.push(project);
   });
 
   firstColumnCards.splice(3, 0, pagesCards[3]);

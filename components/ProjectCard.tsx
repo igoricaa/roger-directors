@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './ProjectCard.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import MuxPlayer from '@mux/mux-player-react';
 
 export default function ProjectCard({ project }: any) {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -14,38 +15,57 @@ export default function ProjectCard({ project }: any) {
     }
   }, [isDesktop]);
 
+  const projectUrl = `/projects/${project.slug}`;
+
   return (
     <div className={[styles.card, styles[project.size]].join(' ')}>
       <Link
-        href={project.url}
+        href={projectUrl}
         onMouseEnter={
-          isDesktop ? (event: any) => event.target.play() : undefined
+          isDesktop && project.featuredVideoPlaybackId
+            ? (event: any) => event.target.play()
+            : undefined
         }
         onMouseLeave={
-          isDesktop ? (event: any) => event.target.pause() : undefined
+          isDesktop && project.featuredVideoPlaybackId
+            ? (event: any) => event.target.pause()
+            : undefined
         }
       >
         <Image
-          src={project.image}
-          className={project.video ? undefined : styles.noVideo}
-          alt={project.title}
+          src={project.featuredImage}
+          className={
+            project.featuredVideoPlaybackId ? undefined : styles.noVideo
+          }
+          alt={project.featuredImageAlt}
           fill
           sizes='(max-width: 991px) 50vw, 33vw'
-          priority={project.priority ? true : false}
+          // priority={project.priority ? true : false}
         />
-        {isDesktop && project.video && (
-          <video
-            key={project.id}
-            width='100%'
-            autoPlay={false}
+        {isDesktop && project.featuredVideoPlaybackId && (
+          // <video
+          //   key={project._id}
+          //   width='100%'
+          //   autoPlay={false}
+          //   muted
+          //   loop
+          //   playsInline
+          //   className={styles.projectVideo}
+          // >
+          //   <source src={project.featuredVideoPlaybackId} type='video/mp4' />
+          //   Your browser does not support the video tag.
+          // </video>
+
+          <MuxPlayer
+            playbackId={project.featuredVideoPlaybackId}
+            metadata={{ video_title: project.featuredVideoTitle }}
             muted
             loop
-            playsInline
+            autoPlay={false}
+            minResolution='1440p'
+            maxResolution='2160p'
             className={styles.projectVideo}
-          >
-            <source src={project.video} type='video/mp4' />
-            Your browser does not support the video tag.
-          </video>
+          />
         )}
       </Link>
     </div>

@@ -44,6 +44,56 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'featuredSize',
+      title: 'Featured Size',
+      type: 'string',
+      initialValue: 'small',
+      options: {
+        list: [
+          { title: 'Small', value: 'small' },
+          { title: 'Medium', value: 'medium' },
+          { title: 'Large', value: 'large' },
+          { title: 'Square', value: 'square' },
+        ],
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'featuredImage',
+      title: 'Featured Image',
+      type: 'image',
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for SEO and accessiblity.',
+          validation: (rule) => {
+            return rule.custom((alt, context) => {
+              if ((context.document?.picture as any)?.asset?._ref && !alt) {
+                return 'Required';
+              }
+              return true;
+            });
+          },
+        },
+      ],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'featuredVideo',
+      title: 'Featured Video',
+      type: 'document',
+      fields: [
+        { title: 'Title', name: 'title', type: 'string' },
+        {
+          title: 'Video file',
+          name: 'video',
+          type: 'mux.video',
+        },
+      ],
+    }),
+    defineField({
       name: 'videos',
       title: 'Videos',
       type: 'array',
