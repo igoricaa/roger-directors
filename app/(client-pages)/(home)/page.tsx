@@ -61,10 +61,6 @@ export default async function Home() {
         next: { tags: ['homeProjects'] },
       }
     );
-
-    projects.forEach((project: any) => {
-      console.log('HOME PROJEKTI: ' + JSON.stringify(projects[0]));
-    })
     
     return projects;
   }
