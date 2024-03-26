@@ -2,6 +2,7 @@ import MuxPlayer from '@mux/mux-player-react';
 import styles from './VideoItem.module.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import MuxPlayerElement from '@mux/mux-player';
 
 type Video = {
   title: string;
@@ -35,7 +36,7 @@ export default function VideoItem({
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const playerRef = useRef<HTMLVideoElement>(null);
+  const playerRef = useRef<MuxPlayerElement>(null);
   const [title, setTitle] = useState(video.title);
 
   useEffect(() => {
@@ -59,7 +60,7 @@ export default function VideoItem({
   }, []);
 
   const toggleMute = () => {
-    const video = playerRef.current as HTMLVideoElement;
+    const video = playerRef.current as MuxPlayerElement;
     if (video.muted) {
       video.muted = false;
     } else {
