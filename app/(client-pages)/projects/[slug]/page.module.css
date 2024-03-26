@@ -1,3 +1,7 @@
+.main.fullscreen {
+  overflow: hidden;
+} 
+
 .article {
   margin-top: 62px;
 }

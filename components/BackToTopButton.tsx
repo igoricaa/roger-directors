@@ -14,6 +14,9 @@ export default function BackToTopButton() {
 
       if (!isMobile) window.addEventListener('scroll', toggleVisible);
     }
+    return () => {
+      window.removeEventListener('scroll', toggleVisible);
+    };
   }, [isMobile]);
 
   const toggleVisible = () => {
@@ -69,7 +72,7 @@ export default function BackToTopButton() {
           setIsAtFooter(false);
         }
       });
-    }
+    };
 
     // const options = {
     //   root: footer,

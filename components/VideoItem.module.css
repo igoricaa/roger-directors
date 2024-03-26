@@ -1,0 +1,102 @@
+.videoContainer {
+  aspect-ratio: 1843 / 911 !important;
+  border-radius: 20px;
+  overflow: hidden;
+  /* --fullscreen-button: none; */
+  --controls: none;
+}
+
+.masterVideoPlayer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  --pip-button: none;
+}
+
+.closeFullscreenButton {
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  z-index: 1001;
+  height: 48px;
+  width: 48px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: var(--animation-smooth), background-color 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.closeFullscreenButton .bar {
+  position: absolute;
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--burger__bar-color);
+  transition: var(--animation-smooth), background-color 0.2s ease-in-out;
+}
+
+.closeFullscreenButton .bar:nth-child(1) {
+  transform: translateY(0em) rotate(45deg);
+}
+
+.closeFullscreenButton .bar:nth-child(2) {
+  transform: translateY(0em) rotate(-45deg);
+}
+
+#videoWrapper {
+  width: 100%;
+}
+
+/* Custom */
+.muteButton {
+  position: absolute;
+  z-index: 10;
+  background-color: #535353;
+  border-radius: 20px;
+  width: 78px;
+  height: 78px;
+  border: none;
+  outline: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 27px;
+  right: 31px;
+  cursor: pointer;
+  appearance: none;
+  transition: all 0.3s ease;
+}
+
+.muteButton:hover {
+  border-radius: 50%;
+  background-color: #979797;
+}
+
+@media screen and (max-width: 991px) {
+  .muteButton {
+    width: 60px;
+    height: 60px;
+    padding: 1rem 12px;
+    bottom: 0;
+    right: -160px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .muteButton {
+    width: 43px;
+    height: 43px;
+    border-radius: 15px;
+    padding: 13px 10px;
+    right: -86px;
+  }
+}

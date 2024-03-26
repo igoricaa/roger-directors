@@ -92,6 +92,21 @@ export default defineType({
           type: 'mux.video',
         },
       ],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'masterVideo',
+      title: 'Master Video',
+      type: 'document',
+      fields: [
+        { title: 'Title', name: 'title', type: 'string' },
+        {
+          title: 'Video file',
+          name: 'video',
+          type: 'mux.video',
+        },
+      ],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'videos',

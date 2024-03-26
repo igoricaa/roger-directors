@@ -4,15 +4,12 @@ import Image from 'next/image';
 import styles from './ProjectImages.module.css';
 import { useEffect, useState } from 'react';
 
-// type Image = {
-//   _key: string;
-//   alt: string;
-//   asset: {
-//     _ref: string;
-//   };
-// };
+type ProjectImage = {
+  url: string;
+  alt: string;
+};
 
-export default function ProjectImages({ images }: { images: any[] }) {
+export default function ProjectImages({ images }: { images: ProjectImage[] }) {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
@@ -24,7 +21,12 @@ export default function ProjectImages({ images }: { images: any[] }) {
   const desktopImages = () => {
     return images.map((image, index) => (
       <div className={styles.imageWrapper} key={index}>
-        <Image src={image.url} alt={`Project image ${index + 1}`} fill />
+        <Image
+          src={image.url}
+          alt={`Project image ${index + 1}`}
+          fill
+          sizes='(max-width: 991px) 50vw, 33vw'
+        />
       </div>
     ));
   };
@@ -41,7 +43,12 @@ export default function ProjectImages({ images }: { images: any[] }) {
               ].join(' ')}
               key={index}
             >
-              <Image src={image.url} alt={`Project image ${index + 1}`} fill />
+              <Image
+                src={image.url}
+                alt={`Project image ${index + 1}`}
+                fill
+                sizes='50vw'
+              />
             </div>
           ))}
         </div>
@@ -54,7 +61,12 @@ export default function ProjectImages({ images }: { images: any[] }) {
               ].join(' ')}
               key={index}
             >
-              <Image src={image.url} alt={`Project image ${index + 1}`} fill />
+              <Image
+                src={image.url}
+                alt={`Project image ${index + 1}`}
+                fill
+                sizes='50vw'
+              />
             </div>
           ))}
         </div>
@@ -67,7 +79,12 @@ export default function ProjectImages({ images }: { images: any[] }) {
               ].join(' ')}
               key={index}
             >
-              <Image src={image.url} alt={`Project image ${index + 1}`} fill />
+              <Image
+                src={image.url}
+                alt={`Project image ${index + 1}`}
+                fill
+                sizes='50vw'
+              />
             </div>
           ))}
         </div>

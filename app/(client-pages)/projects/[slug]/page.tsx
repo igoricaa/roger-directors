@@ -15,8 +15,14 @@ type Project = {
   descriptionExcerpt: string;
   images: any[];
   videos: any[];
+  masterVideo: Video;
   prev: string;
   next: string;
+};
+
+type Video = {
+  playbackId: string;
+  title: string;
 };
 
 export default async function Project({
@@ -40,6 +46,10 @@ export default async function Project({
             'url': asset->url,
         },
         videos[]{
+          title,
+          'playbackId': video.asset->playbackId,
+        },
+        masterVideo{
           title,
           'playbackId': video.asset->playbackId,
         },
@@ -71,7 +81,10 @@ export default async function Project({
       </header>
       <article className={styles.article}>
         <div className={styles.videosWrapper}>
-          <VideoSlider videos={project.videos} />
+          <VideoSlider
+            videos={project.videos}
+            masterVideo={project.masterVideo}
+          />
         </div>
         <div className={styles.headingAnimated}>
           <h2>{project.loopText}</h2>

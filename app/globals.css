@@ -21,6 +21,11 @@ body {
   -ms-overflow-style: none;
 }
 
+.stopScrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
 body::-webkit-scrollbar {
   display: none;
 }
@@ -125,7 +130,6 @@ main {
     color-scheme: dark;
   }
 } */
-
 
 @media screen and (max-width: 991px) {
   main {

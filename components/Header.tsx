@@ -45,6 +45,10 @@ export default function Header() {
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
+      if (isDesktop) {
+        window.removeEventListener('scroll', toggleLogos);
+      }
+
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [handleClickOutside, isDesktop]);
