@@ -27,14 +27,14 @@ export default function VideoItem({
   const playerRef = useRef<MuxPlayerElement>(null);
 
   useEffect(() => {
+    if (typeof window !== 'undefined')
+      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         closeFullscreenHandler();
       }
     };
-
-    if (typeof window !== 'undefined')
-      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
 
     const videoPlayer = playerRef.current as HTMLVideoElement;
     if (videoPlayer) {
@@ -44,7 +44,11 @@ export default function VideoItem({
       });
       document.addEventListener('keydown', handleKeyDown);
     }
-  }, []);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [playerRef]);
 
   const toggleMute = () => {
     const video = playerRef.current as MuxPlayerElement;
@@ -71,7 +75,7 @@ export default function VideoItem({
         loop
         minResolution='1440p'
         maxResolution='2160p'
-        className={[styles.videoContainer, selectorClass].join(' ')}
+        className={[styles.videoPlayer, 'videoPlayer', selectorClass].join(' ')}
       />
 
       {isFullScreen &&

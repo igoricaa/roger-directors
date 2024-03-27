@@ -11,6 +11,7 @@ import {
   usePrevNextButtons,
 } from './EmblaCarouselArrowButtons';
 import VideoItem from './VideoItem';
+import CustomCursor from './CustomCursor';
 
 const OPTIONS: EmblaOptionsType = {
   containScroll: false,
@@ -56,6 +57,7 @@ export default function VideoSlider({
 
   return (
     <section className={styles.embla}>
+      <CustomCursor />
       <div className={styles.emblaViewport} ref={emblaRef}>
         <div className={styles.emblaContainer}>
           {videos.map((video, index) => (
