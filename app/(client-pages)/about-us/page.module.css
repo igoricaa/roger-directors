@@ -14,10 +14,6 @@
   margin-top: 81px;
 }
 
-.content > h2 {
-  color: var(--color__text-main);
-}
-
 .innerWrapper {
   max-width: 1355px;
   margin: 0 auto;
@@ -26,17 +22,17 @@
 
 .innerWrapper:last-child {
   padding-top: 114.5px;
-  padding-bottom: 36px;
+  padding-bottom: 2.25rem;
 }
 
 .innerWrapper > p {
-  font-size: 23px;
-  line-height: 32px;
+  font-size: 1.5rem;
+  line-height: 2rem;
   color: var(--color__text-main);
 }
 
 .innerWrapper > p:not(:last-child) {
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .ctaAnimated {
@@ -70,7 +66,7 @@
   }
 
   .content {
-    margin-top: 31px;
+    margin-top: 2rem;
   }
 
   .innerWrapper {
@@ -78,12 +74,12 @@
   }
 
   .innerWrapper > p {
-    font-size: 17px;
-    line-height: 23px;
+    font-size: 1rem;
+    line-height: 2rem;
   }
 
   .innerWrapper > p:not(:last-child) {
-    margin-bottom: 23px;
+    margin-bottom: 2rem;
   }
 
   .ctaAnimated {

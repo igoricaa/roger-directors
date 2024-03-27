@@ -37,13 +37,13 @@ export default function Contact() {
             fill
           />
         </div>
-        <div className={styles.contactPhotoWrapper}>
+        {/* <div className={styles.contactPhotoWrapper}>
           <Image
             src='/roger-directors-about-us-header.webp'
             alt='Roger Directors Contact Photo'
             fill
           />
-        </div>
+        </div> */}
       </section>
     </main>
   );

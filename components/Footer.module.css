@@ -96,7 +96,7 @@
   }
 
   .footerMenu > li:not(:first-child) {
-    margin-top: 17px;
+    margin-top: 1rem;
   }
 
   .footerMenu li a {
@@ -119,7 +119,7 @@
 
   .contact a,
   .contact p {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .socials {
@@ -127,7 +127,7 @@
   }
 
   .socials a {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .footer h4 {

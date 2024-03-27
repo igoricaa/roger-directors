@@ -102,7 +102,7 @@
 
 .burger .bar {
   position: absolute;
-  width: 33px;
+  width: 2rem;
   height: 1.5px;
   background-color: var(--burger__bar-color);
   transition: var(--animation-smooth), background-color 0.2s ease-in-out;
@@ -302,7 +302,7 @@
 
 @media screen and (max-width: 991px) {
   .navLinks {
-    padding: 85px 24px 55px;
+    padding: 85px 1.5rem 55px;
   }
 
   .logoWrapper {
@@ -316,14 +316,14 @@
   }
 
   .burger .bar {
-    width: 24px;
+    width: 1.5rem;
   }
 
   .modalNavMobile {
     top: 105px;
     bottom: 140px;
-    right: 24px;
-    left: 24px;
+    right: 1.5rem;
+    left: 1.5rem;
   }
 
   .modalBlockBackground {
@@ -364,8 +364,8 @@
   }
 
   .burger {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
   }
 
   .burger .bar {
@@ -400,8 +400,8 @@
   }
 
   .modalBlockBackground {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
   }
 
   .modalSmallTitle {

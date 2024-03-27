@@ -11,7 +11,7 @@
 }
 
 .contactInfo a {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .contactInfo > p > a {
@@ -33,7 +33,7 @@
   object-fit: cover;
 }
 
-.contactPhotoWrapper {
+/* .contactPhotoWrapper {
   position: relative;
   aspect-ratio: 1435 / 613;
   border-radius: 30px;
@@ -42,7 +42,7 @@
 
 .contactPhotoWrapper img {
   object-fit: cover;
-}
+} */
 
 @media screen and (max-width: 680px) {
   .content {
@@ -60,11 +60,11 @@
   }
 
   .contactInfo a {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .contactInfo > p > a {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .googleMapWrapper {
@@ -72,8 +72,8 @@
     margin-top: 35px;
   }
 
-  .contactPhotoWrapper {
+  /* .contactPhotoWrapper {
     aspect-ratio: 1 / 1;
     margin-top: 35px;
-  }
+  } */
 }

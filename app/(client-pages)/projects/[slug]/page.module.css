@@ -112,19 +112,19 @@
 }
 
 .adjacentProjectWrapper.prev > a > span:first-of-type {
-  right: 48px;
+  right: 3rem;
 }
 
 .adjacentProjectWrapper.next > a > span:first-of-type {
-  left: 48px;
+  left: 3rem;
 }
 
 .adjacentProjectWrapper h3 {
   color: #e6e6e6;
   text-transform: uppercase;
-  padding-top: 8px;
+  padding-top: 0.5rem;
   transition: color 0.3s ease;
-  padding: 48px;
+  padding: 3rem;
   text-align: end;
 }
 
@@ -168,11 +168,11 @@
 
 @media screen and (max-width: 991px) {
   .videosWrapper {
-    margin-right: -24px;
+    margin-right: -0.5rem;
   }
 
   .headingAnimated {
-    margin: 111px -24px 32px;
+    margin: 7rem -1.5rem 2rem;
   }
 
   .contentGrid {
@@ -264,6 +264,6 @@
   }
 
   .contentGrid {
-    --gap: 8px;
+    --gap: 0.5rem;
   }
 }

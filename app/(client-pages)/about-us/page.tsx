@@ -11,14 +11,13 @@ export default function AboutUs() {
           <Image
             src='/about-us-header.png'
             alt='About Us'
-            // placeholder='blur'
+            priority={true}
             fill
             sizes='100vw'
           />
         </div>
       </header>
       <section className={styles.content}>
-        {/* <h2>Lorem ipsum dolor sit amet</h2> */}
         <section className={styles.innerWrapper}>
           <p>Roger is the brainchild of three industry veterans.</p>
           <p>

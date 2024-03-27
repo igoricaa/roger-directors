@@ -25,8 +25,8 @@
   top: 3rem;
   right: 3rem;
   z-index: 1001;
-  height: 48px;
-  width: 48px;
+  height: 3rem;
+  width: 3rem;
   background-color: #fff;
   border-radius: 50%;
   transition: var(--animation-smooth), background-color 0.2s ease-in-out;
@@ -87,8 +87,8 @@
 
 .cursor {
   background-color: red;
-  height: 32px;
-  width: 32px;
+  height: 2rem;
+  width: 2rem;
   border-radius: 50%;
   position: fixed;
   top: 0;
@@ -102,7 +102,7 @@
     height: 60px;
     padding: 1rem 12px;
     bottom: 0;
-    right: -160px;
+    right: -10rem;
   }
 }
 

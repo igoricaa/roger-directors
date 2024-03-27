@@ -75,11 +75,11 @@
 @media screen and (max-width: 680px) {
   .contactWrapper {
     margin-top: 29px;
-    padding-top: 31px;
+    padding-top: 2rem;
   }
 
   .contactWrapper > p {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .contactForm {
@@ -88,7 +88,7 @@
   }
 
   .contactForm label {
-    font-size: 17px;
+    font-size: 1rem;
     margin-right: 0;
     margin-bottom: 25px;
   }
@@ -100,7 +100,7 @@
 
   .contactForm button {
     width: 100%;
-    font-size: 17px;
+    font-size: 1rem;
     line-height: 21px;
     border-radius: 15px;
     background-color: #535353;

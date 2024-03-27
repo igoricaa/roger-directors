@@ -10,12 +10,17 @@ export default function BackToTopButton() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsMobile(window.matchMedia('(max-width: 680px)').matches);
+      const isMobileVar = window.matchMedia('(max-width: 680px)').matches;
+      setIsMobile(isMobileVar);
 
-      if (!isMobile) window.addEventListener('scroll', toggleVisible);
+      if (!isMobileVar) {
+        window.addEventListener('scroll', toggleVisible);
+        window.addEventListener('scroll', transformButton);
+      }
     }
     return () => {
       window.removeEventListener('scroll', toggleVisible);
+      window.removeEventListener('scroll', transformButton);
     };
   }, [isMobile]);
 
@@ -82,12 +87,6 @@ export default function BackToTopButton() {
     const observer = new IntersectionObserver(callback);
     observer.observe(footerTop);
   };
-
-  if (!isMobile) {
-    window.onscroll = function () {
-      transformButton();
-    };
-  }
 
   return (
     <button

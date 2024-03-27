@@ -1,5 +1,5 @@
 .card {
-  margin-top: 23px;
+  margin-top: 1.5rem;
 }
 
 .pageCard {
@@ -103,7 +103,7 @@
 
 @media screen and (max-width: 680px) {
   .card {
-    margin-top: 8px;
+    margin-top: 0.5rem;
   }
   .pageCard {
     padding: 15px 13px 13px 10px;
@@ -111,13 +111,13 @@
   }
 
   .pageCard h2 {
-    font-size: 17px;
-    line-height: 23px;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .pageCard a {
-    font-size: 17px;
-    line-height: 23px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     padding: 10px 10px;
     min-width: 109px;
     border-radius: 15px;

@@ -61,7 +61,7 @@
   height: 78px;
   position: absolute;
   bottom: 41px;
-  right: 24px;
+  right: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,7 +83,7 @@
 }
 
 .closeDescription > span {
-  font-size: 32px;
+  font-size: 2rem;
   opacity: 0;
   visibility: hidden;
   width: 0;
@@ -205,7 +205,7 @@
   }
 
   .closeDescription svg {
-    width: 8px;
+    width: 0.5rem;
   }
 
   .innerWrapper.active .closeDescription {

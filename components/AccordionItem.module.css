@@ -34,7 +34,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 48px 0;
+  padding: 3rem 0;
 }
 
 .accordionButton {
@@ -90,7 +90,7 @@
 
 @media screen and (max-width: 680px) {
   .accordionTop {
-    padding: 24px 0;
+    padding: 1.5rem 0;
   }
 
   .accordionButton {
@@ -102,12 +102,12 @@
   }
 
   .accordionButton span {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .accordionButton::after {
     width: 14px;
-    height: 8px;
+    height: 0.5rem;
     right: 1rem;
   }
 
