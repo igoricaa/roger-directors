@@ -16,6 +16,7 @@ type Project = {
   images: any[];
   videos: any[];
   masterVideo: Video;
+  masterVideoPlaybackId: string;
   prev: string;
   next: string;
 };
@@ -53,6 +54,7 @@ export default async function Project({
           title,
           'playbackId': video.asset->playbackId,
         },
+        masterVideoPlaybackId,
         'prev': *[_type == 'project' && _createdAt < ^._createdAt] | order(_createdAt asc)[0] {
           title,
           slug
@@ -84,6 +86,7 @@ export default async function Project({
           <VideoSlider
             videos={project.videos}
             masterVideo={project.masterVideo}
+            masterVideoPlaybackId={project.masterVideoPlaybackId}
           />
         </div>
         <div className={styles.headingAnimated}>

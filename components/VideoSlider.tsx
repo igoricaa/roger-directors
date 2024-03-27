@@ -26,9 +26,11 @@ type Video = {
 export default function VideoSlider({
   videos,
   masterVideo,
+  masterVideoPlaybackId,
 }: {
   videos: Video[];
-  masterVideo: Video;
+  masterVideo?: Video;
+  masterVideoPlaybackId?: string;
 }) {
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS);
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -62,6 +64,7 @@ export default function VideoSlider({
                 key={index}
                 video={video}
                 masterVideo={masterVideo}
+                masterVideoPlaybackId={masterVideoPlaybackId}
                 autoplay={selectedIndex === index}
                 selectorClass={`slide-${index + 1}`}
               />

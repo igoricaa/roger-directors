@@ -43,19 +43,6 @@ export default function ProjectCard({ project }: any) {
           // priority={project.priority ? true : false}
         />
         {isDesktop && project.featuredVideoPlaybackId && (
-          // <video
-          //   key={project._id}
-          //   width='100%'
-          //   autoPlay={false}
-          //   muted
-          //   loop
-          //   playsInline
-          //   className={styles.projectVideo}
-          // >
-          //   <source src={project.featuredVideoPlaybackId} type='video/mp4' />
-          //   Your browser does not support the video tag.
-          // </video>
-
           <MuxPlayer
             playbackId={project.featuredVideoPlaybackId}
             metadata={{ video_title: project.featuredVideoTitle }}

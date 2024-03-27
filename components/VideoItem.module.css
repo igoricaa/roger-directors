@@ -4,6 +4,8 @@
   overflow: hidden;
   /* --fullscreen-button: none; */
   --controls: none;
+  --media-object-fit: cover;
+  cursor: pointer;
 }
 
 .masterVideoPlayer {
@@ -14,6 +16,8 @@
   top: 0;
   left: 0;
   --pip-button: none;
+  --media-object-fit: cover;
+  cursor: pointer;
 }
 
 .closeFullscreenButton {

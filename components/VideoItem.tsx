@@ -1,6 +1,6 @@
 import MuxPlayer from '@mux/mux-player-react';
 import styles from './VideoItem.module.css';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import MuxPlayerElement from '@mux/mux-player';
 
@@ -9,35 +9,22 @@ type Video = {
   playbackId: string;
 };
 
-// const togglePlay = (event: any) => {
-//   //   const video = document.getElementsByClassName(
-//   //     `slide-${videoIndex}`
-//   //   )[0] as HTMLVideoElement;
-//   // if (video.paused) {
-//   //   video.play();
-//   // } else {
-//   //   video.pause();
-//   // }
-
-//   const video = event.target;
-//   video.requestFullscreen();
-// };
-
 export default function VideoItem({
   video,
   masterVideo,
+  masterVideoPlaybackId,
   autoplay,
   selectorClass,
 }: {
   video: Video;
-  masterVideo: Video;
+  masterVideo?: Video;
+  masterVideoPlaybackId?: string;
   autoplay: boolean;
   selectorClass: string;
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const playerRef = useRef<MuxPlayerElement>(null);
-  const [title, setTitle] = useState(video.title);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -99,8 +86,10 @@ export default function VideoItem({
             </button>
 
             <MuxPlayer
-              playbackId={masterVideo.playbackId}
-              metadata={{ video_title: masterVideo.title }}
+              playbackId={
+                masterVideo ? masterVideo.playbackId : masterVideoPlaybackId
+              }
+              metadata={{ video_title: masterVideo?.title }}
               autoPlay={autoplay}
               minResolution='1440p'
               maxResolution='2160p'
