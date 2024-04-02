@@ -67,7 +67,7 @@ export default async function Home() {
 
   const firstColumnProjects: string[] = [
     'price-iz-srbije',
-    'muzika-nade',
+    'music-of-hope',
     'hyko',
     'connectivity',
   ];
