@@ -49,7 +49,7 @@ export default async function Home() {
         'id': _id,
         title,
         slug,
-        size,
+        featuredSize,
         'featuredImage': featuredImage.asset->url,
         'featuredImageAlt': featuredImage.alt,
         'featuredVideoPlaybackId': featuredVideo.video.asset->playbackId,

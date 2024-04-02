@@ -16,9 +16,10 @@ export default function ProjectCard({ project }: any) {
   }, [isDesktop]);
 
   const projectUrl = `/projects/${project.slug}`;
+  console.log("PROJEKAT: " + project.featuredSize);
 
   return (
-    <div className={[styles.card, styles[project.size]].join(' ')}>
+    <div className={[styles.card, styles[project.featuredSize]].join(' ')}>
       <Link
         href={projectUrl}
         onMouseEnter={

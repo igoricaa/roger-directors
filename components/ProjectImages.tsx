@@ -26,6 +26,7 @@ export default function ProjectImages({ images }: { images: ProjectImage[] }) {
           alt={`Project image ${index + 1}`}
           fill
           sizes='(max-width: 991px) 50vw, 33vw'
+          quality={100}
         />
       </div>
     ));
@@ -48,6 +49,7 @@ export default function ProjectImages({ images }: { images: ProjectImage[] }) {
                 alt={`Project image ${index + 1}`}
                 fill
                 sizes='50vw'
+                quality={100}
               />
             </div>
           ))}
@@ -66,6 +68,7 @@ export default function ProjectImages({ images }: { images: ProjectImage[] }) {
                 alt={`Project image ${index + 1}`}
                 fill
                 sizes='50vw'
+                quality={100}
               />
             </div>
           ))}
@@ -84,6 +87,7 @@ export default function ProjectImages({ images }: { images: ProjectImage[] }) {
                 alt={`Project image ${index + 1}`}
                 fill
                 sizes='50vw'
+                quality={100}
               />
             </div>
           ))}
