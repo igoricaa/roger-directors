@@ -78,7 +78,7 @@ export default async function Home() {
     'education',
   ];
   const thirdColumnProjects: string[] = [
-    'femicid',
+    'stop-femicide',
     'illy',
     'serbian-paralympics-team',
     'corpo-videos',
