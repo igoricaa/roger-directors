@@ -52,7 +52,7 @@ export const Footer = () => {
           </li>
         </ul>
         <div className={styles.contact}>
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <div>
             <a href='https://maps.app.goo.gl/cXYtDYMmb9Ymaxqu8' target='_blank'>
               <p>Resavska 33.</p>
@@ -67,11 +67,14 @@ export const Footer = () => {
           </div>
         </div>
         <div className={styles.socials}>
-          <h4>Find us on</h4>
+          <h3>Find us on</h3>
           <a href='https://www.instagram.com/roger.directors' target='_blank'>
             Instagram
           </a>
-          <a href='https://www.linkedin.com/company/roger-directors' target='_blank'>
+          <a
+            href='https://www.linkedin.com/company/roger-directors'
+            target='_blank'
+          >
             LinkedIn
           </a>
         </div>

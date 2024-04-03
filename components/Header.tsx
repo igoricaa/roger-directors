@@ -161,23 +161,28 @@ export default function Header() {
       <div className={styles.modalNavMobile}>
         <div className={styles.modalBlock} ref={menuRef}>
           <div className={styles.modalBlockBackground} />
-          <ul className={styles.ulMobile}>
+          <div className={styles.mobileMenuWrapper}>
             <span className={styles.modalSmallTitle}>Menu</span>
-            {routes.map((route, index) => (
-              <li
-                key={index}
-                className={pathname == route.path ? styles.active : ''}
-              >
-                <Link href={route.path} onClick={() => setMenuOpen(!menuOpen)}>
-                  <span>{route.name}</span>
-                </Link>
-              </li>
-            ))}
+            <ul>
+              {routes.map((route, index) => (
+                <li
+                  key={index}
+                  className={pathname == route.path ? styles.active : ''}
+                >
+                  <Link
+                    href={route.path}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                  >
+                    <span>{route.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
             <div className={styles.switchersWrapper}>
               <ThemeChanger />
               {/* <div className={styles.langSwitcher}></div> */}
             </div>
-          </ul>
+          </div>
         </div>
       </div>
       <div className={styles.modalNavBackground} />

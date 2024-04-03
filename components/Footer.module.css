@@ -31,13 +31,13 @@
 }
 
 .footerMenu li a,
-.footer h4 {
+.footer h3 {
   text-transform: uppercase;
   font-size: 27px;
   font-weight: 700;
 }
 
-.contact *:not(h4),
+.contact *:not(h3),
 .socials a {
   font-size: 18px;
 }
@@ -46,7 +46,7 @@
   color: var(--color__text-main);
 }
 
-.footer h4 {
+.footer h3 {
   margin-bottom: 26px;
 }
 
@@ -113,7 +113,7 @@
     -moz-columns: 2;
   }
 
-  .contact > h4 {
+  .contact > h3 {
     width: 100%;
   }
 
@@ -130,7 +130,7 @@
     font-size: 1rem;
   }
 
-  .footer h4 {
+  .footer h3 {
     font-size: 29px;
     margin-bottom: 29px;
   }

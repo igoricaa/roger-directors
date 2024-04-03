@@ -125,14 +125,21 @@ export default async function Home() {
     ? secondColumnCards.splice(6, 0, pagesCards[2])
     : thirdColumnCards.splice(1, 0, pagesCards[2]);
 
+  const priorityIndexes: Number[] = isMobile ? [0, 1, 2] : [0, 1];
+
   return (
+    // TODO: refaktorisi, ponavljanje koda
     <main className={styles.main}>
       <ColumnLayout>
         {firstColumnCards.map((card: any, index: number) => {
           return card.type === 'page' ? (
             <PageCard key={index} content={card} size={card.size} />
           ) : (
-            <ProjectCard key={index} project={card} />
+            <ProjectCard
+              key={index}
+              project={card}
+              priority={priorityIndexes.includes(index)}
+            />
           );
         })}
       </ColumnLayout>
@@ -141,7 +148,11 @@ export default async function Home() {
           return card.type === 'page' ? (
             <PageCard key={index} content={card} size={card.size} />
           ) : (
-            <ProjectCard key={index} project={card} />
+            <ProjectCard
+              key={index}
+              project={card}
+              priority={priorityIndexes.includes(index)}
+            />
           );
         })}
       </ColumnLayout>
@@ -151,7 +162,11 @@ export default async function Home() {
             return card.type === 'page' ? (
               <PageCard key={index} content={card} size={card.size} />
             ) : (
-              <ProjectCard key={index} project={card} />
+              <ProjectCard
+                key={index}
+                project={card}
+                priority={priorityIndexes.includes(index)}
+              />
             );
           })}
         </ColumnLayout>

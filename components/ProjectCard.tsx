@@ -6,7 +6,13 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import MuxPlayer from '@mux/mux-player-react';
 
-export default function ProjectCard({ project }: any) {
+export default function ProjectCard({
+  project,
+  priority,
+}: {
+  project: any;
+  priority: boolean;
+}) {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
@@ -40,7 +46,7 @@ export default function ProjectCard({ project }: any) {
           alt={project.featuredImageAlt}
           fill
           sizes='(max-width: 991px) 50vw, 33vw'
-          // priority={project.priority ? true : false}
+          priority={priority}
         />
         {isDesktop && project.featuredVideoPlaybackId && (
           <MuxPlayer
