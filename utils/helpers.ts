@@ -13,14 +13,3 @@ export const toggleVideos = (
   if (!currentVideo.paused) currentVideo.pause();
   if (nextVideo.paused) nextVideo.play();
 };
-
-export type Video = {
-  playbackId?: string;
-  url?: string;
-};
-
-export type VideoPair = {
-  title: string;
-  fullVideo: Video;
-  slideVideo: Video;
-};

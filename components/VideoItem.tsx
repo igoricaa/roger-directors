@@ -3,7 +3,7 @@ import styles from './VideoItem.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import MuxPlayerElement from '@mux/mux-player';
-import { VideoPair } from '@/utils/helpers';
+import { VideoPair } from '@/utils/types';
 
 export default function VideoItem({
   videos,

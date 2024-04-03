@@ -14,6 +14,7 @@
     "@sanity/client": "^6.15.5",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.34.0",
+    "@types/ua-parser-js": "^0.7.39",
     "embla-carousel-react": "^8.0.0",
     "next": "14.1.0",
     "next-sanity": "^7.1.4",
@@ -24,7 +25,8 @@
     "react-masonry-css": "^1.0.16",
     "sanity": "^3.34.0",
     "sanity-plugin-mux-input": "^2.2.4",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "ua-parser-js": "^1.0.37"
   },
   "devDependencies": {
     "@types/node": "^20",

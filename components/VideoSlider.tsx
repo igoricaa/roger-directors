@@ -12,7 +12,7 @@ import {
 } from './EmblaCarouselArrowButtons';
 import VideoItem from './VideoItem';
 import CustomCursor from './CustomCursor';
-import { VideoPair } from '@/utils/helpers';
+import { VideoPair } from '@/utils/types';
 
 const OPTIONS: EmblaOptionsType = {
   containScroll: false,

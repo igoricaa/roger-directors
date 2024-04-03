@@ -4,21 +4,7 @@ import Link from 'next/link';
 import { client } from '@/utils/sanity/client';
 import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';
-import { VideoPair } from '@/utils/helpers';
-
-type Project = {
-  _id: string;
-  title: string;
-  slug: string;
-  loopText: string;
-  description: string;
-  descriptionTitle: string;
-  descriptionExcerpt: string;
-  images: any[];
-  videos: VideoPair[];
-  prev: string;
-  next: string;
-};
+import { Project } from '@/utils/types';
 
 export default async function Project({
   params,
