@@ -13,17 +13,20 @@ export default function Contact() {
         <div className={styles.contactInfo}>
           <p>
             <a href='https://maps.app.goo.gl/REfJu9xmBv6398qv7'>
-              Bulevar Mihaila Pupina 13/37
+              Resavska 33.
               <br />
-              11070 Belgrade, Serbia
+              11000 Belgrade, Serbia
             </a>
           </p>
           <div>
             <p>
-              <a href='mailto:info@roger.rs'>info@roger.rs</a>
+              <a href='mailto:office@roger.rs'>office@roger.rs</a>
             </p>
             <p>
-              <a href='tel:011043432'>011 043 432</a>
+              <a href='tel:00381604200410'>+381 60 42 00 410</a>
+            </p>
+            <p>
+              <a href='tel:00381641177187'>+381 64 11 77 187</a>
             </p>
           </div>
         </div>

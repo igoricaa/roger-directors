@@ -78,9 +78,11 @@ export default async function Project({
         <h1>{project.title}</h1>
       </header>
       <article className={styles.article}>
-        <div className={styles.videosWrapper}>
-          <VideoSlider videos={project.videos} />
-        </div>
+        {project.videos && (
+          <div className={styles.videosWrapper}>
+            <VideoSlider videos={project.videos} />
+          </div>
+        )}
         <div className={styles.headingAnimated}>
           <h2>{project.loopText}</h2>
           <h2>{project.loopText}</h2>
@@ -95,7 +97,7 @@ export default async function Project({
             descriptionExceprt={project.descriptionExcerpt}
           />
 
-          <ProjectImages images={project.images} />
+          {project.images && <ProjectImages images={project.images} />}
         </div>
       </article>
       <section className={styles.adjacentProjects}>

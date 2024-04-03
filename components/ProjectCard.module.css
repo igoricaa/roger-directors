@@ -26,7 +26,7 @@
 }
 
 .large {
-  aspect-ratio: 599 / 952;
+  aspect-ratio: 599 / 934;
 }
 
 .square {
@@ -38,6 +38,10 @@
   transition: opacity 0.5s ease;
   object-fit: cover;
   --controls: none;
+}
+
+.projectVideo mux-video video {
+  object-fit: cover;
 }
 
 .card > a:hover .projectVideo {

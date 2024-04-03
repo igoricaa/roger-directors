@@ -53,6 +53,7 @@ export default function ProjectCard({ project }: any) {
             minResolution='1440p'
             maxResolution='2160p'
             className={styles.projectVideo}
+            style={{ objectFit: 'cover' }}
           />
         )}
       </Link>
