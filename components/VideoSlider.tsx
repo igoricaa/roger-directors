@@ -12,23 +12,12 @@ import {
 } from './EmblaCarouselArrowButtons';
 import VideoItem from './VideoItem';
 import CustomCursor from './CustomCursor';
+import { VideoPair } from '@/utils/helpers';
 
 const OPTIONS: EmblaOptionsType = {
   containScroll: false,
   loop: true,
   align: 'start',
-};
-
-type VideoPair = {
-  title: string;
-  fullVideo: Video;
-  slideVideo: Video;
-};
-
-type Video = {
-  title: string;
-  playbackId?: string;
-  url?: string;
 };
 
 export default function VideoSlider({ videos }: { videos: VideoPair[] }) {

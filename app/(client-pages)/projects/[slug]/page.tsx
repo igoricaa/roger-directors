@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { client } from '@/utils/sanity/client';
 import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';
+import { VideoPair } from '@/utils/helpers';
 
 type Project = {
   _id: string;
@@ -17,17 +18,6 @@ type Project = {
   videos: VideoPair[];
   prev: string;
   next: string;
-};
-
-type VideoPair = {
-  title: string;
-  fullVideo: Video;
-  slideVideo: Video;
-};
-
-type Video = {
-  playbackId: string;
-  title: string;
 };
 
 export default async function Project({
@@ -53,12 +43,10 @@ export default async function Project({
         videos[]{
           title,
           'fullVideo': {
-            'title': fullVideo.title,
             'playbackId': fullVideo.playbackId,
             'url': fullVideo.video.asset->playbackId,
           },
           'slideVideo': {
-            'title': slideVideo.title,
             'playbackId': slideVideo.playbackId,
             'url': slideVideo.video.asset->playbackId,
           }
@@ -78,8 +66,6 @@ export default async function Project({
         next: { tags: ['projects'] },
       }
     );
-
-    console.log('VIDEOS: ', project.videos);
 
     return project;
   }

@@ -3,18 +3,7 @@ import styles from './VideoItem.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import MuxPlayerElement from '@mux/mux-player';
-
-type Video = {
-  title: string;
-  playbackId?: string;
-  url?: string;
-};
-
-type VideoPair = {
-  title: string;
-  fullVideo: Video;
-  slideVideo: Video;
-};
+import { VideoPair } from '@/utils/helpers';
 
 export default function VideoItem({
   videos,
@@ -76,7 +65,7 @@ export default function VideoItem({
             ? videos.slideVideo.url
             : videos.slideVideo.playbackId
         }
-        metadata={{ video_title: videos.slideVideo.title }}
+        metadata={{ video_title: videos.title }}
         muted
         autoPlay={autoplay}
         loop
@@ -102,7 +91,7 @@ export default function VideoItem({
                   ? videos.fullVideo.url
                   : videos.fullVideo.playbackId
               }
-              metadata={{ video_title: videos.fullVideo.title }}
+              metadata={{ video_title: videos.title }}
               autoPlay={autoplay}
               minResolution='1440p'
               maxResolution='2160p'

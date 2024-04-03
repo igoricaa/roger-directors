@@ -114,11 +114,6 @@ export default defineType({
               type: 'document',
               fields: [
                 {
-                  title: 'Title',
-                  name: 'title',
-                  type: 'string',
-                },
-                {
                   title: 'PlaybackId',
                   name: 'playbackId',
                   type: 'string',
@@ -135,11 +130,6 @@ export default defineType({
               name: 'slideVideo',
               type: 'document',
               fields: [
-                {
-                  title: 'Title',
-                  name: 'title',
-                  type: 'string',
-                },
                 {
                   title: 'PlaybackId',
                   name: 'playbackId',
