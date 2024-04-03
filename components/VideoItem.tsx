@@ -6,19 +6,22 @@ import MuxPlayerElement from '@mux/mux-player';
 
 type Video = {
   title: string;
-  playbackId: string;
+  playbackId?: string;
+  url?: string;
+};
+
+type VideoPair = {
+  title: string;
+  fullVideo: Video;
+  slideVideo: Video;
 };
 
 export default function VideoItem({
-  video,
-  masterVideo,
-  masterVideoPlaybackId,
+  videos,
   autoplay,
   selectorClass,
 }: {
-  video: Video;
-  masterVideo?: Video;
-  masterVideoPlaybackId?: string;
+  videos: VideoPair;
   autoplay: boolean;
   selectorClass: string;
 }) {
@@ -68,8 +71,12 @@ export default function VideoItem({
     <>
       <MuxPlayer
         ref={playerRef}
-        playbackId={video.playbackId}
-        metadata={{ video_title: video.title }}
+        playbackId={
+          videos.slideVideo.url
+            ? videos.slideVideo.url
+            : videos.slideVideo.playbackId
+        }
+        metadata={{ video_title: videos.slideVideo.title }}
         muted
         autoPlay={autoplay}
         loop
@@ -91,13 +98,15 @@ export default function VideoItem({
 
             <MuxPlayer
               playbackId={
-                masterVideo ? masterVideo.playbackId : masterVideoPlaybackId
+                videos.fullVideo.url
+                  ? videos.fullVideo.url
+                  : videos.fullVideo.playbackId
               }
-              metadata={{ video_title: masterVideo?.title }}
+              metadata={{ video_title: videos.fullVideo.title }}
               autoPlay={autoplay}
               minResolution='1440p'
               maxResolution='2160p'
-              className={styles.masterVideoPlayer}
+              className={styles.fullVideoPlayer}
             />
           </>,
           document.body

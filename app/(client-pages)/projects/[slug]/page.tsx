@@ -14,11 +14,15 @@ type Project = {
   descriptionTitle: string;
   descriptionExcerpt: string;
   images: any[];
-  videos: any[];
-  masterVideo: Video;
-  masterVideoPlaybackId: string;
+  videos: VideoPair[];
   prev: string;
   next: string;
+};
+
+type VideoPair = {
+  title: string;
+  fullVideo: Video;
+  slideVideo: Video;
 };
 
 type Video = {
@@ -43,18 +47,22 @@ export default async function Project({
         descriptionTitle,
         descriptionExcerpt,
         images[]{
-            'alt': alt,
+            alt,
             'url': asset->url,
         },
         videos[]{
           title,
-          'playbackId': video.asset->playbackId,
+          'fullVideo': {
+            'title': fullVideo.title,
+            'playbackId': fullVideo.playbackId,
+            'url': fullVideo.video.asset->playbackId,
+          },
+          'slideVideo': {
+            'title': slideVideo.title,
+            'playbackId': slideVideo.playbackId,
+            'url': slideVideo.video.asset->playbackId,
+          }
         },
-        masterVideo{
-          title,
-          'playbackId': video.asset->playbackId,
-        },
-        masterVideoPlaybackId,
         'prev': *[_type == 'project' && _createdAt < ^._createdAt] | order(_createdAt asc)[0] {
           title,
           slug
@@ -71,6 +79,8 @@ export default async function Project({
       }
     );
 
+    console.log('VIDEOS: ', project.videos);
+
     return project;
   }
 
@@ -83,11 +93,7 @@ export default async function Project({
       </header>
       <article className={styles.article}>
         <div className={styles.videosWrapper}>
-          <VideoSlider
-            videos={project.videos}
-            masterVideo={project.masterVideo}
-            masterVideoPlaybackId={project.masterVideoPlaybackId}
-          />
+          <VideoSlider videos={project.videos} />
         </div>
         <div className={styles.headingAnimated}>
           <h2>{project.loopText}</h2>

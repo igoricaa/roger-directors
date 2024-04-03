@@ -92,25 +92,6 @@ export default defineType({
           type: 'mux.video',
         },
       ],
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'masterVideo',
-      title: 'Master Video',
-      type: 'document',
-      fields: [
-        { title: 'Title', name: 'title', type: 'string' },
-        {
-          title: 'Video file',
-          name: 'video',
-          type: 'mux.video',
-        },
-      ],
-    }),
-    defineField({
-      name: 'masterVideoPlaybackId',
-      title: 'Master Video PlaybackId',
-      type: 'text',
     }),
     defineField({
       name: 'videos',
@@ -118,20 +99,62 @@ export default defineType({
       type: 'array',
       of: [
         {
-          title: 'Video',
-          name: 'video',
+          title: 'Videos Pair',
+          name: 'videosPair',
           type: 'document',
           fields: [
-            { title: 'Title', name: 'title', type: 'string' },
             {
-              title: 'Video file',
-              name: 'video',
-              type: 'mux.video',
+              title: 'Title',
+              name: 'title',
+              type: 'string',
+            },
+            {
+              title: 'Full Video',
+              name: 'fullVideo',
+              type: 'document',
+              fields: [
+                {
+                  title: 'Title',
+                  name: 'title',
+                  type: 'string',
+                },
+                {
+                  title: 'PlaybackId',
+                  name: 'playbackId',
+                  type: 'string',
+                },
+                {
+                  title: 'Video file',
+                  name: 'video',
+                  type: 'mux.video',
+                },
+              ],
+            },
+            {
+              title: 'Slide Video',
+              name: 'slideVideo',
+              type: 'document',
+              fields: [
+                {
+                  title: 'Title',
+                  name: 'title',
+                  type: 'string',
+                },
+                {
+                  title: 'PlaybackId',
+                  name: 'playbackId',
+                  type: 'string',
+                },
+                {
+                  title: 'Video file',
+                  name: 'video',
+                  type: 'mux.video',
+                },
+              ],
             },
           ],
         },
       ],
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'images',
@@ -163,7 +186,6 @@ export default defineType({
           ],
         },
       ],
-      validation: (rule) => rule.required(),
     }),
   ],
 });

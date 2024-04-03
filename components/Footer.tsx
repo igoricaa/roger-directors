@@ -68,10 +68,10 @@ export const Footer = () => {
         </div>
         <div className={styles.socials}>
           <h4>Find us on</h4>
-          <a href='' target='_blank'>
+          <a href='https://www.instagram.com/roger.directors' target='_blank'>
             Instagram
           </a>
-          <a href='' target='_blank'>
+          <a href='https://www.linkedin.com/company/roger-directors' target='_blank'>
             LinkedIn
           </a>
         </div>
