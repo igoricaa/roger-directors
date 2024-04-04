@@ -2,9 +2,6 @@
   aspect-ratio: 1843 / 911 !important;
   border-radius: 20px;
   overflow: hidden;
-  /* --fullscreen-button: none; */
-  --controls: none;
-  --media-object-fit: cover;
   cursor: pointer;
 }
 
@@ -15,8 +12,7 @@
   z-index: 1000;
   top: 0;
   left: 0;
-  --pip-button: none;
-  --media-object-fit: cover;
+  object-fit: cover;
   cursor: pointer;
 }
 
@@ -59,32 +55,6 @@
   width: 100%;
 }
 
-/* Custom */
-.muteButton {
-  position: absolute;
-  z-index: 10;
-  background-color: #535353;
-  border-radius: 20px;
-  width: 78px;
-  height: 78px;
-  border: none;
-  outline: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  bottom: 27px;
-  right: 31px;
-  cursor: pointer;
-  appearance: none;
-  transition: all 0.3s ease;
-}
-
-.muteButton:hover {
-  border-radius: 50%;
-  background-color: #979797;
-}
-
 .cursor {
   background-color: red;
   height: 2rem;
@@ -94,24 +64,4 @@
   top: 0;
   left: 0;
   z-index: 999999;
-}
-
-@media screen and (max-width: 991px) {
-  .muteButton {
-    width: 60px;
-    height: 60px;
-    padding: 1rem 12px;
-    bottom: 0;
-    right: -10rem;
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .muteButton {
-    width: 43px;
-    height: 43px;
-    border-radius: 15px;
-    padding: 13px 10px;
-    right: -86px;
-  }
 }

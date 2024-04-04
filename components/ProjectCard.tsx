@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styles from './ProjectCard.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import MuxPlayer from '@mux/mux-player-react';
+import MuxVideo from '@mux/mux-video-react';
 
 export default function ProjectCard({
   project,
@@ -49,16 +49,15 @@ export default function ProjectCard({
           priority={priority}
         />
         {isDesktop && project.featuredVideoPlaybackId && (
-          <MuxPlayer
+          <MuxVideo
             playbackId={project.featuredVideoPlaybackId}
             metadata={{ video_title: project.featuredVideoTitle }}
             muted
             loop
             autoPlay={false}
-            minResolution='1440p'
-            maxResolution='2160p'
             className={styles.projectVideo}
             style={{ objectFit: 'cover' }}
+            placeholder={undefined}
           />
         )}
       </Link>

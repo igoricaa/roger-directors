@@ -9,8 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mux/mux-player": "^2.4.0",
-    "@mux/mux-player-react": "^2.4.0",
+    "@mux/mux-video-react": "^0.8.5",
     "@sanity/client": "^6.15.5",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.34.0",

@@ -72,35 +72,10 @@
   height: 1rem;
 }
 
-.muteButton:hover {
-  border-radius: 50%;
-  background-color: #979797;
-}
-
 @media screen and (max-width: 991px) {
   .embla {
     --slide-size: calc(100% - 1.5rem);
     --slide-spacing: 9px;
-  }
-
-  .muteButton {
-    position: absolute;
-    z-index: 10;
-    background-color: #535353;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    appearance: none;
-    transition: all 0.3s ease;
-    width: 60px;
-    height: 60px;
-    padding: 1rem 12px;
-    bottom: 0;
-    right: -10rem;
   }
 
   .emblaControls {
@@ -127,14 +102,6 @@
 @media screen and (max-width: 680px) {
   .embla {
     --slide-size: calc(100% - 17px);
-  }
-
-  .muteButton {
-    width: 43px;
-    height: 43px;
-    border-radius: 15px;
-    padding: 13px 10px;
-    right: -86px;
   }
 
   .emblaDots {
