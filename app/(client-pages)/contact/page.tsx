@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import styles from './page.module.css';
 import ContactForm from '@/components/ContactForm';
+import GoogleMap from '@/components/GoogleMap';
 export default function Contact() {
   return (
     <main>
@@ -32,14 +32,7 @@ export default function Contact() {
         </div>
 
         <ContactForm />
-
-        <div className={styles.googleMapWrapper}>
-          <Image
-            src='/google-map.webp'
-            alt='Roger Directors Location on Google Maps'
-            fill
-          />
-        </div>
+        <GoogleMap />
         {/* <div className={styles.contactPhotoWrapper}>
           <Image
             src='/roger-directors-about-us-header.webp'

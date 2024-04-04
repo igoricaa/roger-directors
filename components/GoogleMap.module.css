@@ -1,0 +1,22 @@
+.map {
+  aspect-ratio: 1435 / 647;
+  border-radius: 30px;
+  margin-top: 40px;
+}
+
+.map .gm-style iframe + div {
+  border: none !important;
+}
+
+.gm-style iframe + div {
+  border: none !important;
+}
+
+@media screen and (max-width: 991px) {
+  .map {
+    aspect-ratio: 1 / 1;
+    border-radius: 30px;
+    margin-top: 40px;
+  }
+  
+}

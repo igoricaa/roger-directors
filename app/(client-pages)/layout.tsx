@@ -4,6 +4,7 @@ import '../globals.css';
 import Header from '../../components/Header';
 import { Providers } from '@/components/Providers';
 import { Footer } from '@/components/Footer';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const mont = localFont({
   src: [
@@ -49,6 +50,7 @@ export default function RootLayout({
           <Footer />
         </Providers>
       </body>
+      {/* <GoogleAnalytics gaId='G-S0L7XDFMYG' /> */}
     </html>
   );
 }

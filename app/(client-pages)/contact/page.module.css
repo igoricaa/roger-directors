@@ -22,17 +22,6 @@
   color: #fff;
 }
 
-.googleMapWrapper {
-  position: relative;
-  aspect-ratio: 1435 / 647;
-  border-radius: 30px;
-  margin-top: 40px;
-}
-
-.googleMapWrapper img {
-  object-fit: cover;
-}
-
 /* .contactPhotoWrapper {
   position: relative;
   aspect-ratio: 1435 / 613;
