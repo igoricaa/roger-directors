@@ -19,7 +19,7 @@
 }
 
 .headingAnimated h2 {
-  animation: loopText 5s infinite linear;
+  animation: loopText 15s infinite linear;
   padding-right: 12px;
 }
 

@@ -78,7 +78,7 @@ export default async function Home() {
         'haleon',
         'education',
         'serbian-paralympics-team',
-        'corpo-videos',
+        'corporate-videos',
       ]
     : ['events', 'idf', 'haleon', 'education'];
   const thirdColumnProjects: string[] = isMobile
