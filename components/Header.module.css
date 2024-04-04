@@ -404,6 +404,11 @@
     height: 3rem;
   }
 
+  [data-theme='light'] .modalBlockBackground {
+    width: 46px;
+    height: 46px;
+  }
+
   .modalSmallTitle {
     font-size: 10px;
   }
