@@ -83,7 +83,7 @@ export default async function Home() {
     : ['events', 'idf', 'haleon', 'education'];
   const thirdColumnProjects: string[] = isMobile
     ? []
-    : ['stop-femicide', 'illy', 'serbian-paralympics-team', 'corpo-videos'];
+    : ['stop-femicide', 'illy', 'serbian-paralympics-team', 'corporate-videos'];
 
   const firstColumnCards: any[] = [];
   const secondColumnCards: any[] = [];
