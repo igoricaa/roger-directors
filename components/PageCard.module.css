@@ -10,86 +10,79 @@
   color: var(--color__cards-text);
   border-radius: 30px;
   width: 100%;
-}
 
-.pageCard h2 {
-  font-size: 2.85vw;
-  line-height: 3.96vw;
-}
+  & h2 {
+    font-size: 4.165vw;
+    line-height: 4.37vw;
+  }
 
-.pageCard a {
-  color: inherit;
-  padding: 0.68vw 1.88vw 0.68vw;
-  border-radius: 22px;
-  width: fit-content;
-  margin-left: auto;
-  font-size: 1.67vw;
-  transition: border-radius ease 0.4s;
-  height: auto;
-}
+  & a {
+    color: inherit;
+    padding: 0.68vw 1.88vw 0.68vw;
+    border-radius: 22px;
+    width: fit-content;
+    margin-left: auto;
+    font-size: 1.67vw;
+    transition: border-radius ease 0.4s;
+    height: auto;
 
-.pageCard a:hover {
-  border-radius: 35px;
-}
+    &:hover {
+      border-radius: 35px;
+    }
+  }
 
-.aboutus {
-  background-color: #8eb8a3;
-}
+  &.aboutus {
+    background-color: #8eb8a3;
 
-.aboutus a {
-  background-color: #b5dfca;
-}
+    & a {
+      background-color: #b5dfca;
 
-.aboutus a:hover {
-  background-color: #d9ffec;
-}
+      &:hover {
+        background-color: #d9ffec;
+      }
+    }
+  }
 
-.meettheteam {
-  background-color: #f0dd3d;
-}
+  &.meettheteam {
+    background-color: #f0dd3d;
 
-.meettheteam a {
-  background-color: #fff5a5;
-}
+    & a {
+      background-color: #fff5a5;
 
-.meettheteam a:hover {
-  background-color: #fffad6;
-}
+      &:hover {
+        background-color: #fffad6;
+      }
+    }
+  }
 
-.contact,
-.blog {
-  background-color: #8b8c8e;
-}
+  &.contact,
+  &.blog {
+    background-color: #626160;
 
-.contact h2,
-.blog h2 {
-  color: #fff;
-}
+    & a {
+      background-color: #989898;
 
-.contact a,
-.blog a {
-  background-color: #b9b9b9;
-}
+      &:hover {
+        background-color: #b9b9b9;
+      }
+    }
+  }
 
-.contact a:hover,
-.blog a:hover {
-  background-color: #e9e9e9;
-}
+  &.small {
+    aspect-ratio: 813 / 592;
+  }
 
-.small {
-  aspect-ratio: 813 / 592;
-}
+  &.medium {
+    aspect-ratio: 599 / 700;
+  }
 
-.medium {
-  aspect-ratio: 599 / 700;
-}
+  &.large {
+    aspect-ratio: 599 / 952;
+  }
 
-.large {
-  aspect-ratio: 599 / 952;
-}
-
-.square {
-  aspect-ratio: 1 / 1;
+  &.square {
+    aspect-ratio: 1 / 1;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -108,21 +101,21 @@
   .pageCard {
     padding: 15px 13px 13px 10px;
     border-radius: 15px;
-  }
 
-  .pageCard h2 {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
+    & h2 {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
 
-  .pageCard a {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    padding: 10px 10px;
-    min-width: 109px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    & a {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding: 10px 10px;
+      min-width: 109px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
