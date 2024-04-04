@@ -8,13 +8,13 @@
   position: relative;
   height: 100%;
   overflow: hidden;
+  border-radius: 30px;
 }
 
 .card img {
   width: 100%;
   transition: opacity 0.5s ease;
   opacity: 1;
-  border-radius: 30px;
 }
 
 .small {
@@ -66,7 +66,7 @@
     margin-top: 0.5rem;
   }
 
-  .card img {
+  .card > a {
     border-radius: 15px;
   }
 }
