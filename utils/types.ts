@@ -24,3 +24,10 @@ export type Project = {
   prev: string;
   next: string;
 };
+
+export type PageCard = {
+  type: string;
+  title: string;
+  description: any;
+  size: string;
+};

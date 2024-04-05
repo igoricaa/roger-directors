@@ -6,12 +6,29 @@ import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';
 import { Project } from '@/utils/types';
 
+export async function generateStaticParams() {
+  const projects = await client.fetch<Project[]>(
+    `*[_type == "project"]{
+      slug,
+    }`,
+    {},
+    {
+      cache: 'force-cache',
+      next: { tags: ['slugs'] },
+    }
+  );
+
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
 export default async function Project({
   params,
 }: {
   params: { slug: string };
 }) {
-  async function getProject() {
+  async function getProject(slug: string) {
     'use server';
     const project = await client.fetch<Project>(
       `*[_type == "project" && slug == $slug][0]{
@@ -46,7 +63,7 @@ export default async function Project({
           slug
         }
       }`,
-      { slug: params.slug },
+      { slug: slug },
       {
         cache: 'force-cache',
         next: { tags: ['projects'] },
@@ -56,7 +73,7 @@ export default async function Project({
     return project;
   }
 
-  const project = await getProject();
+  const project = await getProject(params.slug);
 
   return (
     <main className={styles.main}>

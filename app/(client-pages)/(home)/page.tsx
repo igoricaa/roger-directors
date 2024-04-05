@@ -5,37 +5,9 @@ import { client } from '@/utils/sanity/client';
 import ProjectCard from '@/components/ProjectCard';
 import { isMobileDevice } from '@/utils/isMobile';
 import { Project } from '@/utils/types';
+import { pagesCards } from '@/utils/data';
 
 export default async function Home() {
-  const pagesCards: any = [
-    {
-      type: 'page',
-      title: 'About Us',
-      description: {
-        __html: 'Digital<br>Dreams.<br>Analog<br>Hearts.<br>Integrated<br>Futures.',
-      },
-      size: 'medium',
-    },
-    {
-      type: 'page',
-      title: 'Meet the Team',
-      description: { __html: 'Meet<br>The People' },
-      size: 'square',
-    },
-    {
-      type: 'page',
-      title: 'Contact',
-      description: { __html: 'Let&apos;s<br>Connect' },
-      size: 'square',
-    },
-    {
-      type: 'page',
-      title: 'Blog',
-      description: { __html: 'The<br>Reservoir' },
-      size: 'small',
-    },
-  ];
-
   async function getProjects() {
     'use server';
     const projects = await client.fetch<Project[]>(
