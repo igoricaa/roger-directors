@@ -35,14 +35,14 @@ export default async function Home() {
 
   const firstColumnProjects: string[] = isMobile
     ? [
-        'price-iz-srbije',
+        'stories-from-serbia',
         'music-of-hope',
         'hyko',
         'connectivity',
         'stop-femicide',
         'illy',
       ]
-    : ['price-iz-srbije', 'music-of-hope', 'hyko', 'connectivity'];
+    : ['stories-from-serbia', 'music-of-hope', 'hyko', 'connectivity'];
   const secondColumnProjects: string[] = isMobile
     ? [
         'events',
