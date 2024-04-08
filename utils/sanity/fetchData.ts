@@ -20,7 +20,7 @@ export async function getTeam() {
     {},
     {
       cache: 'force-cache',
-      next: { tags: ['teamMembers'] },
+      next: { tags: ['teamMember'] },
     }
   );
 

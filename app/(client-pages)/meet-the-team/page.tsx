@@ -14,7 +14,7 @@ async function getTeamMembers() {
     {},
     {
       cache: 'force-cache',
-      next: { tags: ['teamMembers'] },
+      next: { tags: ['teamMember'] },
     }
   );
 

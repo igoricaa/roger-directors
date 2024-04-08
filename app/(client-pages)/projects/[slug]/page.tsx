@@ -14,7 +14,7 @@ export async function generateStaticParams() {
     {},
     {
       cache: 'force-cache',
-      next: { tags: ['slugs'] },
+      next: { tags: ['project'] },
     }
   );
 
@@ -66,7 +66,7 @@ export default async function Project({
       { slug: slug },
       {
         cache: 'force-cache',
-        next: { tags: ['projects'] },
+        next: { tags: ['project'] },
       }
     );
 

@@ -1,7 +1,7 @@
 import styles from './page.module.css';
 import { PageCard } from '@/components/PageCard';
 import { ColumnLayout } from '@/components/ColumnLayout';
-import { client } from '@/utils/sanity/client';
+import { client, sanityFetch } from '@/utils/sanity/client';
 import ProjectCard from '@/components/ProjectCard';
 import { isMobileDevice } from '@/utils/isMobile';
 import { Project } from '@/utils/types';
@@ -10,8 +10,9 @@ import { pagesCards } from '@/utils/data';
 export default async function Home() {
   async function getProjects() {
     'use server';
-    const projects = await client.fetch<Project[]>(
-      `*[_type == "project"]{
+
+    const projects: Project[] = await sanityFetch({
+      query: `*[_type == "project"]{
         'id': _id,
         title,
         slug,
@@ -21,12 +22,26 @@ export default async function Home() {
         'featuredVideoPlaybackId': featuredVideo.video.asset->playbackId,
         'featuredVideoTitle': featuredVideo.title,
       }`,
-      {},
-      {
-        cache: 'force-cache',
-        next: { tags: ['homeProjects'] },
-      }
-    );
+      tags: ['project'],
+    });
+
+    // const projects = await client.fetch<Project[]>(
+    //   `*[_type == "project"]{
+    //     'id': _id,
+    //     title,
+    //     slug,
+    //     featuredSize,
+    //     'featuredImage': featuredImage.asset->url,
+    //     'featuredImageAlt': featuredImage.alt,
+    //     'featuredVideoPlaybackId': featuredVideo.video.asset->playbackId,
+    //     'featuredVideoTitle': featuredVideo.title,
+    //   }`,
+    //   {},
+    //   {
+    //     cache: 'force-cache',
+    //     next: { tags: ['project'] },
+    //   }
+    // );
 
     return projects;
   }
