@@ -65,6 +65,10 @@
     margin-top: 35px;
   }
 
+  .header > div > img {
+    object-position: center;
+  }
+
   .content {
     margin-top: 2rem;
   }

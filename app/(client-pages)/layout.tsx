@@ -6,6 +6,7 @@ import { Providers } from '@/components/Providers';
 import { Footer } from '@/components/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 const mont = localFont({
   src: [
@@ -50,6 +51,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <SpeedInsights />
+          <Analytics />
         </Providers>
       </body>
       {/* <GoogleAnalytics gaId='G-S0L7XDFMYG' /> */}

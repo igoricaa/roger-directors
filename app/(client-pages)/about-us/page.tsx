@@ -12,6 +12,7 @@ export default function AboutUs() {
             src='/about-us-header.png'
             alt='About Us'
             priority={true}
+            placeholder='blur'
             fill
             sizes='100vw'
           />
