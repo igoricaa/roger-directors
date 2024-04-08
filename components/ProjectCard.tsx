@@ -52,7 +52,6 @@ export default function ProjectCard({
           <MuxVideo
             playbackId={project.featuredVideoPlaybackId}
             metadata={{ video_title: project.featuredVideoTitle }}
-            poster='/about-us-header.png'
             muted
             loop
             autoPlay={false}
