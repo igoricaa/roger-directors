@@ -15,6 +15,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.34.0",
     "@types/ua-parser-js": "^0.7.39",
+    "@vercel/speed-insights": "^1.0.10",
     "@vis.gl/react-google-maps": "^0.8.3",
     "embla-carousel-react": "^8.0.0",
     "next": "^14.1.0",
