@@ -64,46 +64,6 @@ export default async function Project({
       tags: ['project'],
     });
 
-    // const project = await client.fetch<Project>(
-    //   `*[_type == "project" && slug == $slug][0]{
-    //     _id,
-    //     title,
-    //     slug,
-    //     loopText,
-    //     description,
-    //     descriptionTitle,
-    //     descriptionExcerpt,
-    //     images[]{
-    //         alt,
-    //         'url': asset->url,
-    //     },
-    //     videos[]{
-    //       title,
-    //       'fullVideo': {
-    //         'playbackId': fullVideo.playbackId,
-    //         'url': fullVideo.video.asset->playbackId,
-    //       },
-    //       'slideVideo': {
-    //         'playbackId': slideVideo.playbackId,
-    //         'url': slideVideo.video.asset->playbackId,
-    //       }
-    //     },
-    //     'prev': *[_type == 'project' && _createdAt < ^._createdAt] | order(_createdAt asc)[0] {
-    //       title,
-    //       slug
-    //     },
-    //     'next': *[_type == 'project' && ^._createdAt < _createdAt] | order(_createdAt asc)[0] {
-    //       title,
-    //       slug
-    //     }
-    //   }`,
-    //   { slug: slug },
-    //   {
-    //     cache: 'force-cache',
-    //     next: { tags: ['project'] },
-    //   }
-    // );
-
     return project;
   }
 
