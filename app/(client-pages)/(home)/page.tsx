@@ -1,7 +1,7 @@
 import styles from './page.module.css';
 import { PageCard } from '@/components/PageCard';
 import { ColumnLayout } from '@/components/ColumnLayout';
-import { client, sanityFetch } from '@/utils/sanity/client';
+import { sanityFetch } from '@/utils/sanity/client';
 import ProjectCard from '@/components/ProjectCard';
 import { isMobileDevice } from '@/utils/isMobile';
 import { Project } from '@/utils/types';
@@ -24,24 +24,6 @@ export default async function Home() {
       }`,
       tags: ['project'],
     });
-
-    // const projects = await client.fetch<Project[]>(
-    //   `*[_type == "project"]{
-    //     'id': _id,
-    //     title,
-    //     slug,
-    //     featuredSize,
-    //     'featuredImage': featuredImage.asset->url,
-    //     'featuredImageAlt': featuredImage.alt,
-    //     'featuredVideoPlaybackId': featuredVideo.video.asset->playbackId,
-    //     'featuredVideoTitle': featuredVideo.title,
-    //   }`,
-    //   {},
-    //   {
-    //     cache: 'force-cache',
-    //     next: { tags: ['project'] },
-    //   }
-    // );
 
     return projects;
   }

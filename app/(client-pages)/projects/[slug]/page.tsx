@@ -1,22 +1,18 @@
 import styles from './page.module.css';
 import ProjectDescriptionContainer from '@/components/ProjectDescriptionContainer';
 import Link from 'next/link';
-import { client } from '@/utils/sanity/client';
+import { client, sanityFetch } from '@/utils/sanity/client';
 import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';
 import { Project } from '@/utils/types';
 
 export async function generateStaticParams() {
-  const projects = await client.fetch<Project[]>(
-    `*[_type == "project"]{
+  const projects: Project[] = await sanityFetch({
+    query: `*[_type == "project"]{
       slug,
     }`,
-    {},
-    {
-      cache: 'force-cache',
-      next: { tags: ['project'] },
-    }
-  );
+    tags: ['project'],
+  });
 
   return projects.map((project) => ({
     slug: project.slug,
@@ -30,8 +26,9 @@ export default async function Project({
 }) {
   async function getProject(slug: string) {
     'use server';
-    const project = await client.fetch<Project>(
-      `*[_type == "project" && slug == $slug][0]{
+
+    const project: Project = await sanityFetch({
+      query: `*[_type == "project" && slug == $slug][0]{
         _id,
         title,
         slug,
@@ -63,12 +60,49 @@ export default async function Project({
           slug
         }
       }`,
-      { slug: slug },
-      {
-        cache: 'force-cache',
-        next: { tags: ['project'] },
-      }
-    );
+      params: { slug },
+      tags: ['project'],
+    });
+
+    // const project = await client.fetch<Project>(
+    //   `*[_type == "project" && slug == $slug][0]{
+    //     _id,
+    //     title,
+    //     slug,
+    //     loopText,
+    //     description,
+    //     descriptionTitle,
+    //     descriptionExcerpt,
+    //     images[]{
+    //         alt,
+    //         'url': asset->url,
+    //     },
+    //     videos[]{
+    //       title,
+    //       'fullVideo': {
+    //         'playbackId': fullVideo.playbackId,
+    //         'url': fullVideo.video.asset->playbackId,
+    //       },
+    //       'slideVideo': {
+    //         'playbackId': slideVideo.playbackId,
+    //         'url': slideVideo.video.asset->playbackId,
+    //       }
+    //     },
+    //     'prev': *[_type == 'project' && _createdAt < ^._createdAt] | order(_createdAt asc)[0] {
+    //       title,
+    //       slug
+    //     },
+    //     'next': *[_type == 'project' && ^._createdAt < _createdAt] | order(_createdAt asc)[0] {
+    //       title,
+    //       slug
+    //     }
+    //   }`,
+    //   { slug: slug },
+    //   {
+    //     cache: 'force-cache',
+    //     next: { tags: ['project'] },
+    //   }
+    // );
 
     return project;
   }

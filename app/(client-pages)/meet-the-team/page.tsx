@@ -1,22 +1,18 @@
-import { client } from '@/utils/sanity/client';
+import { sanityFetch } from '@/utils/sanity/client';
 import TeamMembers from '@/components/TeamMembers';
 import { TeamMember } from '@/utils/sanity/fetchData';
 
 async function getTeamMembers() {
-  const teamMembers = await client.fetch<TeamMember[]>(
-    `*[_type == "teamMember"]{
+  const teamMembers: TeamMember[] = await sanityFetch({
+    query: `*[_type == "teamMember"]{
       _id,
       name,
       bio,
       "image": picture.asset->url,
       "imageAlt": picture.alt
     }`,
-    {},
-    {
-      cache: 'force-cache',
-      next: { tags: ['teamMember'] },
-    }
-  );
+    tags: ['teamMember'],
+  });
 
   return teamMembers;
 }

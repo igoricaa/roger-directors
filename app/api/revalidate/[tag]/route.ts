@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   try {
     const { isValidSignature, body } = await parseBody<WebhookPayload>(
       req,
-      process.env.SANITY_REVALIDATE_SECRET
+      process.env.NEXT_PUBLIC_SANITY_HOOK_SECRET
     );
 
     if (!isValidSignature) {
