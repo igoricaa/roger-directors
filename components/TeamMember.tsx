@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './TeamMember.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import MuxVideo from '@mux/mux-video-react';
 
 export function TeamMember({
@@ -15,11 +15,22 @@ export function TeamMember({
   active: number | null;
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
+  const playerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined')
       setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
-  }, []);
+
+    if (playerRef.current) {
+      const video = playerRef.current as HTMLVideoElement;
+      if (active !== null && active === index) {
+        !isDesktop && playerRef.current?.scrollIntoView({ behavior: 'smooth' });
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+  }, [active, index, isDesktop]);
 
   const slideClass = isDesktop
     ? index % 3 === 0
@@ -55,40 +66,21 @@ export function TeamMember({
       </div>
 
       <div className={[styles.bioWrapper, slideClass].join(' ')}>
-        {isDesktop && (
-          <div className={styles.bioVideoWrapper}>
-            <MuxVideo
-              // ref={playerRef as React.RefObject<HTMLVideoElement>}
-              // playbackId={
-              //   videos.slideVideo.url
-              //     ? videos.slideVideo.url
-              //     : videos.slideVideo.playbackId
-              // }
-              muted
-              autoPlay={false}
-              loop
-              minResolution='1440p'
-              maxResolution='2160p'
-              placeholder={undefined}
-              // className={[
-              //   styles.videoPlayer,
-              //   'videoPlayer',
-              //   selectorClass,
-              // ].join(' ')}
-              // onClick={handleVideoClick}
-              poster='/blur.png'
-            />
-          </div>
-        )}
+        <div className={styles.bioVideoWrapper}>
+          <MuxVideo
+            ref={playerRef as React.RefObject<HTMLVideoElement>}
+            playbackId={
+              member.videoPlaybackId ? member.videoPlaybackId : member.video
+            }
+            loop
+            minResolution='1440p'
+            maxResolution='2160p'
+            placeholder={undefined}
+            poster='/blur.png'
+          />
+        </div>
         <div className={styles.memberInfoWrapper}>
-          <div>
-            {!isDesktop && (
-              <div className={styles.bioVideoWrapper}>
-                {/* <Image src={`${member.image}`} alt={member.imageAlt} fill /> */}
-              </div>
-            )}
-            <h2>{member.name}</h2>
-          </div>
+          <h2>{member.name}</h2>
           <p>{member.bio}</p>
         </div>
       </div>

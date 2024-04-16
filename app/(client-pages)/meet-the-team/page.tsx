@@ -11,10 +11,15 @@ async function getTeamMembers() {
       name,
       bio,
       "image": picture.asset->url,
-      "imageAlt": picture.alt
+      "imageAlt": picture.alt,
+      'videoPlaybackId': teamMemberVideo.playbackId,
+      'video': teamMemberVideo.video.asset->playbackId,
+      'videoTitle': teamMemberVideo.title,
     }`,
     tags: ['teamMember'],
   });
+
+  console.log('teamMembers:', teamMembers)
 
   return teamMembers;
 }

@@ -39,7 +39,6 @@
 
 .bioWrapper {
   display: flex;
-  /* width: calc(100vw - 2 * var(--padding)); */
   height: 100%;
   padding: 38px;
   background-color: #8eb8a3;
@@ -54,7 +53,6 @@
 }
 
 .bioVideoWrapper {
-  position: relative;
   opacity: 0;
   visibility: hidden;
 }
@@ -69,37 +67,20 @@
 .teamMember.active .bioVideoWrapper {
   opacity: 1;
   visibility: visible;
-  
 }
 
-.bioWrapper.slideRight {
-  /* transform-origin: left;
-  transform: scaleX(0); */
-}
-
-.teamMember.active .bioWrapper.slideRight {
+.teamMember.active .bioWrapper {
   width: calc(100vw - 2 * var(--padding));
   transition: width 0.3s ease-in, opacity 0.1s, visibility 0.1s;
 }
 
-.bioWrapper.slideCenter {
-  transform-origin: center;
-  transform: scaleX(0.33);
-  left: calc((-100% - var(--gap)));
-}
-
-.teamMember.active .bioWrapper.slideCenter {
-  transform: scaleX(1);
-}
-
 .bioWrapper.slideLeft {
-  transform-origin: right;
-  transform: scaleX(0.33);
   right: 0;
 }
 
-.teamMember.active .bioWrapper.slideLeft {
-  transform: scaleX(1);
+.bioWrapper.slideCenter {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .teamMember.active .bioWrapper {
@@ -108,13 +89,11 @@
 }
 
 .memberInfoWrapper {
-  width: 66.66%;
-  padding-left: 124px;
+  width: 50%;
   color: var(--color__text-main-contrast);
   opacity: 0;
   visibility: hidden;
-
-  padding-left: 6.45vw;
+  padding-left: 5vw;
 }
 
 .teamMember .hoverStateWrapper {
@@ -124,8 +103,6 @@
   width: 100%;
   height: 100%;
 }
-
-
 
 .teamMember.active .memberInfoWrapper {
   opacity: 1;
@@ -191,24 +168,17 @@
 
 @media screen and (max-width: 991px) {
   .teamMember {
-    width: calc(50% - var(--gap) / 2);
-    aspect-ratio: 1;
     max-height: 100%;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .teamMember.active {
-    width: 100%;
-    aspect-ratio: unset;
+    transition: all 0.4s ease-in-out;
+    flex-basis: calc(100% / 2 - 1rem / 2 * (2 - 1));
   }
 
   .bioWrapper {
-    --height: calc(100vw / 2 - var(--gap));
-    height: calc(var(--height) * 2);
     flex-direction: column;
+    gap: 22px;
     padding: 13px 13px 96px;
-    width: calc(100vw - 2 * var(--padding));
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    height: 100%;
   }
 
   .closeBio {
@@ -218,9 +188,15 @@
     height: 60px;
   }
 
+  .teamMember.active {
+    flex-basis: 100%;
+  }
+
   .teamMember.active .bioWrapper {
     position: relative;
+    width: calc(100vw - 2 * var(--padding));
     height: auto;
+    transition: all 0.3s ease-in-out;
   }
 
   .teamMember.active .bioWrapper.slideRight ~ .closeBio {
@@ -238,29 +214,6 @@
     transform: scale(0.8) rotate(135deg);
   }
 
-  .bioWrapper.slideRight {
-    transform-origin: top left;
-    transform: scale(0);
-  }
-
-  .teamMember.active .bioWrapper.slideRight {
-    transform: scale(1);
-  }
-
-  .bioWrapper.slideLeft {
-    transform-origin: top right;
-    transform: scale(0.33);
-  }
-
-  .teamMember.active .bioWrapper.slideLeft {
-    transform: scale(1);
-  }
-
-  .bioWrapper.slideLeft .memberInfoWrapper > div {
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
-
   .memberInfoWrapper {
     width: 100%;
     padding-left: 0;
@@ -274,23 +227,7 @@
   .memberInfoWrapper p {
     font-size: 20px;
     line-height: 28px;
-    margin-top: 13px;
-  }
-
-  .memberInfoWrapper > div {
-    display: flex;
-    align-items: center;
-    column-gap: 6px;
-  }
-
-  .bioVideoWrapper {
-    position: relative;
-    width: 48%;
-    aspect-ratio: 1;
-  }
-
-  .memberInfoWrapper p {
-    column-count: 1;
+    margin-top: 22px;
   }
 
   .teamMember.active .closeBio {
