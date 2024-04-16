@@ -48,6 +48,11 @@ export default defineType({
       fields: [
         { title: 'Title', name: 'title', type: 'string' },
         {
+          title: 'PlaybackId',
+          name: 'playbackId',
+          type: 'string',
+        },
+        {
           title: 'Video file',
           name: 'video',
           type: 'mux.video',
