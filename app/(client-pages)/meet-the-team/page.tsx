@@ -2,8 +2,6 @@ import { sanityFetch } from '@/utils/sanity/client';
 import TeamMembers from '@/components/TeamMembers';
 import { TeamMember } from '@/utils/sanity/fetchData';
 
-// TODO: generateStaticParams
-
 async function getTeamMembers() {
   const teamMembers: TeamMember[] = await sanityFetch({
     query: `*[_type == "teamMember"]{
@@ -18,8 +16,6 @@ async function getTeamMembers() {
     }`,
     tags: ['teamMember'],
   });
-
-  console.log('teamMembers:', teamMembers)
 
   return teamMembers;
 }
