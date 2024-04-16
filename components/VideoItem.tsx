@@ -50,7 +50,6 @@ export default function VideoItem({
             ? videos.slideVideo.url
             : videos.slideVideo.playbackId
         }
-        metadata={{ video_title: videos.title }}
         muted
         autoPlay={autoplay}
         loop
@@ -59,6 +58,7 @@ export default function VideoItem({
         placeholder={undefined}
         className={[styles.videoPlayer, 'videoPlayer', selectorClass].join(' ')}
         onClick={handleVideoClick}
+        poster='/blur.png'
       />
 
       {isFullScreen &&
@@ -78,7 +78,6 @@ export default function VideoItem({
                   ? videos.fullVideo.url
                   : videos.fullVideo.playbackId
               }
-              metadata={{ video_title: videos.title }}
               controls
               disablePictureInPicture
               autoPlay
@@ -86,6 +85,7 @@ export default function VideoItem({
               maxResolution='2160p'
               className={styles.fullVideoPlayer}
               placeholder={undefined}
+              poster='/blur.png'
             />
           </>,
           document.body

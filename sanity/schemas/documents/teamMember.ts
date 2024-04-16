@@ -41,5 +41,18 @@ export default defineType({
       ],
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'teamMemberVideo',
+      title: 'Team Member Video',
+      type: 'document',
+      fields: [
+        { title: 'Title', name: 'title', type: 'string' },
+        {
+          title: 'Video file',
+          name: 'video',
+          type: 'mux.video',
+        },
+      ],
+    }),
   ],
 });

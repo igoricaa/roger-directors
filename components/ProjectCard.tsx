@@ -51,13 +51,13 @@ export default function ProjectCard({
         {isDesktop && project.featuredVideoPlaybackId && (
           <MuxVideo
             playbackId={project.featuredVideoPlaybackId}
-            metadata={{ video_title: project.featuredVideoTitle }}
             muted
             loop
             autoPlay={false}
             className={styles.projectVideo}
             style={{ objectFit: 'cover' }}
             placeholder={undefined}
+            poster='/blur.png'
           />
         )}
       </Link>

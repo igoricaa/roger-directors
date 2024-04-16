@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './TeamMember.module.css';
 import { useEffect, useState } from 'react';
+import MuxVideo from '@mux/mux-video-react';
 
 export function TeamMember({
   member,
@@ -41,23 +42,49 @@ export function TeamMember({
     >
       <div className={styles.hoverStateWrapper}>
         <div className={styles.bgImageWrapper}>
-          <Image src={`${member.image}`} alt={member.imageAlt} fill />
+          <Image
+            src={`${member.image}`}
+            alt={member.imageAlt}
+            fill
+            sizes='(max-width: 991px) 50vw, 33vw'
+          />
         </div>
         <div className={styles.overlay}>
           <h2>{member.name}</h2>
         </div>
       </div>
+
       <div className={[styles.bioWrapper, slideClass].join(' ')}>
         {isDesktop && (
-          <div className={styles.bioImageWrapper}>
-            <Image src={`${member.image}`} alt={member.imageAlt} fill />
+          <div className={styles.bioVideoWrapper}>
+            <MuxVideo
+              // ref={playerRef as React.RefObject<HTMLVideoElement>}
+              // playbackId={
+              //   videos.slideVideo.url
+              //     ? videos.slideVideo.url
+              //     : videos.slideVideo.playbackId
+              // }
+              muted
+              autoPlay={false}
+              loop
+              minResolution='1440p'
+              maxResolution='2160p'
+              placeholder={undefined}
+              // className={[
+              //   styles.videoPlayer,
+              //   'videoPlayer',
+              //   selectorClass,
+              // ].join(' ')}
+              // onClick={handleVideoClick}
+              poster='/blur.png'
+            />
           </div>
         )}
         <div className={styles.memberInfoWrapper}>
           <div>
             {!isDesktop && (
-              <div className={styles.bioImageWrapper}>
-                <Image src={`${member.image}`} alt={member.imageAlt} fill />
+              <div className={styles.bioVideoWrapper}>
+                {/* <Image src={`${member.image}`} alt={member.imageAlt} fill /> */}
               </div>
             )}
             <h2>{member.name}</h2>
