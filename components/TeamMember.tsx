@@ -31,7 +31,7 @@ export function TeamMember({
     : styles.slideLeft;
 
   return (
-    <div
+    <article
       key={member.id}
       className={[
         styles.teamMember,
@@ -85,6 +85,6 @@ export function TeamMember({
           />
         </svg>
       </button>
-    </div>
+    </article>
   );
 }

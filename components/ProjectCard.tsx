@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import styles from './ProjectCard.module.css';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { useEffect, useState } from 'react';
 import MuxVideo from '@mux/mux-video-react';
 
@@ -24,7 +24,7 @@ export default function ProjectCard({
   const projectUrl = `/projects/${project.slug}`;
 
   return (
-    <div className={[styles.card, styles[project.featuredSize]].join(' ')}>
+    <article className={[styles.card, styles[project.featuredSize]].join(' ')}>
       <Link
         href={projectUrl}
         onMouseEnter={
@@ -61,6 +61,6 @@ export default function ProjectCard({
           />
         )}
       </Link>
-    </div>
+    </article>
   );
 }

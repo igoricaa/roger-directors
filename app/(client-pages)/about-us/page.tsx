@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 import Accordions from '@/components/Accordions';
+import headerImg from '@/public/about-us-header.png';
 
 export default function AboutUs() {
   return (
@@ -9,7 +10,7 @@ export default function AboutUs() {
         <h1>About Us</h1>
         <div>
           <Image
-            src='/about-us-header.png'
+            src={headerImg}
             alt='About Us'
             priority={true}
             placeholder='blur'

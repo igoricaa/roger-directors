@@ -3,7 +3,7 @@
 import styles from './Header.module.css';
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { ThemeChanger } from '@/components/ThemeChanger';
 import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';

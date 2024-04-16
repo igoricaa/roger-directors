@@ -1,13 +1,13 @@
 import styles from './page.module.css';
 import ProjectDescriptionContainer from '@/components/ProjectDescriptionContainer';
-import Link from 'next/link';
-import { client, sanityFetch } from '@/utils/sanity/client';
+import { Link } from 'next-view-transitions';
+import { sanityFetch } from '@/utils/sanity/client';
 import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';
-import { Project } from '@/utils/types';
+import { Project as ProjectT } from '@/utils/types';
 
 export async function generateStaticParams() {
-  const projects: Project[] = await sanityFetch({
+  const projects: ProjectT[] = await sanityFetch({
     query: `*[_type == "project"]{
       slug,
     }`,
@@ -27,7 +27,7 @@ export default async function Project({
   async function getProject(slug: string) {
     'use server';
 
-    const project: Project = await sanityFetch({
+    const project: ProjectT = await sanityFetch({
       query: `*[_type == "project" && slug == $slug][0]{
         _id,
         title,

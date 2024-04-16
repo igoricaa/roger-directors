@@ -1,5 +1,5 @@
 import styles from './PageCard.module.css';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 export const PageCard = ({ content, size }: any) => {
   const pageClass = content.type
@@ -7,7 +7,7 @@ export const PageCard = ({ content, size }: any) => {
     : undefined;
 
   return (
-    <div
+    <article
       className={[
         styles.card,
         styles.pageCard,
@@ -19,6 +19,6 @@ export const PageCard = ({ content, size }: any) => {
       <Link href={content.title.replace(/ /g, '-').toLowerCase()}>
         {content.title}
       </Link>
-    </div>
+    </article>
   );
 };
