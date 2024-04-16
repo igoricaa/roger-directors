@@ -75,6 +75,7 @@ export function TeamMember({
             loop
             minResolution='1440p'
             maxResolution='2160p'
+            playsInline
             placeholder={undefined}
             poster='/blur.png'
           />
