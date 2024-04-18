@@ -3,6 +3,8 @@
   max-height: calc(100vw / 3 - var(--gap));
   position: relative;
   cursor: pointer;
+
+  --border-radius: 30px;
 }
 
 .teamMember .overlay {
@@ -16,6 +18,7 @@
   padding: 2rem 37px;
   background-color: rgba(42, 49, 51, 0.5);
   transition: all 0.3s ease;
+  border-radius: var(--border-radius);
 }
 
 .teamMember:hover .overlay {
@@ -33,7 +36,7 @@
 }
 
 .bgImageWrapper img {
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   object-fit: cover;
 }
 
@@ -42,7 +45,7 @@
   height: 100%;
   padding: 38px;
   background-color: #8eb8a3;
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   position: absolute;
   top: 0;
   z-index: 100;
@@ -52,13 +55,17 @@
   width: 100%;
 }
 
+.odd .bioWrapper {
+  background-color: #f0dd3d;
+}
+
 .bioVideoWrapper {
   opacity: 0;
   visibility: hidden;
 }
 
 .bioVideoWrapper video {
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -90,7 +97,7 @@
 
 .memberInfoWrapper {
   width: 50%;
-  color: var(--color__text-main-contrast);
+  color: #232323;
   opacity: 0;
   visibility: hidden;
   padding-left: 5vw;
@@ -145,6 +152,22 @@
   transform: rotate(0deg);
   border: none;
   outline: none;
+}
+
+.teamMember .bioWrapper.slideLeft ~ .closeBio {
+  transform: rotate(180deg);
+}
+
+.teamMember.active .bioWrapper.slideLeft ~ .closeBio {
+  transform: rotate(0);
+}
+
+.teamMember.active .closeBio {
+  background-color: #b5dfca;
+}
+
+.teamMember.odd.active .closeBio {
+  background-color: #fff5a5;
 }
 
 .teamMember:hover .closeBio {

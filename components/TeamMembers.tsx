@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import {useState } from 'react';
 import styles from './TeamMembers.module.css';
 import { TeamMember } from './TeamMember';
 import { TeamMember as TeamMemberModel } from '@/utils/sanity/fetchData';
@@ -12,7 +12,7 @@ export default function TeamMembers({
 }) {
   const [active, setActive] = useState<number | null>(null);
 
-  const openBio = (index: number) => {
+  const toggleBio = (index: number) => {
     if (active === index) {
       setActive(null);
     } else {
@@ -28,7 +28,7 @@ export default function TeamMembers({
             key={member._id}
             member={member}
             index={index}
-            openBio={openBio}
+            toggleBio={toggleBio}
             active={active}
           />
         );

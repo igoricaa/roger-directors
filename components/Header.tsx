@@ -179,7 +179,7 @@ export default function Header() {
               ))}
             </ul>
             <div className={styles.switchersWrapper}>
-              <ThemeChanger />
+              <ThemeChanger closeMenu={() => setMenuOpen(false)}/>
               {/* <div className={styles.langSwitcher}></div> */}
             </div>
           </div>

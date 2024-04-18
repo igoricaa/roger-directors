@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './TeamMember.module.css';
 import { useEffect, useRef, useState } from 'react';
@@ -6,12 +8,12 @@ import MuxVideo from '@mux/mux-video-react';
 export function TeamMember({
   member,
   index,
-  openBio,
+  toggleBio,
   active,
 }: {
   member: any;
   index: number;
-  openBio: (index: number) => void;
+  toggleBio: (index: number) => void;
   active: number | null;
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -32,6 +34,15 @@ export function TeamMember({
     }
   }, [active, index, isDesktop]);
 
+  const teamMemberClickHandler = (index: number) => {
+    toggleBio(index);
+    playerRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center',
+    });
+  };
+
   const slideClass = isDesktop
     ? index % 3 === 0
       ? styles.slideRight
@@ -48,8 +59,9 @@ export function TeamMember({
       className={[
         styles.teamMember,
         active !== null && active === index ? styles.active : '',
+        index % 2 !== 0 ? styles.odd : '',
       ].join(' ')}
-      onClick={() => openBio(index)}
+      onClick={() => teamMemberClickHandler(index)}
     >
       <div className={styles.hoverStateWrapper}>
         <div className={styles.bgImageWrapper}>
@@ -58,6 +70,9 @@ export function TeamMember({
             alt={member.imageAlt}
             fill
             sizes='(max-width: 991px) 50vw, 33vw'
+            priority={[...Array(6).keys()].includes(index) ? true : false}
+            placeholder='blur'
+            blurDataURL='/blur.png'
           />
         </div>
         <div className={styles.overlay}>
@@ -85,7 +100,10 @@ export function TeamMember({
           <p>{member.bio}</p>
         </div>
       </div>
-      <button className={styles.closeBio} onClick={() => openBio(index)}>
+      <button
+        className={styles.closeBio}
+        onClick={() => teamMemberClickHandler(index)}
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='18.593'

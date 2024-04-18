@@ -177,7 +177,7 @@
 }
 
 .modalBlockBackground {
-  background-color: var(--color_main_contrast);
+  background-color: #fff;
   border-radius: 2em;
   transition: all var(--animation-smooth), background-color 0.2s ease-in-out,
     transform var(--animation-smooth) 0s;
@@ -248,7 +248,7 @@
 
 .mobileMenuWrapper ul li a > span {
   font-size: calc(var(--menu__font-size) * 0.25);
-  color: var(--color__text-main-contrast);
+  color: #232323;
   transition: all var(--animation-smooth), color 0.2s ease-in-out;
   position: relative;
   padding-right: 1em;
@@ -269,7 +269,7 @@
   width: 0.3em;
   height: 0.3em;
   border-radius: 50%;
-  background-color: var(--color_main);
+  background-color: #232323;
   transition: all var(--animation-smooth), transform var(--animation-primary),
     background-color 0.2s ease-in-out;
 }

@@ -14,12 +14,8 @@
   font-size: 1.5rem;
 }
 
-.contactInfo > p > a {
+.contactInfo p a {
   color: var(--color__text-main);
-}
-
-.contactInfo div p a {
-  color: #fff;
 }
 
 /* .contactPhotoWrapper {
