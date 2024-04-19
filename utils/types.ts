@@ -9,6 +9,22 @@ export type VideoPair = {
   slideVideo: Video;
 };
 
+export type ImageMeta = {
+  url: string;
+  alt: string;
+};
+
+type ProjectOrder = {
+  column: number;
+  columnOrder: number;
+};
+
+type ProjectFeaturedContent = {
+  featuredSize: string;
+  featuredImage: ImageMeta;
+  featuredVideo: Video;
+};
+
 export type Project = {
   _id: string;
   title: string;
@@ -17,11 +33,11 @@ export type Project = {
   description: string;
   descriptionTitle: string;
   descriptionExcerpt: string;
-  featuredImage: any;
-  featuredVideo: any;
-  images: any[];
-  slideImage: string;
-  slideImageAlt: string;
+  desktopOrder: ProjectOrder;
+  mobileOrder: ProjectOrder;
+  featuredContent: ProjectFeaturedContent;
+  images: ImageMeta[];
+  slideImage: ImageMeta;
   videos: VideoPair[];
   prev: string;
   next: string;

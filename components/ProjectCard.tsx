@@ -5,12 +5,13 @@ import styles from './ProjectCard.module.css';
 import { Link } from 'next-view-transitions';
 import { useEffect, useState } from 'react';
 import MuxVideo from '@mux/mux-video-react';
+import { Project } from '@/utils/types';
 
 export default function ProjectCard({
   project,
   priority,
 }: {
-  project: any;
+  project: Project;
   priority: boolean;
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -24,33 +25,40 @@ export default function ProjectCard({
   const projectUrl = `/projects/${project.slug}`;
 
   return (
-    <article className={[styles.card, styles[project.featuredSize]].join(' ')}>
+    <article
+      className={[
+        styles.card,
+        styles[project.featuredContent.featuredSize],
+      ].join(' ')}
+    >
       <Link
         href={projectUrl}
         onMouseEnter={
-          isDesktop && project.featuredVideoPlaybackId
+          isDesktop && project.featuredContent.featuredVideo.playbackId
             ? (event: any) => event.target.play()
             : undefined
         }
         onMouseLeave={
-          isDesktop && project.featuredVideoPlaybackId
+          isDesktop && project.featuredContent.featuredVideo.playbackId
             ? (event: any) => event.target.pause()
             : undefined
         }
       >
         <Image
-          src={project.featuredImage}
+          src={project.featuredContent.featuredImage.url}
           className={
-            project.featuredVideoPlaybackId ? undefined : styles.noVideo
+            project.featuredContent.featuredVideo.playbackId
+              ? undefined
+              : styles.noVideo
           }
-          alt={project.featuredImageAlt}
+          alt={project.featuredContent.featuredImage.alt}
           fill
           sizes='(max-width: 991px) 50vw, 33vw'
           priority={priority}
         />
-        {isDesktop && project.featuredVideoPlaybackId && (
+        {isDesktop && project.featuredContent.featuredVideo.playbackId && (
           <MuxVideo
-            playbackId={project.featuredVideoPlaybackId}
+            playbackId={project.featuredContent.featuredVideo.playbackId}
             muted
             loop
             autoPlay={false}

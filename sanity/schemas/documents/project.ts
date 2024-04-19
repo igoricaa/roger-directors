@@ -44,6 +44,44 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      title: 'Desktop Order',
+      name: 'desktopOrder',
+      type: 'object',
+      fields: [
+        {
+          name: 'column',
+          type: 'number',
+          title: 'Column',
+          initialValue: 1,
+          options: { list: [1, 2, 3] },
+        },
+        {
+          name: 'columnOrder',
+          type: 'number',
+          title: 'Column Order',
+        },
+      ],
+    }),
+    defineField({
+      title: 'Mobile Order',
+      name: 'mobileOrder',
+      type: 'object',
+      fields: [
+        {
+          name: 'column',
+          type: 'number',
+          title: 'Column',
+          initialValue: 1,
+          options: { list: [1, 2] },
+        },
+        {
+          name: 'columnOrder',
+          type: 'number',
+          title: 'Column Order',
+        },
+      ],
+    }),
+    defineField({
       name: 'featuredSize',
       title: 'Featured Size',
       type: 'string',

@@ -70,6 +70,12 @@ export default async function Project({
     return project;
   }
 
+  const areProjectVideosAvailable = (project: ProjectT) => {
+    return Object.values(project.videos[0].slideVideo).every(
+      (x) => x === null || x === ''
+    );
+  };
+
   const project = await getProject(params.slug);
 
   return (
@@ -78,10 +84,18 @@ export default async function Project({
         <h1>{project.title}</h1>
       </header>
       <article className={styles.article}>
-        {project.slideImage && (
-          <Image src={project.slideImage} alt={project.slideImageAlt} />
+        {project.slideImage && areProjectVideosAvailable(project) && (
+          <div className={styles.slideImageWrapper}>
+            <Image
+              src={project.slideImage.url}
+              alt={project.slideImage.alt}
+              fill
+              sizes='100vw'
+              priority
+            />
+          </div>
         )}
-        {project.videos && (
+        {project.videos && !areProjectVideosAvailable(project) && (
           <div className={styles.videosWrapper}>
             <VideoSlider videos={project.videos} />
           </div>

@@ -16,83 +16,119 @@ export default async function Home() {
         'id': _id,
         title,
         slug,
-        featuredSize,
-        'featuredImage': featuredImage.asset->url,
-        'featuredImageAlt': featuredImage.alt,
-        'featuredVideoPlaybackId': featuredVideo.video.asset->playbackId,
-        'featuredVideoTitle': featuredVideo.title,
+        'order': {
+          'column': order.column,
+          'columnOrder': order.columnOrder
+        },
+        'featuredContent': {
+          featuredSize,
+          'featuredImage': {
+            'url': featuredImage.asset->url,
+            'alt': featuredImage.alt,
+          },
+          'featuredVideo': {
+            'playbackId': featuredVideo.video.asset->playbackId
+          },
+        }
       }`,
       tags: ['project'],
     });
 
+    // console.log('KONZOLA5' + JSON.stringify(projects[0].featuredContent));
     return projects;
   }
-
+  const projects: Project[] = await getProjects();
   const isMobile = isMobileDevice();
 
-  const firstColumnProjects: string[] = isMobile
-    ? [
-        'stories-from-serbia',
-        'music-of-hope',
-        'hyko',
-        'connectivity',
-        'stop-femicide',
-        'illy',
-      ]
-    : ['stories-from-serbia', 'music-of-hope', 'hyko', 'connectivity'];
-  const secondColumnProjects: string[] = isMobile
-    ? [
-        'events',
-        'idf',
-        'haleon',
-        'education',
-        'serbian-paralympics-team',
-        'corporate-videos',
-      ]
-    : ['events', 'idf', 'haleon', 'education'];
-  const thirdColumnProjects: string[] = isMobile
+  const firstColumnItems: any[] = isMobile
+    ? projects
+        .filter((project) => project.mobileOrder.column === 1)
+        .sort((a, b) => a.mobileOrder.columnOrder - b.mobileOrder.columnOrder)
+    : projects
+        .filter((project) => project.desktopOrder.column === 1)
+        .sort(
+          (a, b) => a.desktopOrder.columnOrder - b.desktopOrder.columnOrder
+        );
+
+  const secondColumnItems: any[] = isMobile
+    ? projects
+        .filter((project) => project.mobileOrder.column === 2)
+        .sort((a, b) => a.mobileOrder.columnOrder - b.mobileOrder.columnOrder)
+    : projects
+        .filter((project) => project.desktopOrder.column === 2)
+        .sort(
+          (a, b) => a.desktopOrder.columnOrder - b.desktopOrder.columnOrder
+        );
+
+  const thirdColumnItems: any[] = isMobile
     ? []
-    : ['stop-femicide', 'illy', 'serbian-paralympics-team', 'corporate-videos'];
+    : projects
+        .filter((project) => project.desktopOrder.column === 3)
+        .sort(
+          (a, b) => a.desktopOrder.columnOrder - b.desktopOrder.columnOrder
+        );
 
-  const firstColumnCards: any[] = [];
-  const secondColumnCards: any[] = [];
-  const thirdColumnCards: any[] = [];
+  // const firstColumnProjects: string[] = isMobile
+  //   ? [
+  //       'stories-from-serbia',
+  //       'music-of-hope',
+  //       'hyko',
+  //       'connectivity',
+  //       'stop-femicide',
+  //       'illy',
+  //     ]
+  //   : ['stories-from-serbia', 'music-of-hope', 'hyko', 'connectivity'];
+  // const secondColumnProjects: string[] = isMobile
+  //   ? [
+  //       'events',
+  //       'idf',
+  //       'haleon',
+  //       'education',
+  //       'serbian-paralympics-team',
+  //       'corporate-videos',
+  //     ]
+  //   : ['events', 'idf', 'haleon', 'education'];
+  // const thirdColumnProjects: string[] = isMobile
+  //   ? []
+  //   : ['stop-femicide', 'illy', 'serbian-paralympics-team', 'corporate-videos'];
 
-  const projects: Project[] = await getProjects();
+  // const firstColumnCards: any[] = [];
+  // const secondColumnCards: any[] = [];
+  // const thirdColumnCards: any[] = [];
 
-  projects.forEach((project: any) => {
-    if (firstColumnProjects.includes(project.slug))
-      firstColumnCards.push(project);
-    if (secondColumnProjects.includes(project.slug))
-      secondColumnCards.push(project);
-    if (!isMobile && thirdColumnProjects.includes(project.slug))
-      thirdColumnCards.push(project);
-  });
+  // projects.forEach((project: any) => {
+  //   if (firstColumnProjects.includes(project.slug))
+  //     firstColumnCards.push(project);
+  //   if (secondColumnProjects.includes(project.slug))
+  //     secondColumnCards.push(project);
+  //   if (!isMobile && thirdColumnProjects.includes(project.slug))
+  //     thirdColumnCards.push(project);
+  // });
 
-  firstColumnCards.sort(
-    (a, b) =>
-      firstColumnProjects.indexOf(a.slug) - firstColumnProjects.indexOf(b.slug)
-  );
+  // firstColumnCards.sort(
+  //   (a, b) =>
+  //     firstColumnProjects.indexOf(a.slug) - firstColumnProjects.indexOf(b.slug)
+  // );
 
-  secondColumnCards.sort(
-    (a, b) =>
-      secondColumnProjects.indexOf(a.slug) -
-      secondColumnProjects.indexOf(b.slug)
-  );
+  // secondColumnCards.sort(
+  //   (a, b) =>
+  //     secondColumnProjects.indexOf(a.slug) -
+  //     secondColumnProjects.indexOf(b.slug)
+  // );
 
-  if (!isMobile)
-    thirdColumnCards.sort(
-      (a, b) =>
-        thirdColumnProjects.indexOf(a.slug) -
-        thirdColumnProjects.indexOf(b.slug)
-    );
+  // if (!isMobile)
+  //   thirdColumnCards.sort(
+  //     (a, b) =>
+  //       thirdColumnProjects.indexOf(a.slug) -
+  //       thirdColumnProjects.indexOf(b.slug)
+  //   );
 
-  firstColumnCards.splice(3, 0, pagesCards[3]);
-  secondColumnCards.splice(1, 0, pagesCards[0]);
-  secondColumnCards.splice(4, 0, pagesCards[1]);
+  firstColumnItems.splice(3, 0, pagesCards[3]);
+  secondColumnItems.splice(1, 0, pagesCards[0]);
+  thirdColumnItems.splice(4, 0, pagesCards[1]);
   isMobile
-    ? secondColumnCards.splice(6, 0, pagesCards[2])
-    : thirdColumnCards.splice(1, 0, pagesCards[2]);
+    ? secondColumnItems.splice(6, 0, pagesCards[2])
+    : thirdColumnItems.splice(1, 0, pagesCards[2]);
 
   const priorityIndexes: Number[] = isMobile ? [0, 1, 2] : [0, 1];
 
@@ -100,7 +136,7 @@ export default async function Home() {
     // TODO: refaktorisi, ponavljanje koda
     <main className={styles.main}>
       <ColumnLayout>
-        {firstColumnCards.map((card: any, index: number) => {
+        {firstColumnItems.map((card: any, index: number) => {
           return card.type === 'page' ? (
             <PageCard key={index} content={card} size={card.size} />
           ) : (
@@ -113,7 +149,7 @@ export default async function Home() {
         })}
       </ColumnLayout>
       <ColumnLayout>
-        {secondColumnCards.map((card: any, index: number) => {
+        {secondColumnItems.map((card: any, index: number) => {
           return card.type === 'page' ? (
             <PageCard key={index} content={card} size={card.size} />
           ) : (
@@ -125,9 +161,9 @@ export default async function Home() {
           );
         })}
       </ColumnLayout>
-      {thirdColumnCards.length > 0 && (
+      {thirdColumnItems.length > 0 && (
         <ColumnLayout>
-          {thirdColumnCards.map((card: any, index: number) => {
+          {thirdColumnItems.map((card: any, index: number) => {
             return card.type === 'page' ? (
               <PageCard key={index} content={card} size={card.size} />
             ) : (
