@@ -54,14 +54,15 @@ export default defineType({
           title: 'Column',
           initialValue: 1,
           options: { list: [1, 2, 3] },
+          validation: (rule) => rule.required(),
         },
         {
           name: 'columnOrder',
           type: 'number',
           title: 'Column Order',
+          validation: (rule) => rule.required(),
         },
       ],
-      validation: (rule) => rule.required(),
     }),
     defineField({
       title: 'Mobile Order',
@@ -74,14 +75,15 @@ export default defineType({
           title: 'Column',
           initialValue: 1,
           options: { list: [1, 2] },
+          validation: (rule) => rule.required(),
         },
         {
           name: 'columnOrder',
           type: 'number',
           title: 'Column Order',
+          validation: (rule) => rule.required(),
         },
       ],
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'featuredSize',
