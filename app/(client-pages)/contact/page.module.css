@@ -18,17 +18,6 @@
   color: var(--color__text-main);
 }
 
-/* .contactPhotoWrapper {
-  position: relative;
-  aspect-ratio: 1435 / 613;
-  border-radius: 30px;
-  margin-top: 40px;
-}
-
-.contactPhotoWrapper img {
-  object-fit: cover;
-} */
-
 @media screen and (max-width: 680px) {
   .content {
     padding: 22px 0 0;
@@ -56,9 +45,4 @@
     aspect-ratio: 1 / 1;
     margin-top: 35px;
   }
-
-  /* .contactPhotoWrapper {
-    aspect-ratio: 1 / 1;
-    margin-top: 35px;
-  } */
 }

@@ -33,13 +33,6 @@ export default function Contact() {
 
         <ContactForm />
         <GoogleMap />
-        {/* <div className={styles.contactPhotoWrapper}>
-          <Image
-            src='/roger-directors-about-us-header.webp'
-            alt='Roger Directors Contact Photo'
-            fill
-          />
-        </div> */}
       </section>
     </main>
   );

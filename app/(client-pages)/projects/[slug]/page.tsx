@@ -5,6 +5,7 @@ import { sanityFetch } from '@/utils/sanity/client';
 import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';
 import { Project as ProjectT } from '@/utils/types';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   const projects: ProjectT[] = await sanityFetch({
@@ -36,6 +37,8 @@ export default async function Project({
         description,
         descriptionTitle,
         descriptionExcerpt,
+        'slideImage': slideImage.asset->url,
+        'slideImageAlt' : slideImage.alt,
         images[]{
             alt,
             'url': asset->url,
@@ -75,6 +78,9 @@ export default async function Project({
         <h1>{project.title}</h1>
       </header>
       <article className={styles.article}>
+        {project.slideImage && (
+          <Image src={project.slideImage} alt={project.slideImageAlt} />
+        )}
         {project.videos && (
           <div className={styles.videosWrapper}>
             <VideoSlider videos={project.videos} />

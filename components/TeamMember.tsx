@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './TeamMember.module.css';
 import { useEffect, useRef, useState } from 'react';
 import MuxVideo from '@mux/mux-video-react';
+import { TeamMember as TeamMemberMeta } from '@/utils/types';
 
 export function TeamMember({
   member,
@@ -11,7 +12,7 @@ export function TeamMember({
   toggleBio,
   active,
 }: {
-  member: any;
+  member: TeamMemberMeta;
   index: number;
   toggleBio: (index: number) => void;
   active: number | null;
@@ -55,7 +56,7 @@ export function TeamMember({
 
   return (
     <article
-      key={member.id}
+      key={member._id}
       className={[
         styles.teamMember,
         active !== null && active === index ? styles.active : '',
@@ -66,7 +67,7 @@ export function TeamMember({
       <div className={styles.hoverStateWrapper}>
         <div className={styles.bgImageWrapper}>
           <Image
-            src={`${member.image}`}
+            src={`${member.imageUrl}`}
             alt={member.imageAlt}
             fill
             sizes='(max-width: 991px) 50vw, 33vw'
@@ -77,6 +78,7 @@ export function TeamMember({
         </div>
         <div className={styles.overlay}>
           <h2>{member.name}</h2>
+          <p>{member.position}</p>
         </div>
       </div>
 
@@ -85,7 +87,7 @@ export function TeamMember({
           <MuxVideo
             ref={playerRef as React.RefObject<HTMLVideoElement>}
             playbackId={
-              member.videoPlaybackId ? member.videoPlaybackId : member.video
+              member.videoPlaybackId ? member.videoPlaybackId : member.videoUrl
             }
             loop
             minResolution='1440p'

@@ -30,6 +30,11 @@
   word-spacing: 100vw;
 }
 
+.teamMember .overlay p {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
 .bgImageWrapper {
   position: relative;
   aspect-ratio: 1 / 1;

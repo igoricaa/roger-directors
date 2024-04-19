@@ -7,6 +7,7 @@ import { Link } from 'next-view-transitions';
 import { ThemeChanger } from '@/components/ThemeChanger';
 import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
+import { routes } from '@/utils/data';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -56,14 +57,6 @@ export default function Header() {
   if (!mounted) {
     return null;
   }
-
-  const routes = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about-us' },
-    { name: 'Meet the team', path: '/meet-the-team' },
-    { name: 'Recycle bin', path: '/recycle-bin' },
-    { name: 'Contact', path: '/contact' },
-  ];
 
   const toggleLogos = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -167,7 +160,7 @@ export default function Header() {
               {routes.map((route, index) => (
                 <li
                   key={index}
-                  className={pathname == route.path ? styles.active : ''}
+                  className={pathname == route.path && route.name !== "Projects" ? styles.active : ''}
                 >
                   <Link
                     href={route.path}
@@ -179,8 +172,8 @@ export default function Header() {
               ))}
             </ul>
             <div className={styles.switchersWrapper}>
-              <ThemeChanger closeMenu={() => setMenuOpen(false)}/>
-              {/* <div className={styles.langSwitcher}></div> */}
+              <ThemeChanger closeMenu={() => setMenuOpen(false)} />
+              {/* TODO:  <div className={styles.langSwitcher}></div> */}
             </div>
           </div>
         </div>

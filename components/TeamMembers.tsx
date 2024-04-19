@@ -1,14 +1,14 @@
 'use client';
 
-import {useState } from 'react';
+import { useState } from 'react';
 import styles from './TeamMembers.module.css';
 import { TeamMember } from './TeamMember';
-import { TeamMember as TeamMemberModel } from '@/utils/sanity/fetchData';
+import { TeamMember as TeamMemberMeta } from '@/utils/types';
 
 export default function TeamMembers({
   teamMembers,
 }: {
-  teamMembers: TeamMemberModel[];
+  teamMembers: TeamMemberMeta[];
 }) {
   const [active, setActive] = useState<number | null>(null);
 

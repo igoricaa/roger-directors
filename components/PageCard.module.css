@@ -57,17 +57,17 @@
 }
 
 .contact,
-.blog {
+.thereservoir {
   background-color: #626160;
 }
 
 .contact a,
-.blog a {
+.thereservoir a {
   background-color: #989898;
 }
 
 .contact a:hover,
-.blog a:hover {
+.thereservoir a:hover {
   background-color: #b9b9b9;
 }
 
