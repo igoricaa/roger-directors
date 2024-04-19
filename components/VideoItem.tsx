@@ -85,7 +85,6 @@ export default function VideoItem({
               maxResolution='2160p'
               className={styles.fullVideoPlayer}
               placeholder={undefined}
-              poster='/blur.png'
             />
           </>,
           document.body

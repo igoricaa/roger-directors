@@ -11,7 +11,7 @@ export const ThemeChanger = ({ closeMenu }: { closeMenu: () => void }) => {
       isChecked={theme === 'dark'}
       handleChange={() => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
-        closeMenu();
+        // closeMenu();
       }}
     />
   );
