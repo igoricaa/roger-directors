@@ -43,33 +43,25 @@ export default async function Home() {
   const projects: Project[] = await getProjects();
   const isMobile = isMobileDevice();
 
-  const firstColumnItems: any[] = isMobile
-    ? projects
-        .filter((project) => project.mobileOrder.column === 1)
-        .sort((a, b) => a.mobileOrder.columnOrder - b.mobileOrder.columnOrder)
-    : projects
-        .filter((project) => project.desktopOrder.column === 1)
-        .sort(
-          (a, b) => a.desktopOrder.columnOrder - b.desktopOrder.columnOrder
-        );
+  const filterAndSortProjects = (projects: Project[], columnNumber: number) => {
+    return isMobile
+      ? columnNumber !== 3
+        ? projects
+            .filter((project) => project.mobileOrder.column === columnNumber)
+            .sort(
+              (a, b) => a.mobileOrder.columnOrder - b.mobileOrder.columnOrder
+            )
+        : []
+      : projects
+          .filter((project) => project.desktopOrder.column === columnNumber)
+          .sort(
+            (a, b) => a.desktopOrder.columnOrder - b.desktopOrder.columnOrder
+          );
+  };
 
-  const secondColumnItems: any[] = isMobile
-    ? projects
-        .filter((project) => project.mobileOrder.column === 2)
-        .sort((a, b) => a.mobileOrder.columnOrder - b.mobileOrder.columnOrder)
-    : projects
-        .filter((project) => project.desktopOrder.column === 2)
-        .sort(
-          (a, b) => a.desktopOrder.columnOrder - b.desktopOrder.columnOrder
-        );
-
-  const thirdColumnItems: any[] = isMobile
-    ? []
-    : projects
-        .filter((project) => project.desktopOrder.column === 3)
-        .sort(
-          (a, b) => a.desktopOrder.columnOrder - b.desktopOrder.columnOrder
-        );
+  const firstColumnItems: any[] = filterAndSortProjects(projects, 1);
+  const secondColumnItems: any[] = filterAndSortProjects(projects, 2);
+  const thirdColumnItems: any[] = filterAndSortProjects(projects, 3);
 
   firstColumnItems.splice(3, 0, pagesCards[3]);
   secondColumnItems.splice(1, 0, pagesCards[0]);
@@ -78,52 +70,48 @@ export default async function Home() {
     ? secondColumnItems.splice(6, 0, pagesCards[2])
     : thirdColumnItems.splice(1, 0, pagesCards[2]);
 
-  const priorityIndexes: Number[] = isMobile ? [0, 1, 2] : [0, 1];
+  const priorityIndexes: number[] = isMobile ? [0, 1, 2] : [0, 1];
 
   return (
-    // TODO: refaktorisi, ponavljanje koda
     <main className={styles.main}>
-      <ColumnLayout>
-        {firstColumnItems.map((card: any, index: number) => {
-          return card.type === 'page' ? (
-            <PageCard key={index} content={card} size={card.size} />
-          ) : (
-            <ProjectCard
-              key={index}
-              project={card}
-              priority={priorityIndexes.includes(index)}
-            />
-          );
-        })}
-      </ColumnLayout>
-      <ColumnLayout>
-        {secondColumnItems.map((card: any, index: number) => {
-          return card.type === 'page' ? (
-            <PageCard key={index} content={card} size={card.size} />
-          ) : (
-            <ProjectCard
-              key={index}
-              project={card}
-              priority={priorityIndexes.includes(index)}
-            />
-          );
-        })}
-      </ColumnLayout>
-      {thirdColumnItems.length > 0 && (
-        <ColumnLayout>
-          {thirdColumnItems.map((card: any, index: number) => {
-            return card.type === 'page' ? (
-              <PageCard key={index} content={card} size={card.size} />
-            ) : (
-              <ProjectCard
-                key={index}
-                project={card}
-                priority={priorityIndexes.includes(index)}
-              />
-            );
-          })}
-        </ColumnLayout>
+      <Column
+        columnItems={firstColumnItems}
+        priorityIndexes={priorityIndexes}
+      />
+      <Column
+        columnItems={secondColumnItems}
+        priorityIndexes={priorityIndexes}
+      />
+      {!isMobile && (
+        <Column
+          columnItems={thirdColumnItems}
+          priorityIndexes={priorityIndexes}
+        />
       )}
     </main>
   );
 }
+
+const Column = ({
+  columnItems,
+  priorityIndexes,
+}: {
+  columnItems: any[];
+  priorityIndexes: number[];
+}) => {
+  return (
+    <ColumnLayout>
+      {columnItems.map((item: any, index: number) => {
+        return item.type === 'page' ? (
+          <PageCard key={index} content={item} size={item.size} />
+        ) : (
+          <ProjectCard
+            key={index}
+            project={item}
+            priority={priorityIndexes.includes(index)}
+          />
+        );
+      })}
+    </ColumnLayout>
+  );
+};

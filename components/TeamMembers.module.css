@@ -1,6 +1,4 @@
 .teamMembers {
-    /* display: flex;
-    flex-wrap: wrap; */
     --gap: 1.5rem;
     --padding: 38px;
     gap: var(--gap);

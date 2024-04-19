@@ -15,7 +15,6 @@ import { VideoPair } from '@/utils/types';
 
 const OPTIONS: EmblaOptionsType = {
   containScroll: false,
-  loop: true,
   align: 'start',
 };
 
@@ -45,7 +44,10 @@ export default function VideoSlider({ videos }: { videos: VideoPair[] }) {
 
       {videos.length > 1 && (
         <div className={styles.emblaControls}>
-          <PrevButton onClick={onPrevButtonClick} />
+          <PrevButton
+            onClick={onPrevButtonClick}
+            disabled={selectedIndex === 0}
+          />
           <div className={styles.emblaDots}>
             {scrollSnaps.map((_, index) => (
               <DotButton
@@ -58,7 +60,10 @@ export default function VideoSlider({ videos }: { videos: VideoPair[] }) {
               />
             ))}
           </div>
-          <NextButton onClick={onNextButtonClick} />
+          <NextButton
+            onClick={onNextButtonClick}
+            disabled={selectedIndex + 1 >= videos.length}
+          />
         </div>
       )}
     </section>

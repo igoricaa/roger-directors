@@ -8,7 +8,6 @@ type UsePrevNextButtonsType = {
   onNextButtonClick: () => void;
 };
 
-
 export const usePrevNextButtons = (
   emblaApi: EmblaCarouselType | undefined
 ): UsePrevNextButtonsType => {
