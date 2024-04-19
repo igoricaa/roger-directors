@@ -61,6 +61,7 @@ export default defineType({
           title: 'Column Order',
         },
       ],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       title: 'Mobile Order',
@@ -80,6 +81,7 @@ export default defineType({
           title: 'Column Order',
         },
       ],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'featuredSize',
