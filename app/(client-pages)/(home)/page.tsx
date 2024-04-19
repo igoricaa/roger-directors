@@ -16,9 +16,13 @@ export default async function Home() {
         'id': _id,
         title,
         slug,
-        'order': {
-          'column': order.column,
-          'columnOrder': order.columnOrder
+        'desktopOrder': {
+          'column': desktopOrder.column,
+          'columnOrder': desktopOrder.columnOrder
+        },
+        'mobileOrder': {
+          'column': mobileOrder.column,
+          'columnOrder': mobileOrder.columnOrder
         },
         'featuredContent': {
           featuredSize,
@@ -34,7 +38,6 @@ export default async function Home() {
       tags: ['project'],
     });
 
-    // console.log('KONZOLA5' + JSON.stringify(projects[0].featuredContent));
     return projects;
   }
   const projects: Project[] = await getProjects();
@@ -68,64 +71,9 @@ export default async function Home() {
           (a, b) => a.desktopOrder.columnOrder - b.desktopOrder.columnOrder
         );
 
-  // const firstColumnProjects: string[] = isMobile
-  //   ? [
-  //       'stories-from-serbia',
-  //       'music-of-hope',
-  //       'hyko',
-  //       'connectivity',
-  //       'stop-femicide',
-  //       'illy',
-  //     ]
-  //   : ['stories-from-serbia', 'music-of-hope', 'hyko', 'connectivity'];
-  // const secondColumnProjects: string[] = isMobile
-  //   ? [
-  //       'events',
-  //       'idf',
-  //       'haleon',
-  //       'education',
-  //       'serbian-paralympics-team',
-  //       'corporate-videos',
-  //     ]
-  //   : ['events', 'idf', 'haleon', 'education'];
-  // const thirdColumnProjects: string[] = isMobile
-  //   ? []
-  //   : ['stop-femicide', 'illy', 'serbian-paralympics-team', 'corporate-videos'];
-
-  // const firstColumnCards: any[] = [];
-  // const secondColumnCards: any[] = [];
-  // const thirdColumnCards: any[] = [];
-
-  // projects.forEach((project: any) => {
-  //   if (firstColumnProjects.includes(project.slug))
-  //     firstColumnCards.push(project);
-  //   if (secondColumnProjects.includes(project.slug))
-  //     secondColumnCards.push(project);
-  //   if (!isMobile && thirdColumnProjects.includes(project.slug))
-  //     thirdColumnCards.push(project);
-  // });
-
-  // firstColumnCards.sort(
-  //   (a, b) =>
-  //     firstColumnProjects.indexOf(a.slug) - firstColumnProjects.indexOf(b.slug)
-  // );
-
-  // secondColumnCards.sort(
-  //   (a, b) =>
-  //     secondColumnProjects.indexOf(a.slug) -
-  //     secondColumnProjects.indexOf(b.slug)
-  // );
-
-  // if (!isMobile)
-  //   thirdColumnCards.sort(
-  //     (a, b) =>
-  //       thirdColumnProjects.indexOf(a.slug) -
-  //       thirdColumnProjects.indexOf(b.slug)
-  //   );
-
   firstColumnItems.splice(3, 0, pagesCards[3]);
   secondColumnItems.splice(1, 0, pagesCards[0]);
-  thirdColumnItems.splice(4, 0, pagesCards[1]);
+  secondColumnItems.splice(4, 0, pagesCards[1]);
   isMobile
     ? secondColumnItems.splice(6, 0, pagesCards[2])
     : thirdColumnItems.splice(1, 0, pagesCards[2]);
