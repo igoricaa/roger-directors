@@ -58,7 +58,6 @@ export default function VideoItem({
         placeholder={undefined}
         className={[styles.videoPlayer, 'videoPlayer', selectorClass].join(' ')}
         onClick={handleVideoClick}
-        poster='/blur.png'
       />
 
       {isFullScreen &&

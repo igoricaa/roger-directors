@@ -13,7 +13,6 @@ export default function AboutUs() {
             src={headerImg}
             alt='About Us'
             priority={true}
-            placeholder='blur'
             fill
             sizes='100vw'
           />

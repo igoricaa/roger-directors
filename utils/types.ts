@@ -32,20 +32,20 @@ type ReservoirProjectPreviewContent = {
 
 export type Project = {
   title: string;
-  slug?: string;
-  loopText?: string;
-  description?: string;
-  descriptionTitle?: string;
-  descriptionExcerpt?: string;
+  slug: string;
+  loopText: string;
+  description: string;
+  descriptionTitle: string;
+  descriptionExcerpt: string;
   desktopOrder: ProjectOrder;
   mobileOrder: ProjectOrder;
   featuredContent: ProjectFeaturedContent;
-  images?: ImageMeta[];
-  slideImage?: ImageMeta;
-  videos?: VideoPair[];
-  prev?: string;
-  next?: string;
-  previewContent?: ReservoirProjectPreviewContent;
+  images: ImageMeta[];
+  slideImage: ImageMeta;
+  videos: VideoPair[];
+  prev: string;
+  next: string;
+  previewContent: ReservoirProjectPreviewContent;
 };
 
 export type PageCard = {

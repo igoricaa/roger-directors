@@ -16,9 +16,13 @@ export const toggleVideos = (
   if (!currentVideo.paused) currentVideo.pause();
   if (nextVideo.paused) nextVideo.play();
 };
-const isMobile = isMobileDevice();
 
-export const filterAndSortProjects = (projects: Project[], columnNumber: number) => {
+export const filterAndSortProjects = (
+  projects: Project[],
+  columnNumber: number
+) => {
+  const isMobile = isMobileDevice();
+
   return isMobile
     ? columnNumber !== 3
       ? projects

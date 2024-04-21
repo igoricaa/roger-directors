@@ -72,8 +72,6 @@ export function TeamMember({
             fill
             sizes='(max-width: 991px) 50vw, 33vw'
             priority={[...Array(6).keys()].includes(index) ? true : false}
-            placeholder='blur'
-            blurDataURL='/blur.png'
           />
         </div>
         <div className={styles.overlay}>
@@ -94,7 +92,6 @@ export function TeamMember({
             maxResolution='2160p'
             playsInline
             placeholder={undefined}
-            poster='/blur.png'
           />
         </div>
         <div className={styles.memberInfoWrapper}>
