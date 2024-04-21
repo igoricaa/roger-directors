@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useCallback } from 'react';
 import styles from './EmblaCarouselArrowButtons.module.css';
 import { EmblaCarouselType } from 'embla-carousel';
-import { toggleVideos } from '@/utils/helpers';
+import { toggleVideos } from '@/utils/utils';
 
 type UsePrevNextButtonsType = {
   onPrevButtonClick: () => void;

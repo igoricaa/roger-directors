@@ -25,22 +25,27 @@ type ProjectFeaturedContent = {
   featuredVideo: Video;
 };
 
+type ReservoirProjectPreviewContent = {
+  previewImage: ImageMeta;
+  previewVideo: Video;
+};
+
 export type Project = {
-  _id: string;
   title: string;
-  slug: string;
-  loopText: string;
-  description: string;
-  descriptionTitle: string;
-  descriptionExcerpt: string;
+  slug?: string;
+  loopText?: string;
+  description?: string;
+  descriptionTitle?: string;
+  descriptionExcerpt?: string;
   desktopOrder: ProjectOrder;
   mobileOrder: ProjectOrder;
   featuredContent: ProjectFeaturedContent;
-  images: ImageMeta[];
-  slideImage: ImageMeta;
-  videos: VideoPair[];
-  prev: string;
-  next: string;
+  images?: ImageMeta[];
+  slideImage?: ImageMeta;
+  videos?: VideoPair[];
+  prev?: string;
+  next?: string;
+  previewContent?: ReservoirProjectPreviewContent;
 };
 
 export type PageCard = {

@@ -1,18 +1,17 @@
+import styles from './page.module.css';
 import { sanityFetch } from '@/utils/sanity/client';
-import { isMobileDevice } from '@/utils/isMobile';
 import { Project } from '@/utils/types';
-import { pagesCards } from '@/utils/data';
 import { filterAndSortProjects } from '@/utils/utils';
 import ColumnsLayout from '@/components/ColumnsLayout';
 
-export default async function Home() {
-  async function getProjects() {
+export default async function Reservoir() {
+  async function getReservoirProjects() {
     'use server';
 
     const projects: Project[] = await sanityFetch({
-      query: `*[_type == "project"]{
+      query: `*[_type == "reservoirProject"]{
+        'id': _id,
         title,
-        slug,
         'desktopOrder': {
           'column': desktopOrder.column,
           'columnOrder': desktopOrder.columnOrder
@@ -30,26 +29,27 @@ export default async function Home() {
           'featuredVideo': {
             'playbackId': featuredVideo.video.asset->playbackId
           },
+        },
+        'previewContent': {
+          'previewImage': {
+            'url': previewImage.asset->url,
+            'alt': previewImage.alt,
+          },
+          'previewVideo': {
+            'playbackId': previewVideo.video.asset->playbackId
+          },
         }
       }`,
-      tags: ['project'],
+      tags: ['reservoirProject'],
     });
 
     return projects;
   }
-  const projects: Project[] = await getProjects();
-  const isMobile = isMobileDevice();
+  const projects: Project[] = await getReservoirProjects();
 
   const firstColumnItems: any[] = filterAndSortProjects(projects, 1);
   const secondColumnItems: any[] = filterAndSortProjects(projects, 2);
   const thirdColumnItems: any[] = filterAndSortProjects(projects, 3);
-
-  firstColumnItems.splice(3, 0, pagesCards[3]);
-  secondColumnItems.splice(1, 0, pagesCards[0]);
-  secondColumnItems.splice(4, 0, pagesCards[1]);
-  isMobile
-    ? secondColumnItems.splice(6, 0, pagesCards[2])
-    : thirdColumnItems.splice(1, 0, pagesCards[2]);
 
   return (
     <ColumnsLayout

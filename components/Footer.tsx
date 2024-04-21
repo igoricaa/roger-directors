@@ -41,7 +41,7 @@ export const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link href='/recycle-bin'>
+            <Link href='/the-reservoir'>
               <span>Recycle bin</span>
             </Link>
           </li>

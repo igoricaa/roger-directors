@@ -5,7 +5,7 @@ import React, {
   useState,
 } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
-import { toggleVideos } from '@/utils/helpers';
+import { toggleVideos } from '@/utils/utils';
 
 type UseDotButtonType = {
   selectedIndex: number;

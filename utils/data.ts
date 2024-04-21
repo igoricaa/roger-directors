@@ -39,6 +39,6 @@ export const routes: Route[] = [
   { name: 'Projects', path: '/' },
   { name: 'About Us', path: '/about-us' },
   { name: 'Meet the team', path: '/meet-the-team' },
-  { name: 'The Reservoir', path: '/recycle-bin' },
+  { name: 'The Reservoir', path: '/the-reservoir' },
   { name: 'Contact', path: '/contact' },
 ];
