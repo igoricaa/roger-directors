@@ -189,13 +189,6 @@
   transform: scale(1) rotate(0.001deg);
 }
 
-[data-theme='light'] .modalBlockBackground {
-  width: 65px;
-  height: 65px;
-  right: 1px;
-  top: 1px;
-}
-
 .mainNavigation.active .modalBlockBackground {
   width: 100%;
   height: 100%;
@@ -331,11 +324,6 @@
     height: 55px;
   }
 
-  [data-theme='light'] .modalBlockBackground {
-    width: 53px;
-    height: 53px;
-  }
-
   .switchersWrapper {
     gap: 80px;
     margin-top: 36px;
@@ -402,11 +390,6 @@
   .modalBlockBackground {
     width: 3rem;
     height: 3rem;
-  }
-
-  [data-theme='light'] .modalBlockBackground {
-    width: 46px;
-    height: 46px;
   }
 
   .modalSmallTitle {
