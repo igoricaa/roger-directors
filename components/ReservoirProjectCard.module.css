@@ -1,0 +1,125 @@
+.card {
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.card > .contentWrapper {
+  display: flex;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.card > img {
+  width: 100%;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.small {
+  aspect-ratio: 813 / 592;
+}
+
+.medium {
+  aspect-ratio: 599 / 700;
+}
+
+.large {
+  aspect-ratio: 599 / 934;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+}
+
+.projectVideo {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  object-fit: cover;
+  --controls: none;
+}
+
+.reservoir {
+  cursor: pointer;
+}
+
+.reservoir .projectVideo {
+  width: 100%;
+}
+
+.card > .contentWrapper:hover .projectVideo {
+  opacity: 1;
+}
+
+.card > .contentWrapper:hover img:not(.noVideo) {
+  opacity: 0;
+}
+
+.lightbox {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.lightbox img {
+  position: absolute;
+  transform: scale(0); /* translate(0, 0) */
+  transition: all 0.5s ease;
+  max-width: 50vw;
+  margin: auto;
+}
+
+.lightbox .previewReservoirProjectVideo {
+  position: absolute;
+  /* translate(0, 0); */
+  transform: scale(0);
+  transition: all 0.5s ease;
+  max-width: 50vw;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+  position: fixed;
+}
+
+.lightbox.active img {
+  /* translate(50%, -50%) */
+  transform: scale(1);
+  /* top: 50%; */
+}
+
+.lightbox.active .previewReservoirProjectVideo {
+  /* translate(50%, -50%) */
+  transform: scale(1);
+  /* top: 50%; */
+}
+
+@media screen and (max-width: 991px) {
+  .card {
+    margin-top: 1rem;
+  }
+  .card > .contentWrapper:hover img:not(.noVideo) {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .card {
+    margin-top: 0.5rem;
+  }
+
+  .card > .contentWrapper {
+    border-radius: 15px;
+  }
+}

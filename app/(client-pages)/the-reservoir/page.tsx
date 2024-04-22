@@ -1,4 +1,3 @@
-import styles from './page.module.css';
 import { sanityFetch } from '@/utils/sanity/client';
 import { Project } from '@/utils/types';
 import { filterAndSortProjects } from '@/utils/utils';
@@ -11,6 +10,7 @@ export default async function Reservoir() {
     const projects: Project[] = await sanityFetch({
       query: `*[_type == "reservoirProject"]{
         'id': _id,
+        'type': _type,
         title,
         'desktopOrder': {
           'column': desktopOrder.column,

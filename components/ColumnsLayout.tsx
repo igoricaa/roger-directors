@@ -2,6 +2,7 @@ import { isMobileDevice } from '@/utils/isMobile';
 import styles from './ColumnsLayout.module.css';
 import ProjectCard from './ProjectCard';
 import { PageCard } from './PageCard';
+import ReservoirProjectCard from './ReservoirProjectCard';
 
 export default function ColumnsLayout({
   firstColumnItems,
@@ -47,8 +48,14 @@ const Column = ({
       {columnItems.map((item: any, index: number) => {
         return item.type === 'page' ? (
           <PageCard key={index} content={item} size={item.size} />
-        ) : (
+        ) : item.type === 'project' ? (
           <ProjectCard
+            key={index}
+            project={item}
+            priority={priorityIndexes.includes(index)}
+          />
+        ) : (
+          <ReservoirProjectCard
             key={index}
             project={item}
             priority={priorityIndexes.includes(index)}

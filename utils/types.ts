@@ -32,6 +32,7 @@ type ReservoirProjectPreviewContent = {
 
 export type Project = {
   title: string;
+  type: string;
   slug: string;
   loopText: string;
   description: string;

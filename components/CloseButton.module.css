@@ -1,0 +1,34 @@
+.closeFullscreenButton {
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  z-index: 1001;
+  height: 3rem;
+  width: 3rem;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: var(--animation-smooth), background-color 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.closeFullscreenButton .bar {
+  position: absolute;
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--burger__bar-color);
+  transition: var(--animation-smooth), background-color 0.2s ease-in-out;
+}
+
+.closeFullscreenButton .bar:nth-child(1) {
+  transform: translateY(0em) rotate(45deg);
+}
+
+.closeFullscreenButton .bar:nth-child(2) {
+  transform: translateY(0em) rotate(-45deg);
+}

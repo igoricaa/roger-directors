@@ -3,7 +3,7 @@
   margin-top: 1.5rem;
 }
 
-.card > a {
+.card > .contentWrapper {
   display: flex;
   position: relative;
   height: 100%;
@@ -11,7 +11,7 @@
   border-radius: 30px;
 }
 
-.card img {
+.card > img {
   width: 100%;
   transition: opacity 0.5s ease;
   opacity: 1;
@@ -40,15 +40,11 @@
   --controls: none;
 }
 
-.projectVideo mux-video video {
-  object-fit: cover;
-}
-
-.card > a:hover .projectVideo {
+.card > .contentWrapper:hover .projectVideo {
   opacity: 1;
 }
 
-.card > a:hover img:not(.noVideo) {
+.card > .contentWrapper:hover img:not(.noVideo) {
   opacity: 0;
 }
 
@@ -56,7 +52,7 @@
   .card {
     margin-top: 1rem;
   }
-  .card > a:hover img:not(.noVideo) {
+  .card > .contentWrapper:hover img:not(.noVideo) {
     opacity: 1;
   }
 }
@@ -66,7 +62,7 @@
     margin-top: 0.5rem;
   }
 
-  .card > a {
+  .card > .contentWrapper {
     border-radius: 15px;
   }
 }

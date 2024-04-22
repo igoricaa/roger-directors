@@ -12,6 +12,7 @@ export default async function Home() {
     const projects: Project[] = await sanityFetch({
       query: `*[_type == "project"]{
         title,
+        'type': _type,
         slug,
         'desktopOrder': {
           'column': desktopOrder.column,

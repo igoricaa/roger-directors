@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { VideoPair } from '@/utils/types';
 import MuxVideo from '@mux/mux-video-react';
+import CloseButton from './CloseButton';
 
 export default function VideoItem({
   videos,
@@ -21,7 +22,7 @@ export default function VideoItem({
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        closeFullscreenHandler();
+        closeFullscreen();
       }
     };
     document.addEventListener('keydown', handleKeyDown);
@@ -31,7 +32,7 @@ export default function VideoItem({
     };
   }, [playerRef]);
 
-  const closeFullscreenHandler = () => {
+  const closeFullscreen = () => {
     setIsFullScreen(false);
     document.body.classList.remove('stopScrolling');
   };
@@ -63,14 +64,7 @@ export default function VideoItem({
       {isFullScreen &&
         createPortal(
           <>
-            <button
-              className={styles.closeFullscreenButton}
-              onClick={closeFullscreenHandler}
-            >
-              <div className={styles.bar}></div>
-              <div className={styles.bar}></div>
-            </button>
-
+            <CloseButton onClickHandler={closeFullscreen}  />
             <MuxVideo
               playbackId={
                 videos.fullVideo.url
