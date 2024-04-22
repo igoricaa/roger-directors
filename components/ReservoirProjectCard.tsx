@@ -16,10 +16,11 @@ export default function ReservoirProjectCard({
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [showLightbox, setShowLightbox] = useState(false);
+  const [lightBoxRatio, setLightBoxRatio] = useState(16 / 9);
   const lightboxRef = useRef<HTMLImageElement | HTMLVideoElement>(null);
 
-  const ReservoirProjectLightboxContent = dynamic(
-    () => import('./ReservoirProjectLightboxContent')
+  const ReservoirProjectLightboxVideo = dynamic(
+    () => import('./ReservoirProjectLightboxVideo')
   );
 
   const handleClickOutside = useCallback((event: any) => {
@@ -49,6 +50,10 @@ export default function ReservoirProjectCard({
       if (!lightboxRef.current.paused) lightboxRef.current.pause();
     }
   };
+
+  const previewVideo =
+    project.previewContent.previewVideo.playbackId ||
+    project.previewContent.previewVideo.url;
 
   return (
     <article
@@ -98,15 +103,37 @@ export default function ReservoirProjectCard({
           )}
         </div>
 
-        {showLightbox && (
-          <div className={[styles.lightbox, styles.active].join(' ')}>
-            <ReservoirProjectLightboxContent
-              lightboxRef={lightboxRef as React.Ref<HTMLImageElement>}
+        <div
+          className={[styles.lightbox, showLightbox ? styles.active : ''].join(
+            ' '
+          )}
+        >
+          {!previewVideo && project.previewContent.previewImage.url && (
+            <Image
+              src={project.previewContent.previewImage.url}
+              alt={project.previewContent.previewImage.alt}
+              ref={lightboxRef as React.Ref<HTMLImageElement>}
+              width={500}
+              height={300 / lightBoxRatio}
+              style={{
+                width: '100%',
+                height: 'auto',
+                aspectRatio: lightBoxRatio,
+              }}
+              sizes='(max-width: 991px) 100vw, 50vw'
+              onLoadingComplete={({ naturalWidth, naturalHeight }) =>
+                setLightBoxRatio(naturalWidth / naturalHeight)
+              }
+            />
+          )}
+          {previewVideo && (
+            <ReservoirProjectLightboxVideo
+              lightboxRef={lightboxRef as React.Ref<HTMLVideoElement>}
               project={project}
               closeLightbox={closeLightbox}
             />
-          </div>
-        )}
+          )}
+        </div>
       </>
     </article>
   );
