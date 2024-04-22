@@ -5,7 +5,7 @@ import styles from './ReservoirProjectCard.module.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import MuxVideo from '@mux/mux-video-react';
 import { Project } from '@/utils/types';
-import CloseButton from './CloseButton';
+import dynamic from 'next/dynamic';
 
 export default function ReservoirProjectCard({
   project,
@@ -16,8 +16,11 @@ export default function ReservoirProjectCard({
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [showLightbox, setShowLightbox] = useState(false);
-  const [lightBoxRatio, setLightBoxRatio] = useState(16 / 9);
   const lightboxRef = useRef<HTMLImageElement | HTMLVideoElement>(null);
+
+  const ReservoirProjectLightboxContent = dynamic(
+    () => import('./ReservoirProjectLightboxContent')
+  );
 
   const handleClickOutside = useCallback((event: any) => {
     if (
@@ -46,10 +49,6 @@ export default function ReservoirProjectCard({
       if (!lightboxRef.current.paused) lightboxRef.current.pause();
     }
   };
-
-  const previewVideo =
-    project.previewContent.previewVideo.playbackId ||
-    project.previewContent.previewVideo.url;
 
   return (
     <article
@@ -99,45 +98,20 @@ export default function ReservoirProjectCard({
           )}
         </div>
 
-        <div
-          className={[styles.lightbox, showLightbox ? styles.active : ''].join(
-            ' '
-          )}
-        >
-          {!previewVideo && project.previewContent.previewImage.url && (
-            <Image
-              src={project.previewContent.previewImage.url}
-              alt={project.previewContent.previewImage.alt}
-              ref={lightboxRef as React.Ref<HTMLImageElement>}
-              width={500}
-              height={300 / lightBoxRatio}
-              style={{
-                width: '100%',
-                height: 'auto',
-                aspectRatio: lightBoxRatio,
-              }}
-              sizes='(max-width: 991px) 100vw, 50vw'
-              onLoadingComplete={({ naturalWidth, naturalHeight }) =>
-                setLightBoxRatio(naturalWidth / naturalHeight)
-              }
+        {showLightbox && (
+          <div
+            className={[
+              styles.lightbox,
+              showLightbox ? styles.active : '',
+            ].join(' ')}
+          >
+            <ReservoirProjectLightboxContent
+              lightboxRef={lightboxRef as React.Ref<HTMLImageElement>}
+              project={project}
+              closeLightbox={closeLightbox}
             />
-          )}
-          {previewVideo && (
-            <MuxVideo
-              ref={lightboxRef as React.Ref<HTMLVideoElement>}
-              playbackId={project.previewContent.previewVideo.playbackId}
-              controls
-              disablePictureInPicture
-              autoPlay
-              minResolution='1440p'
-              maxResolution='2160p'
-              className={styles.previewReservoirProjectVideo}
-              placeholder={undefined}
-            />
-          )}
-
-          <CloseButton onClickHandler={closeLightbox} />
-        </div>
+          </div>
+        )}
       </>
     </article>
   );
