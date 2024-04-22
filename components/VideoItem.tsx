@@ -2,10 +2,9 @@
 
 import styles from './VideoItem.module.css';
 import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
 import { VideoPair } from '@/utils/types';
 import MuxVideo from '@mux/mux-video-react';
-import CloseButton from './CloseButton';
+import dynamic from 'next/dynamic';
 
 export default function VideoItem({
   videos,
@@ -18,6 +17,9 @@ export default function VideoItem({
 }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const playerRef = useRef<HTMLVideoElement>(null);
+  const ProjectFullscreenVideo = dynamic(
+    () => import('./ProjectFullscreenVideo')
+  );
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -61,27 +63,12 @@ export default function VideoItem({
         onClick={handleVideoClick}
       />
 
-      {isFullScreen &&
-        createPortal(
-          <>
-            <CloseButton onClickHandler={closeFullscreen}  />
-            <MuxVideo
-              playbackId={
-                videos.fullVideo.url
-                  ? videos.fullVideo.url
-                  : videos.fullVideo.playbackId
-              }
-              controls
-              disablePictureInPicture
-              autoPlay
-              minResolution='1440p'
-              maxResolution='2160p'
-              className={styles.fullVideoPlayer}
-              placeholder={undefined}
-            />
-          </>,
-          document.body
-        )}
+      {isFullScreen && (
+        <ProjectFullscreenVideo
+          video={videos.fullVideo}
+          closeFullscreen={closeFullscreen}
+        />
+      )}
     </>
   );
 }

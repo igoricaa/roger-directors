@@ -99,12 +99,7 @@ export default function ReservoirProjectCard({
         </div>
 
         {showLightbox && (
-          <div
-            className={[
-              styles.lightbox,
-              showLightbox ? styles.active : '',
-            ].join(' ')}
-          >
+          <div className={[styles.lightbox, styles.active].join(' ')}>
             <ReservoirProjectLightboxContent
               lightboxRef={lightboxRef as React.Ref<HTMLImageElement>}
               project={project}

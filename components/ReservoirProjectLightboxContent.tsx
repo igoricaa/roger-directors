@@ -1,4 +1,4 @@
-import styles from './AccordionItem.module.css';
+import styles from './ReservoirProjectCard.module.css';
 import { Project } from '@/utils/types';
 import MuxVideo from '@mux/mux-video-react';
 import Image from 'next/image';
