@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import ProjectDescriptionContainer from '@/components/ProjectDescriptionContainer';
-import { Link } from 'next-view-transitions';
+import Link from '@/components/Link';
 import { sanityFetch } from '@/utils/sanity/client';
 import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';

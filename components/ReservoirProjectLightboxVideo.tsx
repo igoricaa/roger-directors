@@ -1,11 +1,9 @@
 import styles from './ReservoirProjectCard.module.css';
 import { Project } from '@/utils/types';
 import MuxVideo from '@mux/mux-video-react';
-import CloseButton from './CloseButton';
 
 export default function ReservoirProjectLightboxVideo({
   project,
-  closeLightbox,
   lightboxRef,
 }: {
   project: Project;
@@ -19,14 +17,11 @@ export default function ReservoirProjectLightboxVideo({
         playbackId={project.previewContent.previewVideo.playbackId}
         controls
         disablePictureInPicture
-        autoPlay
         minResolution='1440p'
         maxResolution='2160p'
         className={styles.previewReservoirProjectVideo}
         placeholder={undefined}
       />
-
-      <CloseButton onClickHandler={closeLightbox} />
     </>
   );
 }

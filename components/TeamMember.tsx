@@ -5,6 +5,9 @@ import styles from './TeamMember.module.css';
 import { useEffect, useRef, useState } from 'react';
 import MuxVideo from '@mux/mux-video-react';
 import { TeamMember as TeamMemberMeta } from '@/utils/types';
+import muteIcon from '@/public/mute-icon.svg';
+import unmuteIcon from '@/public/unmute-icon.svg';
+import replayIcon from '@/public/replay-icon.svg';
 
 export function TeamMember({
   member,
@@ -18,7 +21,10 @@ export function TeamMember({
   active: number | null;
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isVideoMuted, setIsVideoMuted] = useState(false);
   const playerRef = useRef<HTMLVideoElement>(null);
+  const videoWrapperRef = useRef<HTMLDivElement>(null);
+  const isActive = active !== null && active === index;
 
   useEffect(() => {
     if (typeof window !== 'undefined')
@@ -26,22 +32,35 @@ export function TeamMember({
 
     if (playerRef.current) {
       const video = playerRef.current as HTMLVideoElement;
-      if (active !== null && active === index) {
+      if (isActive) {
         !isDesktop && playerRef.current?.scrollIntoView({ behavior: 'smooth' });
         video.play();
       } else {
         video.pause();
       }
     }
-  }, [active, index, isDesktop]);
+  }, [isActive, index, isDesktop]);
 
-  const teamMemberClickHandler = (index: number) => {
-    toggleBio(index);
+  const teamMemberClickHandler = (index: number, clickEvent?: any) => {
+    if (
+      clickEvent &&
+      videoWrapperRef.current &&
+      !videoWrapperRef.current.contains(clickEvent.target)
+    ) {
+      toggleBio(index);
+    }
+
     playerRef.current?.scrollIntoView({
       behavior: 'smooth',
       block: 'center',
       inline: 'center',
     });
+  };
+
+  const replayVideoHandler = () => {
+    const video = playerRef.current as HTMLVideoElement;
+    video.currentTime = 0;
+    video.play();
   };
 
   const slideClass = isDesktop
@@ -59,10 +78,10 @@ export function TeamMember({
       key={member._id}
       className={[
         styles.teamMember,
-        active !== null && active === index ? styles.active : '',
+        isActive ? styles.active : '',
         index % 2 !== 0 ? styles.odd : '',
       ].join(' ')}
-      onClick={() => teamMemberClickHandler(index)}
+      onClick={(event) => teamMemberClickHandler(index, event)}
     >
       <div className={styles.hoverStateWrapper}>
         <div className={styles.bgImageWrapper}>
@@ -81,18 +100,39 @@ export function TeamMember({
       </div>
 
       <div className={[styles.bioWrapper, slideClass].join(' ')}>
-        <div className={styles.bioVideoWrapper}>
+        <div ref={videoWrapperRef} className={styles.bioVideoWrapper}>
+          <div
+            className={[
+              styles.videoControlButton,
+              styles.replayVideoButton,
+            ].join(' ')}
+            onClick={replayVideoHandler}
+          >
+            <Image src={replayIcon} alt='Replay video' />
+          </div>
           <MuxVideo
             ref={playerRef as React.RefObject<HTMLVideoElement>}
             playbackId={
               member.videoPlaybackId ? member.videoPlaybackId : member.videoUrl
             }
+            muted={isVideoMuted}
             loop
             minResolution='1440p'
             maxResolution='2160p'
             playsInline
             placeholder={undefined}
           />
+          <div
+            className={[styles.videoControlButton, styles.muteVideoButton].join(
+              ' '
+            )}
+            onClick={() => setIsVideoMuted(!isVideoMuted)}
+          >
+            <Image
+              src={isVideoMuted ? muteIcon : unmuteIcon}
+              alt='Mute video'
+            />
+          </div>
         </div>
         <div className={styles.memberInfoWrapper}>
           <h2>{member.name}</h2>

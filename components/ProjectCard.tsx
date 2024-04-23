@@ -2,11 +2,10 @@
 
 import Image from 'next/image';
 import styles from './ProjectCard.module.css';
-import { Link } from 'next-view-transitions';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import Link from '@/components/Link';
+import { useEffect, useState } from 'react';
 import MuxVideo from '@mux/mux-video-react';
 import { Project } from '@/utils/types';
-import { usePathname } from 'next/navigation';
 
 export default function ProjectCard({
   project,
@@ -16,7 +15,6 @@ export default function ProjectCard({
   priority: boolean;
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
-  const lightboxRef = useRef<HTMLImageElement | HTMLVideoElement>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

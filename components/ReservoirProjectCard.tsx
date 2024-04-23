@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import MuxVideo from '@mux/mux-video-react';
 import { Project } from '@/utils/types';
 import dynamic from 'next/dynamic';
+import CloseButton from './CloseButton';
 
 export default function ReservoirProjectCard({
   project,
@@ -133,6 +134,7 @@ export default function ReservoirProjectCard({
               closeLightbox={closeLightbox}
             />
           )}
+          <CloseButton onClickHandler={closeLightbox} />
         </div>
       </>
     </article>

@@ -239,7 +239,7 @@
   opacity: 0.4;
 }
 
-.mobileMenuWrapper ul li a > span {
+.mobileMenuWrapper ul li a {
   font-size: calc(var(--menu__font-size) * 0.25);
   color: #232323;
   transition: all var(--animation-smooth), color 0.2s ease-in-out;
@@ -249,11 +249,11 @@
   text-transform: uppercase;
 }
 
-.mobileMenuWrapper ul li.active a > span {
+.mobileMenuWrapper ul li.active a {
   text-transform: none;
 }
 
-.mobileMenuWrapper ul li a span::before {
+.mobileMenuWrapper ul li a::before {
   content: '';
   position: absolute;
   right: 0;
@@ -267,11 +267,11 @@
     background-color 0.2s ease-in-out;
 }
 
-.mobileMenuWrapper ul li:hover a span::before {
+.mobileMenuWrapper ul li:hover a::before {
   transform: translate(calc(50%), -50%) scale(1) rotate(0.001deg);
 }
 
-.mobileMenuWrapper ul li.active a span::before {
+.mobileMenuWrapper ul li.active a::before {
   transform: translate(calc(50%), -50%) scale(1) rotate(0.001deg);
   opacity: 0.5;
 }

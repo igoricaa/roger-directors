@@ -1,10 +1,10 @@
 .closeFullscreenButton {
   position: fixed;
-  top: 3rem;
-  right: 3rem;
+  top: 141px;
+  right: 38px;
   z-index: 1001;
-  height: 3rem;
-  width: 3rem;
+  height: 67px;
+  width: 67px;
   background-color: #fff;
   border-radius: 50%;
   transition: var(--animation-smooth), background-color 0.2s ease-in-out;
@@ -31,4 +31,22 @@
 
 .closeFullscreenButton .bar:nth-child(2) {
   transform: translateY(0em) rotate(-45deg);
+}
+
+@media screen and (max-width: 991px) {
+  .closeFullscreenButton {
+    width: 55px;
+    height: 55px;
+    top: 105px;
+    right: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .closeFullscreenButton {
+    width: 3rem;
+    height: 3rem;
+    top: 33px;
+    right: 17px;
+  }
 }

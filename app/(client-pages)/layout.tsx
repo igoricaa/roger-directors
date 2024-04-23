@@ -7,7 +7,6 @@ import { Footer } from '@/components/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
-import { ViewTransitions } from 'next-view-transitions';
 
 const mont = localFont({
   src: [
@@ -44,22 +43,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html suppressHydrationWarning lang='en'>
-        <head></head>
-        <body
-          className={[`${mont.variable}`, `${montBook.variable}`].join(' ')}
-        >
-          <Providers>
-            <Header />
-            {children}
-            <Footer />
-            <SpeedInsights />
-            <Analytics />
-          </Providers>
-        </body>
-        {/* <GoogleAnalytics gaId='G-S0L7XDFMYG' /> */}
-      </html>
-    </ViewTransitions>
+    <html suppressHydrationWarning lang='en'>
+      <head></head>
+      <body className={[`${mont.variable}`, `${montBook.variable}`].join(' ')}>
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+          <SpeedInsights />
+          <Analytics />
+        </Providers>
+      </body>
+      {/* <GoogleAnalytics gaId='G-S0L7XDFMYG' /> */}
+    </html>
   );
 }

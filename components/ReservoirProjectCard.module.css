@@ -73,18 +73,17 @@
 
 .lightbox img {
   position: absolute;
-  transform: scale(0); /* translate(0, 0) */
+  transform: scale(0);
   transition: all 0.5s ease;
   max-width: 50vw;
   margin: auto;
+  border-radius: 30px;
 }
 
 .lightbox .previewReservoirProjectVideo {
   position: absolute;
-  /* translate(0, 0); */
-  transform: scale(0);
-  transition: all 0.5s ease;
   max-width: 50vw;
+  border-radius: 30px;
 }
 
 .lightbox.active {
@@ -94,15 +93,7 @@
 }
 
 .lightbox.active img {
-  /* translate(50%, -50%) */
   transform: scale(1);
-  /* top: 50%; */
-}
-
-.lightbox.active .previewReservoirProjectVideo {
-  /* translate(50%, -50%) */
-  transform: scale(1);
-  /* top: 50%; */
 }
 
 @media screen and (max-width: 991px) {
@@ -112,6 +103,11 @@
   .card > .contentWrapper:hover img:not(.noVideo) {
     opacity: 1;
   }
+
+  .lightbox img,
+  .lightbox .previewReservoirProjectVideo {
+    max-width: 75vw;
+  }
 }
 
 @media screen and (max-width: 680px) {
@@ -120,6 +116,11 @@
   }
 
   .card > .contentWrapper {
+    border-radius: 15px;
+  }
+
+  .lightbox img,
+  .lightbox .previewReservoirProjectVideo {
     border-radius: 15px;
   }
 }

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import styles from './Footer.module.css';
-import { Link } from 'next-view-transitions';
+import Link from '@/components/Link';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import BackToTopButton from './BackToTopButton';
@@ -26,6 +26,7 @@ export const Footer = () => {
       <div id='footerTop' className={styles.footerTop}>
         <ul className={styles.footerMenu}>
           <li>
+            {/* TODO: spanove izbaci */}
             <Link href='/'>
               <span>Home</span>
             </Link>

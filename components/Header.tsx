@@ -3,7 +3,7 @@
 import styles from './Header.module.css';
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Link } from 'next-view-transitions';
+import Link from '@/components/Link';
 import { ThemeChanger } from '@/components/ThemeChanger';
 import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
@@ -160,13 +160,17 @@ export default function Header() {
               {routes.map((route, index) => (
                 <li
                   key={index}
-                  className={pathname == route.path && route.name !== "Projects" ? styles.active : ''}
+                  className={
+                    pathname == route.path && route.name !== 'Projects'
+                      ? styles.active
+                      : ''
+                  }
                 >
                   <Link
                     href={route.path}
-                    onClick={() => setMenuOpen(!menuOpen)}
+                    onClickHandler={() => setMenuOpen(!menuOpen)}
                   >
-                    <span>{route.name}</span>
+                    {route.name}
                   </Link>
                 </li>
               ))}

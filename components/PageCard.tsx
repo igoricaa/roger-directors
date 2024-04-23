@@ -1,5 +1,5 @@
 import styles from './PageCard.module.css';
-import { Link } from 'next-view-transitions';
+import Link from '@/components/Link';
 
 export const PageCard = ({ content, size }: any) => {
   const pageClass = content.type

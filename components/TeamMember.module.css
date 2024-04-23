@@ -67,6 +67,7 @@
 .bioVideoWrapper {
   opacity: 0;
   visibility: hidden;
+  position: relative;
 }
 
 .bioVideoWrapper video {
@@ -144,8 +145,8 @@
   width: 78px;
   height: 78px;
   position: absolute;
-  bottom: 41px;
-  right: 0.5rem;
+  bottom: 2.5rem;
+  right: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,6 +158,31 @@
   transform: rotate(0deg);
   border: none;
   outline: none;
+}
+
+.videoControlButton {
+  border-radius: 20px;
+  width: 78px;
+  height: 78px;
+  padding: 1.5rem 20px;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  cursor: pointer;
+  background-color: #b5dfca;
+}
+
+.replayVideoButton {
+  left: 1.5rem;
+  right: unset;
+}
+
+.teamMember.odd .videoControlButton {
+  background-color: #fff5a5;
 }
 
 .teamMember .bioWrapper.slideLeft ~ .closeBio {
@@ -214,6 +240,18 @@
     bottom: 13px;
     width: 60px;
     height: 60px;
+  }
+
+  .videoControlButton {
+    width: 60px;
+    height: 60px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .replayVideoButton {
+    left: 1rem;
+    right: unset;
   }
 
   .teamMember.active {
@@ -295,5 +333,12 @@
 
   .closeBio svg {
     max-width: 14px;
+  }
+
+  .videoControlButton {
+    width: 43px;
+    height: 43px;
+    border-radius: 15px;
+    padding: 13px 10px;
   }
 }
