@@ -6,6 +6,7 @@ import Link from '@/components/Link';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import BackToTopButton from './BackToTopButton';
+import { routes } from '@/utils/data';
 
 export const Footer = () => {
   const { resolvedTheme } = useTheme();
@@ -25,32 +26,11 @@ export const Footer = () => {
 
       <div id='footerTop' className={styles.footerTop}>
         <ul className={styles.footerMenu}>
-          <li>
-            {/* TODO: spanove izbaci */}
-            <Link href='/'>
-              <span>Home</span>
-            </Link>
-          </li>
-          <li>
-            <Link href='/about-us'>
-              <span>About Us</span>
-            </Link>
-          </li>
-          <li>
-            <Link href='/meet-the-team'>
-              <span>Meet the team</span>
-            </Link>
-          </li>
-          <li>
-            <Link href='/the-reservoir'>
-              <span>Recycle bin</span>
-            </Link>
-          </li>
-          <li>
-            <Link href='/contact'>
-              <span>Contact</span>
-            </Link>
-          </li>
+          {routes.map((route, index) => (
+            <li key={index}>
+              <Link href={route.path}>{route.name}</Link>
+            </li>
+          ))}
         </ul>
         <div className={styles.contact}>
           <h3>Contact</h3>
