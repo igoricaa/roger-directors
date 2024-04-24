@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useContext } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
-import SplashScreen from './SplashScreen';
-import { createPortal } from 'react-dom';
+import { TransitionContext } from './context/TransitionProvider';
 
 type CustomLink = {
   onClickHandler?: () => void;
@@ -18,34 +17,44 @@ export default function Link({
   ...rest
 }: CustomLink) {
   const router = useRouter();
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  if (isTransitioning) {
-    return createPortal(<SplashScreen />, document.body);
-  }
+  const { setIsTransitioning, setTransitionDestination } =
+    useContext(TransitionContext);
 
   return (
-    <NextLink
-      href={href}
-      onClick={(e) => {
-        e.preventDefault();
-        if (onClickHandler) onClickHandler();
-        setIsTransitioning(true);
-        // setTimeout(() => {
-        //   setIsTransitioning(false);
-        // }, 3000);
-        const url = href.toString();
-        setTimeout(() => {
-          if (replace) {
-            router.replace(url);
-          } else {
-            router.push(url);
-          }
-        }, 500);
-      }}
-      {...rest}
-    >
-      {children}
-    </NextLink>
+    <>
+      <NextLink
+        href={href}
+        onClick={(e) => {
+          e.preventDefault();
+          setIsTransitioning(true);
+
+          const pageTItle =
+            href.toString() === '/'
+              ? 'ROGER DIRECTORS AGENCY'
+              : href.toString().slice(1).replace(/-/g, ' ');
+
+          setTransitionDestination(pageTItle);
+
+          if (onClickHandler) onClickHandler();
+
+          const url = href.toString();
+          router.prefetch(url);
+          setTimeout(() => {
+            if (replace) {
+              router.replace(url);
+            } else {
+              router.push(url);
+            }
+          }, 500);
+
+          setTimeout(() => {
+            setIsTransitioning(false);
+          }, 3000);
+        }}
+        {...rest}
+      >
+        {children}
+      </NextLink>
+    </>
   );
 }

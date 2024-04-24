@@ -3,9 +3,11 @@
 import Image from 'next/image';
 import styles from './ProjectCard.module.css';
 import Link from '@/components/Link';
+// import Link from '@/components/LinkCustom';
 import { useEffect, useState } from 'react';
 import MuxVideo from '@mux/mux-video-react';
 import { Project } from '@/utils/types';
+import { useInView } from 'react-intersection-observer';
 
 export default function ProjectCard({
   project,
@@ -15,6 +17,9 @@ export default function ProjectCard({
   priority: boolean;
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
+  const { ref, inView } = useInView({
+    rootMargin: '200px 0px 200px 0px',
+  });
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -30,6 +35,7 @@ export default function ProjectCard({
         styles.card,
         styles[project.featuredContent.featuredSize],
       ].join(' ')}
+      ref={ref}
     >
       <Link
         href={projectUrl}
@@ -58,16 +64,18 @@ export default function ProjectCard({
           priority={priority}
         />
 
-        {isDesktop && project.featuredContent.featuredVideo.playbackId && (
-          <MuxVideo
-            playbackId={project.featuredContent.featuredVideo.playbackId}
-            muted
-            loop
-            autoPlay={false}
-            className={styles.projectVideo}
-            placeholder={undefined}
-          />
-        )}
+        {isDesktop &&
+          project.featuredContent.featuredVideo.playbackId &&
+          inView && (
+            <MuxVideo
+              playbackId={project.featuredContent.featuredVideo.playbackId}
+              muted
+              loop
+              autoPlay={false}
+              className={styles.projectVideo}
+              placeholder={undefined}
+            />
+          )}
       </Link>
     </article>
   );

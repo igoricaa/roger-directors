@@ -1,4 +1,3 @@
-import { isMobileDevice } from './isMobile';
 import { Project } from './types';
 
 export const toggleVideos = (
@@ -19,10 +18,9 @@ export const toggleVideos = (
 
 export const filterAndSortProjects = (
   projects: Project[],
-  columnNumber: number
+  columnNumber: number,
+  isMobile: boolean
 ) => {
-  const isMobile = isMobileDevice();
-
   return isMobile
     ? columnNumber !== 3
       ? projects

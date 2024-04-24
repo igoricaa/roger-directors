@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
+import SplashScreen from '@/components/SplashScreen';
 
 const mont = localFont({
   src: [
@@ -47,6 +48,7 @@ export default function RootLayout({
       <head></head>
       <body className={[`${mont.variable}`, `${montBook.variable}`].join(' ')}>
         <Providers>
+          <SplashScreen />
           <Header />
           {children}
           <Footer />

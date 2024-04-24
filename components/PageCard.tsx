@@ -16,7 +16,7 @@ export const PageCard = ({ content, size }: any) => {
       ].join(' ')}
     >
       <h2 dangerouslySetInnerHTML={content.description}></h2>
-      <Link href={content.title.replace(/ /g, '-').toLowerCase()}>
+      <Link href={`/${content.title.replace(/ /g, '-').toLowerCase()}`}>
         {content.title}
       </Link>
     </article>

@@ -22,13 +22,18 @@
   transform: translate(0%, 106%);
   pointer-events: all;
   border-radius: 30px;
-}
-
-.splashScreen.active {
   -webkit-animation: translate 3s;
   -moz-animation: translate 3s;
   -o-animation: translate 3s;
   animation: translate 3s;
+}
+
+.splashScreen.initialSplash {
+  transform: translate(0%, 0%);
+  -webkit-animation: initialTranslate 3s;
+  -moz-animation: initialTranslate 3s;
+  -o-animation: initialTranslate 3s;
+  animation: initialTranslate 3s;
 }
 
 @keyframes translate {
@@ -41,6 +46,20 @@
   }
 
   75% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes initialTranslate {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
     transform: translateY(0%);
   }
 

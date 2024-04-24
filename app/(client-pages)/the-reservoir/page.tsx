@@ -1,6 +1,5 @@
 import { sanityFetch } from '@/utils/sanity/client';
 import { Project } from '@/utils/types';
-import { filterAndSortProjects } from '@/utils/utils';
 import ColumnsLayout from '@/components/ColumnsLayout';
 
 export default async function Reservoir() {
@@ -47,15 +46,5 @@ export default async function Reservoir() {
   }
   const projects: Project[] = await getReservoirProjects();
 
-  const firstColumnItems: any[] = filterAndSortProjects(projects, 1);
-  const secondColumnItems: any[] = filterAndSortProjects(projects, 2);
-  const thirdColumnItems: any[] = filterAndSortProjects(projects, 3);
-
-  return (
-    <ColumnsLayout
-      firstColumnItems={firstColumnItems}
-      secondColumnItems={secondColumnItems}
-      thirdColumnItems={thirdColumnItems}
-    />
-  );
+  return <ColumnsLayout projects={projects} />;
 }

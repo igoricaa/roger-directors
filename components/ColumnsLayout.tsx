@@ -1,20 +1,38 @@
-import { isMobileDevice } from '@/utils/isMobile';
-import styles from './ColumnsLayout.module.css';
-import ProjectCard from './ProjectCard';
-import { PageCard } from './PageCard';
-import ReservoirProjectCard from './ReservoirProjectCard';
+'use client';
 
-export default function ColumnsLayout({
-  firstColumnItems,
-  secondColumnItems,
-  thirdColumnItems,
-}: {
-  firstColumnItems: any[];
-  secondColumnItems: any[];
-  thirdColumnItems: any[];
-}) {
-  const isMobile = isMobileDevice();
+import styles from './ColumnsLayout.module.css';
+import { Project } from '@/utils/types';
+import { filterAndSortProjects } from '@/utils/utils';
+import { pagesCards } from '@/utils/data';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import Column from './Column';
+
+export default function ColumnsLayout({ projects }: { projects: Project[] }) {
+  const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isMobileVar = window.matchMedia('(max-width: 991px)').matches;
+      setIsMobile(isMobileVar);
+    }
+  }, []);
+
   const priorityIndexes: number[] = isMobile ? [0, 1, 2] : [0, 1];
+
+  const firstColumnItems: any[] = filterAndSortProjects(projects, 1, isMobile);
+  const secondColumnItems: any[] = filterAndSortProjects(projects, 2, isMobile);
+  const thirdColumnItems: any[] = filterAndSortProjects(projects, 3, isMobile);
+
+  if (pathname === '/') {
+    firstColumnItems.splice(3, 0, pagesCards[3]);
+    secondColumnItems.splice(1, 0, pagesCards[0]);
+    secondColumnItems.splice(4, 0, pagesCards[1]);
+    isMobile
+      ? secondColumnItems.splice(6, 0, pagesCards[2])
+      : thirdColumnItems.splice(1, 0, pagesCards[2]);
+  }
 
   return (
     <main className={styles.main}>
@@ -35,33 +53,3 @@ export default function ColumnsLayout({
     </main>
   );
 }
-
-const Column = ({
-  columnItems,
-  priorityIndexes,
-}: {
-  columnItems: any[];
-  priorityIndexes: number[];
-}) => {
-  return (
-    <div>
-      {columnItems.map((item: any, index: number) => {
-        return item.type === 'page' ? (
-          <PageCard key={index} content={item} size={item.size} />
-        ) : item.type === 'project' ? (
-          <ProjectCard
-            key={index}
-            project={item}
-            priority={priorityIndexes.includes(index)}
-          />
-        ) : (
-          <ReservoirProjectCard
-            key={index}
-            project={item}
-            priority={priorityIndexes.includes(index)}
-          />
-        );
-      })}
-    </div>
-  );
-};

@@ -1,6 +1,7 @@
 import styles from './page.module.css';
 import ContactForm from '@/components/ContactForm';
 import GoogleMap from '@/components/GoogleMap';
+
 export default function Contact() {
   return (
     <main>
