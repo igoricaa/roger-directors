@@ -55,6 +55,7 @@ export default function VideoItem({
         }
         muted
         autoPlay={autoplay}
+        playsInline
         loop
         minResolution='1440p'
         maxResolution='2160p'
