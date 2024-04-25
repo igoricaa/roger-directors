@@ -46,7 +46,7 @@ export default function Link({
 
           setTimeout(() => {
             setIsTransitioning(false);
-          }, 3000);
+          }, 2800);
         }}
         {...rest}
       >
