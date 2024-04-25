@@ -44,7 +44,6 @@ export default function VideoItem({
   };
 
   const handleVideoClick = () => {
-    if (!isDesktop) return;
     setIsFullScreen(true);
     document.body.classList.add('stopScrolling');
   };
@@ -73,6 +72,7 @@ export default function VideoItem({
         <ProjectFullscreenVideo
           video={videos.fullVideo}
           closeFullscreen={closeFullscreen}
+          isMobile={!isDesktop}
         />
       )}
     </>

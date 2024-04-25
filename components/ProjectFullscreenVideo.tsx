@@ -7,12 +7,19 @@ import { Video } from '@/utils/types';
 const ProjectFullscreenVideo = ({
   video,
   closeFullscreen,
+  isMobile,
 }: {
   video: Video;
   closeFullscreen: () => void;
+  isMobile: boolean;
 }) => {
   return createPortal(
-    <>
+    <div
+      className={[
+        styles.fullVideoPlayerWrapper,
+        isMobile ? styles.mobile : '',
+      ].join(' ')}
+    >
       <MuxVideo
         playbackId={video.url ? video.url : video.playbackId}
         controls
@@ -24,7 +31,7 @@ const ProjectFullscreenVideo = ({
         placeholder={undefined}
       />
       <CloseButton onClickHandler={closeFullscreen} />
-    </>,
+    </div>,
     document.body
   );
 };
