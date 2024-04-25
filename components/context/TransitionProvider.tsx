@@ -7,6 +7,8 @@ type transitionContextType = {
   setTransitionDestination: (destination: string) => void;
   isHomeInitialLoad: boolean;
   setIsHomeInitialLoad: (isHomeInitialLoad: boolean) => void;
+  transitionColor: string;
+  setTransitionColor: (color: string) => void;
 };
 
 const transitionContextDefaultValues: transitionContextType = {
@@ -16,6 +18,8 @@ const transitionContextDefaultValues: transitionContextType = {
   setTransitionDestination: () => {},
   isHomeInitialLoad: true,
   setIsHomeInitialLoad: () => {},
+  transitionColor: 'green',
+  setTransitionColor: () => {},
 };
 
 const TransitionContext = createContext<transitionContextType>(
@@ -27,6 +31,7 @@ const TransitionProvider = ({ children }: { children: ReactNode }) => {
   const [transitionDestination, setTransitionDestination] =
     useState<string>('');
   const [isHomeInitialLoad, setIsHomeInitialLoad] = useState<boolean>(true);
+  const [transitionColor, setTransitionColor] = useState<string>('green');
 
   return (
     <TransitionContext.Provider
@@ -37,6 +42,8 @@ const TransitionProvider = ({ children }: { children: ReactNode }) => {
         setTransitionDestination,
         isHomeInitialLoad,
         setIsHomeInitialLoad,
+        transitionColor,
+        setTransitionColor,
       }}
     >
       {children}

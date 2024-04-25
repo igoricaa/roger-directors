@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import styles from './SplashScreen.module.css';
 import { TransitionContext } from './context/TransitionProvider';
 import { usePathname } from 'next/navigation';
@@ -11,6 +11,7 @@ const SplashScreen = () => {
     transitionDestination,
     isHomeInitialLoad,
     setIsHomeInitialLoad,
+    transitionColor,
   } = useContext(TransitionContext);
   const pathname = usePathname();
 
@@ -22,19 +23,30 @@ const SplashScreen = () => {
     }
   }, [pathname, isHomeInitialLoad, setIsHomeInitialLoad]);
 
+  const isHome =
+    !transitionDestination ||
+    transitionDestination === 'ROGER DIRECTORS AGENCY';
+
+  const singleWords: string[] = transitionDestination
+    ? transitionDestination.split(' ')
+    : ['ROGER', 'DIRECTORS', 'AGENCY'];
+
   return (
     <div className={styles.splashScreenContainer}>
       {(isTransitioning || isHomeInitialLoad) && (
         <div
           className={[
             styles.splashScreen,
+            styles[transitionColor],
             isHomeInitialLoad ? styles.initialSplash : '',
           ].join(' ')}
         >
-          <h3>
-            {transitionDestination
-              ? transitionDestination.toLocaleUpperCase()
-              : 'ROGER DIRECTORS AGENCY'}
+          <h3 className={!isHome ? styles.isNotHome : ''}>
+            {singleWords.map((singleWord, index) => (
+              <span key={index} className={styles.singleWord}>
+                {singleWord.toLocaleUpperCase()}
+              </span>
+            ))}
           </h3>
         </div>
       )}
