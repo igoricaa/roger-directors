@@ -16,12 +16,16 @@ export default function VideoItem({
   selectorClass: string;
 }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const playerRef = useRef<HTMLVideoElement>(null);
   const ProjectFullscreenVideo = dynamic(
     () => import('./ProjectFullscreenVideo')
   );
 
   useEffect(() => {
+    if (typeof window !== 'undefined')
+      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         closeFullscreen();
@@ -40,6 +44,7 @@ export default function VideoItem({
   };
 
   const handleVideoClick = () => {
+    if (!isDesktop) return;
     setIsFullScreen(true);
     document.body.classList.add('stopScrolling');
   };
