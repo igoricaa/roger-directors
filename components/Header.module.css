@@ -124,6 +124,10 @@
   transform: translateY(-3px) rotate(0.001deg);
 }
 
+.mainNavigation.active .burger {
+  transform: translate(-3px, 18px);
+}
+
 .mainNavigation.active .burger .bar:nth-child(1) {
   transform: translateY(0em) rotate(45deg);
 }
@@ -312,6 +316,10 @@
     width: 1.5rem;
   }
 
+  .mainNavigation.active .burger {
+    transform: translate(-0.5rem, 1.5rem);
+  }
+
   .modalNavMobile {
     top: 105px;
     bottom: 140px;
@@ -356,6 +364,10 @@
     height: 3rem;
   }
 
+  .mainNavigation.active .burger {
+    transform: translate(-3px, 3px);
+  }
+
   .burger .bar {
     width: 17.5px;
   }
@@ -384,7 +396,7 @@
   }
 
   .modalBlock {
-    padding: 17px;
+    padding: 20px;
   }
 
   .modalBlockBackground {
