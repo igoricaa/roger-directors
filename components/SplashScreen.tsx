@@ -16,7 +16,7 @@ const SplashScreen = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname === '/' && isHomeInitialLoad === true) {
+    if (isHomeInitialLoad === true) {
       setTimeout(() => {
         setIsHomeInitialLoad(false);
       }, 2800);
