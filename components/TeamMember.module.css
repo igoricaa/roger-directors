@@ -240,9 +240,11 @@
     flex-direction: column;
     gap: 22px;
     padding: 13px 13px 96px;
-    transition: width 0.4s ease-in-out, max-height 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out, max-height 0.4s ease-in-out,
+      height 0.4s ease-in-out, opacity 0.4s 0.2s ease-in-out,
+      visibility 0.4s 0.2s ease-in-out;
     height: auto;
-    max-height: calc(100% / 2 - 1rem / 2 * (2 - 1));
+    max-height: calc((100vw - 3rem - 1rem) / 2);
   }
 
   .closeBio {
@@ -269,7 +271,8 @@
     width: calc(100vw - 2 * var(--padding));
     height: auto;
     max-height: 1000px;
-    transition: width 0.3s ease-in-out, max-height 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out, max-height 0.3s ease-in-out,
+      height 0.3s ease-in-out;
   }
 
   .teamMember.active .bioWrapper.slideRight ~ .closeBio {
@@ -341,18 +344,12 @@
     padding-bottom: 151px;
     height: auto;
     max-height: calc(100vw - 34px);
+    position: relative;
+    transition: all 0.4s ease-in-out;
   }
 
   .teamMember.active .bioWrapper {
     position: relative;
-  }
-
-  .memberInfoWrapper {
-    display: none;
-  }
-
-  .teamMember.active .memberInfoWrapper {
-    display: block;
   }
 
   .memberInfoWrapper h2 {
