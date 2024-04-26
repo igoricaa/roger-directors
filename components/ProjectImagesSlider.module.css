@@ -1,0 +1,121 @@
+.embla {
+  margin: auto;
+  --slide-spacing: 20px;
+  --slide-size: 98%;
+  position: relative;
+}
+.emblaViewport {
+  overflow: hidden;
+}
+.emblaContainer {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.emblaSlide {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  display: flex;
+  position: relative;
+}
+.emblaControls {
+  position: absolute;
+  bottom: -39px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+.emblaButtons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+.emblaDots {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 34px;
+  padding-bottom: 2rem;
+}
+.emblaDot {
+  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.emblaDot:after {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  content: '';
+}
+.emblaDotSelected:after {
+  background-color: #fff;
+  width: 1rem;
+  height: 1rem;
+}
+
+@media screen and (max-width: 991px) {
+  .embla {
+    --slide-size: calc(100% - 1.5rem);
+    --slide-spacing: 9px;
+  }
+
+  .emblaControls {
+    margin-top: 19px;
+    bottom: unset;
+  }
+
+  .emblaDots {
+    gap: 10px;
+    padding-bottom: 28px;
+    margin: 0 1.5rem;
+  }
+
+  .emblaDot:after {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  .emblaDotSelected:after {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .embla {
+    --slide-size: calc(100% - 17px);
+  }
+
+  .emblaDots {
+    gap: 6px;
+    padding-bottom: 1.5rem;
+    margin: 0 1rem;
+  }
+
+  .emblaDot:after {
+    width: 6px;
+    height: 6px;
+  }
+  .emblaDotSelected:after {
+    width: 10px;
+    height: 10px;
+  }
+}

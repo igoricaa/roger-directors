@@ -6,6 +6,7 @@ import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';
 import { Project as ProjectT } from '@/utils/types';
 import Image from 'next/image';
+import ProjectImagesSlider from '@/components/ProjectImagesSlider';
 
 export async function generateStaticParams() {
   const projects: ProjectT[] = await sanityFetch({
@@ -37,7 +38,10 @@ export default async function Project({
         description,
         descriptionTitle,
         descriptionExcerpt,
-        'slideImage': slideImage.asset->url,
+        slideImages[]{
+          alt,
+          'url': asset->url,
+        },
         'slideImageAlt' : slideImage.alt,
         images[]{
             alt,
@@ -76,7 +80,7 @@ export default async function Project({
     );
   };
 
-  const project = await getProject(params.slug);
+  const project: ProjectT = await getProject(params.slug);
 
   return (
     <main className={styles.main}>
@@ -84,15 +88,9 @@ export default async function Project({
         <h1>{project.title}</h1>
       </header>
       <article className={styles.article}>
-        {project.slideImage && areProjectVideosAvailable(project) && (
+        {project.slideImages && areProjectVideosAvailable(project) && (
           <div className={styles.slideImageWrapper}>
-            <Image
-              src={project.slideImage.url}
-              alt={project.slideImage.alt}
-              fill
-              sizes='100vw'
-              priority
-            />
+            <ProjectImagesSlider images={project.slideImages} />
           </div>
         )}
         {project.videos && !areProjectVideosAvailable(project) && (

@@ -42,7 +42,7 @@ export type Project = {
   mobileOrder: ProjectOrder;
   featuredContent: ProjectFeaturedContent;
   images: ImageMeta[];
-  slideImage: ImageMeta;
+  slideImages: ImageMeta[];
   videos: VideoPair[];
   prev: string;
   next: string;

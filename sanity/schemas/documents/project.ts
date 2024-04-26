@@ -136,23 +136,60 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'slideImage',
-      title: 'Slide Image',
-      type: 'image',
-      fields: [
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      of: [
         {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Important for SEO and accessiblity.',
-          validation: (rule) => {
-            return rule.custom((alt, context) => {
-              if ((context.document?.picture as any)?.asset?._ref && !alt) {
-                return 'Required';
-              }
-              return true;
-            });
+          name: 'image',
+          title: 'Image',
+          type: 'image',
+          options: {
+            hotspot: true,
           },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+              description: 'Important for SEO and accessiblity.',
+              validation: (rule) => {
+                return rule.custom((alt, context) => {
+                  if ((context.document?.picture as any)?.asset?._ref && !alt) {
+                    return 'Required';
+                  }
+                  return true;
+                });
+              },
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'slideImages',
+      title: 'Slide Image',
+      type: 'array',
+      of: [
+        {
+          name: 'slideImage',
+          type: 'image',
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+              description: 'Important for SEO and accessiblity.',
+              validation: (rule) => {
+                return rule.custom((alt, context) => {
+                  if ((context.document?.picture as any)?.asset?._ref && !alt) {
+                    return 'Required';
+                  }
+                  return true;
+                });
+              },
+            },
+          ],
         },
       ],
     }),
