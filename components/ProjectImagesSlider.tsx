@@ -1,3 +1,5 @@
+'use client';
+
 import { ImageMeta } from '@/utils/types';
 import styles from './ProjectImagesSlider.module.css';
 import {
