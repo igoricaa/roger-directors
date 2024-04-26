@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from './AccordionItem.module.css';
 
 export default function AccordionItem({
@@ -17,23 +17,26 @@ export default function AccordionItem({
   );
   const [fading, setFading] = useState(false);
 
+  const buttonTextTimeoutChange = useCallback(
+    (buttonTextActive: string, buttonTextInactive: string) => {
+      setTimeout(() => {
+        setButtonText(isActive ? buttonTextActive : buttonTextInactive);
+        setFading(false);
+      }, 300);
+    },
+    [isActive]
+  );
+
   const handleClick = (index: number) => {
     setFading(true);
-    setTimeout(() => {
-      setButtonText(isActive ? 'Learn more' : 'Minimize');
-      setFading(false);
-    }, 300);
-
+    buttonTextTimeoutChange('Learn more', 'Minimize');
     handleToggle(index);
   };
 
   useEffect(() => {
     setFading(true);
-    setTimeout(() => {
-      setButtonText(isActive ? 'Minimize' : 'Learn more');
-      setFading(false);
-    }, 300);
-  }, [isActive]);
+    buttonTextTimeoutChange('Minimize', 'Learn more');
+  }, [buttonTextTimeoutChange]);
 
   return (
     <article

@@ -4,6 +4,7 @@ import { useContext, useEffect } from 'react';
 import styles from './SplashScreen.module.css';
 import { TransitionContext } from './context/TransitionProvider';
 import { usePathname } from 'next/navigation';
+import { getAnimationLength } from '@/utils/utils';
 
 const SplashScreen = () => {
   const {
@@ -31,6 +32,8 @@ const SplashScreen = () => {
     ? transitionDestination.split(' ')
     : ['ROGER', 'DIRECTORS', 'AGENCY'];
 
+  const animationLength: string = getAnimationLength(transitionDestination);
+
   return (
     <div className={styles.splashScreenContainer}>
       {(isTransitioning || isHomeInitialLoad) && (
@@ -38,6 +41,7 @@ const SplashScreen = () => {
           className={[
             styles.splashScreen,
             styles[transitionColor],
+            styles[animationLength],
             isHomeInitialLoad ? styles.initialSplash : '',
           ].join(' ')}
         >

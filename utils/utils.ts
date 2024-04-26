@@ -37,3 +37,14 @@ export const filterAndSortProjects = (
 export const randomIntFromInterval = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
+
+export const getAnimationLength = (pageTitle: string) => {
+  const singleWords: string[] = pageTitle
+    ? pageTitle.split(' ')
+    : ['ROGER', 'DIRECTORS', 'AGENCY'];
+  return singleWords.length === 3
+    ? 'medium'
+    : singleWords.length === 4
+    ? 'long'
+    : 'short';
+};

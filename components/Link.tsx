@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
 import { TransitionContext } from './context/TransitionProvider';
-import { randomIntFromInterval } from '@/utils/utils';
+import { getAnimationLength, randomIntFromInterval } from '@/utils/utils';
 
 type CustomLink = {
   onClickHandler?: () => void;
@@ -29,7 +29,10 @@ export default function Link({
           e.preventDefault();
 
           setIsTransitioning(true);
-          setTransitionDestination(getPageTitleFromUrl(href.toString()));
+
+          const transitionDestination = getPageTitleFromUrl(href.toString());
+          setTransitionDestination(transitionDestination);
+
           setTransitionColor(getRandomColor());
 
           if (onClickHandler) onClickHandler();
@@ -44,9 +47,20 @@ export default function Link({
             }
           }, 500);
 
-          setTimeout(() => {
-            setIsTransitioning(false);
-          }, 2900);
+          const animationLength: string = getAnimationLength(
+            transitionDestination
+          );
+
+          setTimeout(
+            () => {
+              setIsTransitioning(false);
+            },
+            animationLength === 'short'
+              ? 2900
+              : animationLength === 'medium'
+              ? 3400
+              : 3900
+          );
         }}
         {...rest}
       >
