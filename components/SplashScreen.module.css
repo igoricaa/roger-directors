@@ -35,6 +35,10 @@
   background-color: #f0dd3d;
 }
 
+.splashScreen.yellow h3 {
+  color: #232323;
+}
+
 .splashScreen.initialSplash {
   transform: translate(0%, 0%);
   -webkit-animation: initialTranslate 3s;

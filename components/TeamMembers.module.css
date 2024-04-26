@@ -19,7 +19,7 @@
   
   @media screen and (max-width: 680px) {
     .teamMembers {
-      --gap: 0.5rem;
+      --gap: 1rem;
       --padding: 1rem;
       margin: 35px 0 0;
     }

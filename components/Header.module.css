@@ -302,6 +302,10 @@
     padding: 85px 1.5rem 55px;
   }
 
+  .navLinksWrapper {
+    justify-content: start;
+  }
+
   .logoWrapper {
     width: 200px;
     height: 66.5px;
@@ -349,7 +353,6 @@
   }
 
   .navLinksWrapper {
-    justify-content: start;
     height: 37px;
   }
 

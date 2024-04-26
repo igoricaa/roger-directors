@@ -222,7 +222,8 @@
 
 @media screen and (max-width: 991px) {
   .teamMember {
-    max-height: 100%;
+    max-height: 943px;
+    height: auto;
     transition: all 0.4s ease-in-out;
     flex-basis: calc(100% / 2 - 1rem / 2 * (2 - 1));
   }
@@ -239,8 +240,9 @@
     flex-direction: column;
     gap: 22px;
     padding: 13px 13px 96px;
-    transition: all 0.4s ease-in-out;
-    height: 100%;
+    transition: width 0.4s ease-in-out, max-height 0.4s ease-in-out;
+    height: auto;
+    max-height: calc(100% / 2 - 1rem / 2 * (2 - 1));
   }
 
   .closeBio {
@@ -262,15 +264,12 @@
     right: unset;
   }
 
-  .teamMember.active {
-    flex-basis: 100%;
-  }
-
   .teamMember.active .bioWrapper {
-    position: relative;
+    position: absolute;
     width: calc(100vw - 2 * var(--padding));
     height: auto;
-    transition: all 0.3s ease-in-out;
+    max-height: 1000px;
+    transition: width 0.3s ease-in-out, max-height 0.3s ease-in-out;
   }
 
   .teamMember.active .bioWrapper.slideRight ~ .closeBio {
@@ -319,6 +318,16 @@
 }
 
 @media screen and (max-width: 680px) {
+  .teamMember {
+    flex-basis: 100%;
+    max-height: calc(100vw - 34px);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .teamMember.active {
+    max-height: 1000px;
+  }
+
   .teamMember .overlay {
     padding: 1rem;
   }
@@ -330,6 +339,20 @@
 
   .bioWrapper {
     padding-bottom: 151px;
+    height: auto;
+    max-height: calc(100vw - 34px);
+  }
+
+  .teamMember.active .bioWrapper {
+    position: relative;
+  }
+
+  .memberInfoWrapper {
+    display: none;
+  }
+
+  .teamMember.active .memberInfoWrapper {
+    display: block;
   }
 
   .memberInfoWrapper h2 {

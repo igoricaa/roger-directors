@@ -21,14 +21,17 @@ export function TeamMember({
   active: number | null;
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const playerRef = useRef<HTMLVideoElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const isActive = active !== null && active === index;
 
   useEffect(() => {
-    if (typeof window !== 'undefined')
+    if (typeof window !== 'undefined') {
       setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+      setIsMobile(window.matchMedia('(max-width: 680px)').matches);
+    }
 
     if (playerRef.current) {
       const video = playerRef.current as HTMLVideoElement;
@@ -99,7 +102,9 @@ export function TeamMember({
         </div>
       </div>
 
-      <div className={[styles.bioWrapper, slideClass].join(' ')}>
+      <div
+        className={[styles.bioWrapper, !isMobile ? slideClass : ''].join(' ')}
+      >
         <div ref={videoWrapperRef} className={styles.bioVideoWrapper}>
           <div
             className={[
@@ -138,30 +143,57 @@ export function TeamMember({
           <h2>{member.name}</h2>
           <p>{member.bio}</p>
         </div>
+        {!isMobile && !isDesktop && (
+          <button
+            className={styles.closeBio}
+            onClick={() => teamMemberClickHandler(index)}
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='18.593'
+              height='33.792'
+              viewBox='0 0 18.593 33.792'
+            >
+              <path
+                id='Path_11'
+                data-name='Path 11'
+                d='M0,0,14.972,14.775,0,29.549'
+                transform='translate(2.121 2.121)'
+                fill='none'
+                stroke='#232323'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='3'
+              />
+            </svg>
+          </button>
+        )}
       </div>
-      <button
-        className={styles.closeBio}
-        onClick={() => teamMemberClickHandler(index)}
-      >
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='18.593'
-          height='33.792'
-          viewBox='0 0 18.593 33.792'
+      {(isMobile || isDesktop || (!isMobile && !isDesktop && !isActive)) && (
+        <button
+          className={styles.closeBio}
+          onClick={() => teamMemberClickHandler(index)}
         >
-          <path
-            id='Path_11'
-            data-name='Path 11'
-            d='M0,0,14.972,14.775,0,29.549'
-            transform='translate(2.121 2.121)'
-            fill='none'
-            stroke='#232323'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            strokeWidth='3'
-          />
-        </svg>
-      </button>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='18.593'
+            height='33.792'
+            viewBox='0 0 18.593 33.792'
+          >
+            <path
+              id='Path_11'
+              data-name='Path 11'
+              d='M0,0,14.972,14.775,0,29.549'
+              transform='translate(2.121 2.121)'
+              fill='none'
+              stroke='#232323'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='3'
+            />
+          </svg>
+        </button>
+      )}
     </article>
   );
 }
