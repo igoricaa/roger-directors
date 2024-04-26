@@ -11,27 +11,38 @@ type UsePrevNextButtonsType = {
 export const usePrevNextButtons = (
   emblaApi: EmblaCarouselType | undefined
 ): UsePrevNextButtonsType => {
+  const isVideoSlider = useCallback(() => {
+    if (!emblaApi) return;
+
+    const slideNodes = emblaApi.slideNodes() as HTMLElement[];
+    return slideNodes[emblaApi.selectedScrollSnap()].querySelector('video');
+  }, [emblaApi]);
+
   const onPrevButtonClick = useCallback(() => {
     if (!emblaApi) return;
 
-    toggleVideos(
-      emblaApi.selectedScrollSnap(),
-      emblaApi.selectedScrollSnap() - 1
-    );
+    if (isVideoSlider()) {
+      toggleVideos(
+        emblaApi.selectedScrollSnap(),
+        emblaApi.selectedScrollSnap() - 1
+      );
+    }
 
     emblaApi.scrollPrev();
-  }, [emblaApi]);
+  }, [emblaApi, isVideoSlider]);
 
   const onNextButtonClick = useCallback(() => {
     if (!emblaApi) return;
 
-    toggleVideos(
-      emblaApi.selectedScrollSnap(),
-      emblaApi.selectedScrollSnap() + 1
-    );
+    if (isVideoSlider()) {
+      toggleVideos(
+        emblaApi.selectedScrollSnap(),
+        emblaApi.selectedScrollSnap() + 1
+      );
+    }
 
     emblaApi.scrollNext();
-  }, [emblaApi]);
+  }, [emblaApi, isVideoSlider]);
 
   return {
     onPrevButtonClick,

@@ -1,6 +1,6 @@
 .main.fullscreen {
   overflow: hidden;
-} 
+}
 
 .article {
   margin-top: 62px;
@@ -13,11 +13,7 @@
 
 .slideImageWrapper {
   position: relative;
-  aspect-ratio: 1843/ 911;
-}
-
-.slideImageWrapper img {
-  border-radius: 30px;
+  margin-right: -38px;
 }
 
 .headingAnimated {
@@ -192,6 +188,10 @@
 
   .contentGrid > div:first-child {
     width: 100%;
+  }
+
+  .slideImageWrapper {
+    margin-right: -0.5rem;
   }
 
   .adjacentProjects {

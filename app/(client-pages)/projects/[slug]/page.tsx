@@ -5,7 +5,6 @@ import { sanityFetch } from '@/utils/sanity/client';
 import VideoSlider from '@/components/VideoSlider';
 import ProjectImages from '@/components/ProjectImages';
 import { Project as ProjectT } from '@/utils/types';
-import Image from 'next/image';
 import ProjectImagesSlider from '@/components/ProjectImagesSlider';
 
 export async function generateStaticParams() {
@@ -42,7 +41,6 @@ export default async function Project({
           alt,
           'url': asset->url,
         },
-        'slideImageAlt' : slideImage.alt,
         images[]{
             alt,
             'url': asset->url,
@@ -75,7 +73,8 @@ export default async function Project({
   }
 
   const areProjectVideosAvailable = (project: ProjectT) => {
-    return Object.values(project.videos[0].slideVideo).every(
+    if (!project.videos) return false;
+    return !Object.values(project.videos[0].slideVideo).every(
       (x) => x === null || x === ''
     );
   };
@@ -88,12 +87,12 @@ export default async function Project({
         <h1>{project.title}</h1>
       </header>
       <article className={styles.article}>
-        {project.slideImages && areProjectVideosAvailable(project) && (
+        {project.slideImages && !areProjectVideosAvailable(project) && (
           <div className={styles.slideImageWrapper}>
             <ProjectImagesSlider images={project.slideImages} />
           </div>
         )}
-        {project.videos && !areProjectVideosAvailable(project) && (
+        {project.videos && areProjectVideosAvailable(project) && (
           <div className={styles.videosWrapper}>
             <VideoSlider videos={project.videos} />
           </div>

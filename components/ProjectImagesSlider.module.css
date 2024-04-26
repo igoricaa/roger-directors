@@ -19,6 +19,11 @@
   padding-left: var(--slide-spacing);
   display: flex;
   position: relative;
+  aspect-ratio: 1843/ 911;
+}
+.emblaSlide img {
+  border-radius: 20px;
+  position: relative !important;
 }
 .emblaControls {
   position: absolute;

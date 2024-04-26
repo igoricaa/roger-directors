@@ -81,13 +81,9 @@ const getPageTitleFromUrl = (href: string) => {
   let pageTitle =
     href === '/' ? 'ROGER DIRECTORS AGENCY' : href.slice(1).replace(/-/g, ' ');
 
-  console.log('PRVI:' + pageTitle);
-
   if (pageTitle.includes('projects/')) {
     pageTitle = pageTitle.replace('projects/', '');
   }
-
-  console.log('DRUGI:' + pageTitle);
 
   return pageTitle;
 };

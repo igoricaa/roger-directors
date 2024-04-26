@@ -8,7 +8,6 @@ import {
   usePrevNextButtons,
 } from './EmblaCarouselArrowButtons';
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';
-import CustomCursor from './CustomCursor';
 import useEmblaCarousel from 'embla-carousel-react';
 import { EmblaOptionsType } from 'embla-carousel';
 import Image from 'next/image';
@@ -26,7 +25,6 @@ const ProjectImagesSlider = ({ images }: { images: ImageMeta[] }) => {
 
   return (
     <section className={styles.embla}>
-      <CustomCursor />
       <div className={styles.emblaViewport} ref={emblaRef}>
         <div className={styles.emblaContainer}>
           {images.map((image, index) => (
