@@ -7,7 +7,7 @@
     grid-template-columns: repeat(3, minMax(0, 1fr));
   }
   
-  @media screen and (max-width: 991px) {
+  @media screen and (max-width: 1024px) {
     .teamMembers {
       display: flex;
       flex-wrap: wrap;

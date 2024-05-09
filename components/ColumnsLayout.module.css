@@ -5,7 +5,7 @@
   gap: 23px;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   .main {
     grid-template-columns: repeat(2, minMax(0, 1fr));
     gap: 1rem;

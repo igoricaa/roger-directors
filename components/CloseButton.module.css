@@ -33,7 +33,7 @@
   transform: translateY(0em) rotate(-45deg);
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   .closeFullscreenButton {
     width: 55px;
     height: 55px;

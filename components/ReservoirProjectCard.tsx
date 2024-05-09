@@ -36,7 +36,7 @@ export default function ReservoirProjectCard({
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+      setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
     }
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -88,7 +88,7 @@ export default function ReservoirProjectCard({
             }
             alt={project.featuredContent.featuredImage.alt}
             fill
-            sizes='(max-width: 991px) 50vw, 33vw'
+            sizes='(max-width: 1024px) 50vw, 33vw'
             priority={priority}
           />
 
@@ -121,7 +121,7 @@ export default function ReservoirProjectCard({
                 height: 'auto',
                 aspectRatio: lightBoxRatio,
               }}
-              sizes='(max-width: 991px) 100vw, 50vw'
+              sizes='(max-width: 1024px) 100vw, 50vw'
               onLoadingComplete={({ naturalWidth, naturalHeight }) =>
                 setLightBoxRatio(naturalWidth / naturalHeight)
               }

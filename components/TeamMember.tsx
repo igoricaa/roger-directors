@@ -29,7 +29,7 @@ export function TeamMember({
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+      setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
       setIsMobile(window.matchMedia('(max-width: 680px)').matches);
     }
 
@@ -92,7 +92,7 @@ export function TeamMember({
             src={`${teamMember.imageUrl}`}
             alt={teamMember.imageAlt}
             fill
-            sizes='(max-width: 991px) 50vw, 33vw'
+            sizes='(max-width: 1024px) 50vw, 33vw'
             priority={[...Array(6).keys()].includes(index) ? true : false}
           />
         </div>

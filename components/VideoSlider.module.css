@@ -72,7 +72,7 @@
   height: 1rem;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   .embla {
     --slide-size: calc(100% - 1.5rem);
     --slide-spacing: 9px;

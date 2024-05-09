@@ -14,7 +14,7 @@ export default function ProjectImages({ images }: { images: ProjectImage[] }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+      setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
     }
   }, [isDesktop]);
 
@@ -25,7 +25,7 @@ export default function ProjectImages({ images }: { images: ProjectImage[] }) {
           src={image.url}
           alt={`Project image ${index + 1}`}
           fill
-          sizes='(max-width: 991px) 50vw, 33vw'
+          sizes='(max-width: 1024px) 50vw, 33vw'
           quality={100}
         />
       </div>

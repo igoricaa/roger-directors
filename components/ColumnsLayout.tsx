@@ -14,7 +14,7 @@ export default function ColumnsLayout({ projects }: { projects: Project[] }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const isMobileVar = window.matchMedia('(max-width: 991px)').matches;
+      const isMobileVar = window.matchMedia('(max-width: 1024px)').matches;
       setIsMobile(isMobileVar);
     }
   }, []);

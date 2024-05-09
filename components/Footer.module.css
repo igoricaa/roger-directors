@@ -63,7 +63,7 @@
   opacity: 0.3;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   .footer {
     padding-top: 85px;
   }

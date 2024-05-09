@@ -108,7 +108,7 @@
   transform: rotate(180deg);
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   .innerWrapper {
     position: relative;
     height: auto;

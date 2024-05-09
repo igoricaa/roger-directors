@@ -7,7 +7,7 @@
   object-fit: cover;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   .imageWrapper {
     border-radius: 15px;
   }

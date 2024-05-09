@@ -10,7 +10,7 @@ export default function ContactForm() {
 
   useEffect(() => {
     if (typeof window !== 'undefined')
-      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+      setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
   }, []);
 
   const handleChange = (value: string) => {

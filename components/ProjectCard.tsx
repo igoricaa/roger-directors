@@ -23,7 +23,7 @@ export default function ProjectCard({
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+      setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
     }
   }, [isDesktop]);
 
@@ -60,7 +60,7 @@ export default function ProjectCard({
           }
           alt={project.featuredContent.featuredImage.alt}
           fill
-          sizes='(max-width: 991px) 50vw, 33vw'
+          sizes='(max-width: 1024px) 50vw, 33vw'
           priority={priority}
         />
 

@@ -152,3 +152,9 @@
     transform: translateY(110%);
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .singleWord {
+    margin-right: 0.5rem;
+  }
+}

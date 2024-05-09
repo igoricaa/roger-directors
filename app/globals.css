@@ -125,7 +125,7 @@ main {
   padding: 0 38px;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   main {
     margin-top: 180px;
     padding: 0 1.5rem;

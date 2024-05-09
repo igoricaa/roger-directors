@@ -24,7 +24,7 @@ export default function VideoItem({
 
   useEffect(() => {
     if (typeof window !== 'undefined')
-      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+      setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {

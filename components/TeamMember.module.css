@@ -220,7 +220,7 @@
   right: calc((-100vw - 62px) / 3 + 39px + 33px);
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   .teamMember {
     max-height: 943px;
     height: auto;

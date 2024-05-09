@@ -37,7 +37,7 @@ export default function Header() {
   useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined')
-      setIsDesktop(window.matchMedia('(min-width: 991px)').matches);
+      setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
 
     if (isDesktop) {
       window.addEventListener('scroll', toggleLogos);

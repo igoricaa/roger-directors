@@ -297,7 +297,7 @@
   padding-right: 3px;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
   .navLinks {
     padding: 85px 1.5rem 55px;
   }
