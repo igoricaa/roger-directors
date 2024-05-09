@@ -8,7 +8,7 @@ async function getTeamMembers() {
       _id,
       name,
       position,
-      order
+      order,
       bio,
       "imageUrl": picture.asset->url,
       "imageAlt": picture.alt,
