@@ -20,7 +20,8 @@ export default function BackToTopButton() {
     }
     return () => {
       window.removeEventListener('scroll', toggleVisible);
-      window.removeEventListener('scroll', transformButton);
+      
+      
     };
   }, [isMobile]);
 

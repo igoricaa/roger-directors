@@ -20,13 +20,15 @@ export default function TeamMembers({
     }
   };
 
+  teamMembers.sort((a, b) => a.order - b.order);
+
   return (
     <section className={styles.teamMembers}>
-      {teamMembers.map((member, index) => {
+      {teamMembers.map((teamMember, index) => {
         return (
           <TeamMember
-            key={member._id}
-            member={member}
+            key={teamMember._id}
+            teamMember={teamMember}
             index={index}
             toggleBio={toggleBio}
             active={active}

@@ -61,6 +61,7 @@ export type TeamMember = {
   _id: number;
   name: string;
   bio: string;
+  order: number;
   position: string;
   imageUrl: string;
   imageAlt: string;

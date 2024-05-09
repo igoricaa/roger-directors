@@ -10,12 +10,12 @@ import unmuteIcon from '@/public/unmute-icon.svg';
 import replayIcon from '@/public/replay-icon.svg';
 
 export function TeamMember({
-  member,
+  teamMember,
   index,
   toggleBio,
   active,
 }: {
-  member: TeamMemberMeta;
+  teamMember: TeamMemberMeta;
   index: number;
   toggleBio: (index: number) => void;
   active: number | null;
@@ -78,7 +78,7 @@ export function TeamMember({
 
   return (
     <article
-      key={member._id}
+      key={teamMember._id}
       className={[
         styles.teamMember,
         isActive ? styles.active : '',
@@ -89,16 +89,16 @@ export function TeamMember({
       <div className={styles.hoverStateWrapper}>
         <div className={styles.bgImageWrapper}>
           <Image
-            src={`${member.imageUrl}`}
-            alt={member.imageAlt}
+            src={`${teamMember.imageUrl}`}
+            alt={teamMember.imageAlt}
             fill
             sizes='(max-width: 991px) 50vw, 33vw'
             priority={[...Array(6).keys()].includes(index) ? true : false}
           />
         </div>
         <div className={styles.overlay}>
-          <h2>{member.name}</h2>
-          <p>{member.position}</p>
+          <h2>{teamMember.name}</h2>
+          <p>{teamMember.position}</p>
         </div>
       </div>
 
@@ -118,7 +118,9 @@ export function TeamMember({
           <MuxVideo
             ref={playerRef as React.RefObject<HTMLVideoElement>}
             playbackId={
-              member.videoPlaybackId ? member.videoPlaybackId : member.videoUrl
+              teamMember.videoPlaybackId
+                ? teamMember.videoPlaybackId
+                : teamMember.videoUrl
             }
             muted={isVideoMuted}
             loop
@@ -140,8 +142,8 @@ export function TeamMember({
           </div>
         </div>
         <div className={styles.memberInfoWrapper}>
-          <h2>{member.name}</h2>
-          <p>{member.bio}</p>
+          <h2>{teamMember.name}</h2>
+          <p>{teamMember.bio}</p>
         </div>
         {!isMobile && !isDesktop && (
           <button
