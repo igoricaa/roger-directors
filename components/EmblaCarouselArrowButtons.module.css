@@ -27,9 +27,11 @@
   transform: rotate(180deg);
 }
 
-.emblaButton:hover > span {
-  border-radius: 50%;
-  background-color: #979797;
+@media (hover: hover) {
+  .emblaButton:hover > span {
+    border-radius: 50%;
+    background-color: #979797;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -37,6 +39,11 @@
     width: 60px;
     height: 60px;
     padding: 1rem 18px 1rem 20px;
+  }
+
+  .emblaButton.active > span {
+    border-radius: 50%;
+    background-color: #979797;
   }
 }
 

@@ -7,6 +7,7 @@
   font-size: 1.5rem;
   line-height: 2rem;
   color: var(--color__text-main);
+  font-family: var(--font-mont-book);
 }
 
 .article.active {
@@ -110,7 +111,38 @@
   opacity: 0;
 }
 
+@media screen and (max-width: 1024px) {
+  .article.active .accordionBottom {
+    max-height: 10.5rem;
+    padding-bottom: 3rem;
+  }
+  .article:nth-of-type(2).active .accordionBottom {
+    max-height: 12.5rem;
+  }
+
+  .article:nth-of-type(3).active .accordionBottom {
+    max-height: 14.5rem;
+  }
+}
+
 @media screen and (max-width: 680px) {
+  .article.active .accordionBottom {
+    max-height: 9rem;
+    padding-bottom: 2.5rem;
+  }
+  .article:nth-of-type(2).active .accordionBottom {
+    max-height: 10.5rem;
+  }
+
+  .article:nth-of-type(3).active .accordionBottom {
+    max-height: 13.5rem;
+  }
+
+  .article p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
   .accordionTop {
     padding: 1.5rem 0;
   }
@@ -131,9 +163,5 @@
     width: 14px;
     height: 0.5rem;
     right: 1rem;
-  }
-
-  .article.active .accordionBottom {
-    height: 151px;
   }
 }

@@ -21,6 +21,12 @@ export const usePrevNextButtons = (
   const onPrevButtonClick = useCallback(() => {
     if (!emblaApi) return;
 
+    const prevButton = document.querySelector('.prevButton');
+    prevButton?.classList.add(styles.active);
+    setTimeout(() => {
+      prevButton?.classList.remove(styles.active);
+    }, 1500);
+
     if (isVideoSlider()) {
       toggleVideos(
         emblaApi.selectedScrollSnap(),
@@ -33,6 +39,12 @@ export const usePrevNextButtons = (
 
   const onNextButtonClick = useCallback(() => {
     if (!emblaApi) return;
+
+    const nextButton = document.querySelector('.nextButton');
+    nextButton?.classList.add(styles.active);
+    setTimeout(() => {
+      nextButton?.classList.remove(styles.active);
+    }, 1500);
 
     if (isVideoSlider()) {
       toggleVideos(
@@ -62,7 +74,11 @@ export const PrevButton: React.FC<PropType> = (props) => {
 
   return (
     <button
-      className={[styles.emblaButton, styles.emblaButtonPrev].join(' ')}
+      className={[
+        styles.emblaButton,
+        styles.emblaButtonPrev,
+        'prevButton',
+      ].join(' ')}
       type='button'
       {...restProps}
     >
@@ -96,7 +112,11 @@ export const NextButton: React.FC<PropType> = (props) => {
 
   return (
     <button
-      className={[styles.emblaButton, styles.emblaButtonNext].join(' ')}
+      className={[
+        styles.emblaButton,
+        styles.emblaButtonNext,
+        'nextButton',
+      ].join(' ')}
       type='button'
       {...restProps}
     >

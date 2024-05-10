@@ -12,15 +12,20 @@ export default function Contact() {
       <section className={styles.content}>
         <h2>Roger Directors</h2>
         <div className={styles.contactInfo}>
-          <p>
-            <a href='https://maps.app.goo.gl/REfJu9xmBv6398qv7'>
-              Resavska 33.
-              <br />
-              11000 Belgrade, Serbia
-            </a>
-          </p>
           <div>
             <p>
+              <a href='https://maps.app.goo.gl/REfJu9xmBv6398qv7'>
+                Resavska 33.
+                <br />
+                11000 Belgrade, Serbia
+              </a>
+            </p>
+            <p className={styles.mobile}>
+              <a href='mailto:office@roger.rs'>office@roger.rs</a>
+            </p>
+          </div>
+          <div>
+            <p className={styles.desktop}>
               <a href='mailto:office@roger.rs'>office@roger.rs</a>
             </p>
             <p>
