@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import styles from './TeamMembers.module.css';
-import { TeamMember } from './TeamMember';
+import TeamMember from './TeamMember';
 import { TeamMember as TeamMemberMeta } from '@/utils/types';
 
 export default function TeamMembers({
@@ -13,7 +13,8 @@ export default function TeamMembers({
   const [active, setActive] = useState<number | null>(null);
 
   const toggleBio = (index: number) => {
-    if (active) {
+    debugger;
+    if (active || active === 0) {
       setActive(null);
     } else {
       setActive(index);

@@ -9,7 +9,7 @@ import muteIcon from '@/public/mute-icon.svg';
 import unmuteIcon from '@/public/unmute-icon.svg';
 import replayIcon from '@/public/replay-icon.svg';
 
-export function TeamMember({
+export default function TeamMember({
   teamMember,
   index,
   toggleBio,
@@ -36,7 +36,12 @@ export function TeamMember({
     if (playerRef.current) {
       const video = playerRef.current as HTMLVideoElement;
       if (isActive) {
-        !isDesktop && playerRef.current?.scrollIntoView({ behavior: 'smooth' });
+        !isDesktop &&
+          playerRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center',
+          });
         video.play();
       } else {
         video.pause();
@@ -53,11 +58,12 @@ export function TeamMember({
       toggleBio(index);
     }
 
-    playerRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-      inline: 'center',
-    });
+    isDesktop &&
+      playerRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
   };
 
   const replayVideoHandler = () => {
