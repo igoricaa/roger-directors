@@ -333,6 +333,7 @@
   }
 
   .teamMember .overlay {
+    display: none;
     padding: 1rem;
   }
 
