@@ -13,7 +13,6 @@ export default function TeamMembers({
   const [active, setActive] = useState<number | null>(null);
 
   const toggleBio = (index: number) => {
-    debugger;
     if (active || active === 0) {
       setActive(null);
     } else {
