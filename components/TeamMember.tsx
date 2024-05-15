@@ -180,7 +180,6 @@ export default function TeamMember({
       {(isMobile || isDesktop || (!isMobile && !isDesktop && !isActive)) && (
         <button
           className={styles.closeBio}
-          onClick={() => teamMemberClickHandler(index)}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
