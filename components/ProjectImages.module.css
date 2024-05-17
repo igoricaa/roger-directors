@@ -29,23 +29,23 @@
     width: 100%;
   }
 
-  .image1 {
+  .imagesColumn0 .image1 {
     aspect-ratio: 186 / 272;
   }
 
-  .image2 {
+  .imagesColumn0 .image2 {
     aspect-ratio: 186 / 133;
   }
 
-  .image3 {
+  .imagesColumn1 .image1 {
     aspect-ratio: 1 / 1;
   }
 
-  .image4 {
+  .imagesColumn1 .image2 {
     aspect-ratio: 186 / 218;
   }
 
-  .image5 {
+  .imagesColumn2 .image1 {
     aspect-ratio: 1221 / 503;
   }
 }

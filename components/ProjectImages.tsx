@@ -23,7 +23,7 @@ export default function ProjectImages({ images }: { images: ProjectImage[] }) {
       <div className={styles.imageWrapper} key={index}>
         <Image
           src={image.url}
-          alt={`Project image ${index + 1}`}
+          alt={image.alt}
           fill
           sizes='(max-width: 1024px) 50vw, 33vw'
           quality={100}
@@ -32,66 +32,42 @@ export default function ProjectImages({ images }: { images: ProjectImage[] }) {
     ));
   };
 
+  const mobileColumns = [
+    [images[2], images[0]],
+    [images[1], images[3]],
+    images.slice(-1),
+  ];
+
   const mobileImages = () => {
     return (
       <>
-        <div className={styles.imagesColumn}>
-          {images.slice(0, 2).map((image, index) => (
-            <div
-              className={[
-                styles.imageWrapper,
-                styles[`image${index + 1}`],
-              ].join(' ')}
-              key={index}
-            >
-              <Image
-                src={image.url}
-                alt={`Project image ${index + 1}`}
-                fill
-                sizes='50vw'
-                quality={100}
-              />
-            </div>
-          ))}
-        </div>
-        <div className={styles.imagesColumn}>
-          {images.slice(2, 4).map((image, index) => (
-            <div
-              className={[
-                styles.imageWrapper,
-                styles[`image${index + 3}`],
-              ].join(' ')}
-              key={index}
-            >
-              <Image
-                src={image.url}
-                alt={`Project image ${index + 1}`}
-                fill
-                sizes='50vw'
-                quality={100}
-              />
-            </div>
-          ))}
-        </div>
-        <div className={styles.imagesColumn}>
-          {images.slice(-1).map((image, index) => (
-            <div
-              className={[
-                styles.imageWrapper,
-                styles[`image${index + 5}`],
-              ].join(' ')}
-              key={index}
-            >
-              <Image
-                src={image.url}
-                alt={`Project image ${index + 1}`}
-                fill
-                sizes='50vw'
-                quality={100}
-              />
-            </div>
-          ))}
-        </div>
+        {mobileColumns.map((column, columnIndex) => (
+          <div
+            className={[
+              styles.imagesColumn,
+              styles[`imagesColumn${columnIndex}`],
+            ].join(' ')}
+            key={columnIndex}
+          >
+            {column.map((image, index) => (
+              <div
+                className={[
+                  styles.imageWrapper,
+                  styles[`image${index + 1}`],
+                ].join(' ')}
+                key={index}
+              >
+                <Image
+                  src={image.url}
+                  alt={image.alt}
+                  fill
+                  sizes={columnIndex === 2 ? '100vw' : '50vw'}
+                  quality={100}
+                />
+              </div>
+            ))}
+          </div>
+        ))}
       </>
     );
   };
