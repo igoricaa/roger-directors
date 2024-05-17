@@ -56,7 +56,7 @@ export default async function Project({
             'url': slideVideo.video.asset->playbackId,
           }
         },
-        'prev': *[_type == 'project' && _createdAt < ^._createdAt] | order(_createdAt asc)[0] {
+        'prev': *[_type == 'project' && _createdAt < ^._createdAt] | order(_createdAt desc)[0] {
           title,
           slug
         },

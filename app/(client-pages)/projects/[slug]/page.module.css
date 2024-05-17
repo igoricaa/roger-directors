@@ -116,6 +116,10 @@
   top: 30px;
 }
 
+.adjacentProjectWrapper.next {
+  margin-left: auto;
+}
+
 .adjacentProjectWrapper.prev > a > span:first-of-type {
   right: 3rem;
 }
