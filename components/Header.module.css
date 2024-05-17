@@ -182,7 +182,7 @@
 
 .modalBlockBackground {
   background-color: #fff;
-  border-radius: 30px;
+  border-radius: 33.5px;
   transition: all var(--animation-smooth), background-color 0.2s ease-in-out,
     transform var(--animation-smooth) 0s;
   position: absolute;

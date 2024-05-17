@@ -21,6 +21,10 @@
   border-radius: var(--border-radius);
 }
 
+[data-theme='light'] .teamMember .overlay {
+  color: #fff;
+}
+
 .teamMember:hover .overlay {
   opacity: 1;
   visibility: visible;
@@ -68,6 +72,7 @@
   opacity: 0;
   visibility: hidden;
   position: relative;
+  width: 50%;
 }
 
 .bioVideoWrapper video {

@@ -36,7 +36,7 @@ export const Footer = () => {
           <h3>Contact</h3>
           <div>
             <a href='https://maps.app.goo.gl/cXYtDYMmb9Ymaxqu8' target='_blank'>
-              <p>Resavska 33.</p>
+              <p>Resavska 33</p>
               <p>11000 Belgrade</p>
               <p>Serbia</p>
             </a>

@@ -13,9 +13,9 @@ export const pagesCards: PageCard[] = [
   },
   {
     type: 'page',
-    title: 'Meet the Team',
-    description: { __html: 'Meet<br>The People' },
-    buttonText: 'Roger Team',
+    title: 'Meet Us',
+    description: { __html: 'Meet<br>The<br>Team' },
+    buttonText: 'Meet Us',
     size: 'square',
   },
   {
@@ -28,8 +28,8 @@ export const pagesCards: PageCard[] = [
   {
     type: 'page',
     title: 'The Reservoir',
-    description: { __html: 'The<br>Reservoir' },
-    buttonText: 'See More',
+    description: { __html: 'Creative<br>Tank' },
+    buttonText: 'The Reservoir',
     size: 'small',
   },
 ];
@@ -38,7 +38,7 @@ export const routes: Route[] = [
   { name: 'Home', path: '/' },
   { name: 'Projects', path: '/' },
   { name: 'About Us', path: '/about-us' },
-  { name: 'Meet the team', path: '/meet-the-team' },
+  { name: 'Meet Us', path: '/meet-us' },
   { name: 'The Reservoir', path: '/the-reservoir' },
   { name: 'Contact', path: '/contact' },
 ];

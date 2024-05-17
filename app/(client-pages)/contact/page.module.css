@@ -18,6 +18,10 @@
   color: var(--color__text-main);
 }
 
+.contactInfo div:last-of-type p a {
+  white-space: nowrap;
+}
+
 .mobile {
   display: none;
 }
@@ -43,7 +47,7 @@
 
   .contactInfo {
     margin-top: 29px;
-    column-gap: 13vw;
+    column-gap: 8vw;
   }
 
   .contactInfo a {

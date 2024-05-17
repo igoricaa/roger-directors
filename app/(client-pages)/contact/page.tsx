@@ -15,7 +15,7 @@ export default function Contact() {
           <div>
             <p>
               <a href='https://maps.app.goo.gl/REfJu9xmBv6398qv7'>
-                Resavska 33.
+                Resavska 33
                 <br />
                 11000 Belgrade, Serbia
               </a>

@@ -28,7 +28,7 @@ export default async function MeetTheTeam() {
   return (
     <main>
       <header>
-        <h1>Meet the Team</h1>
+        <h1>Meet Us</h1>
       </header>
 
       <TeamMembers teamMembers={teamMembers} />
