@@ -2,10 +2,19 @@
 
 import { useEffect, useState } from 'react';
 import styles from './ContactForm.module.css';
+import { useForm } from 'react-hook-form';
+
+type FormData = {
+  email: string;
+};
 
 export default function ContactForm() {
-  const [error, setError] = useState(false);
-  const [email, setEmail] = useState('');
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>();
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
@@ -13,25 +22,21 @@ export default function ContactForm() {
       setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
   }, []);
 
-  const handleChange = (value: string) => {
-    setError(false);
-    setEmail(value);
-  };
+  async function onSubmit(formData: FormData) {
+    debugger;
+    await fetch('/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+      body: JSON.stringify({
+        email: formData.email,
+      }),
+    });
 
-    const validationError =
-      !/^[A-Za-z0-9._%+-]{1,64}@(?:[A-Za-z0-9-]{1,63}\.){1,125}[A-Za-z]{2,63}$/.test(
-        email
-      );
-
-    if (validationError) {
-      setError(validationError);
-    } else {
-      console.log(email);
-    }
-  };
+    reset();
+  }
 
   return (
     <div className={styles.contactWrapper}>
@@ -41,15 +46,19 @@ export default function ContactForm() {
         {!isDesktop && <br />}
         Give us a call or send us an e-mail.
       </p>
-      <form className={styles.contactForm}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
         <label htmlFor='email'>Your email</label>
         <input
-          type='email'
-          value={email}
-          className={error ? styles.error : ''}
-          onChange={(e) => handleChange(e.target.value)}
+          {...register('email', {
+            required: { value: true, message: 'Required field' },
+            pattern: {
+              value: /^\S+@\S+$/i,
+              message: 'Please enter a valid email address',
+            },
+          })}
+          className={errors.email ? styles.error : ''}
         />
-        <button onClick={handleSubmit}>Send</button>
+        <button type='submit'>Send</button>
       </form>
     </div>
   );
