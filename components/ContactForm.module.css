@@ -41,6 +41,10 @@
   background: transparent;
 }
 
+[data-theme='light'] .contactForm input {
+  border-color: #232323;
+}
+
 .contactForm input.error {
   border-color: #fa5252;
 }

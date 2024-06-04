@@ -172,4 +172,8 @@ main {
     border-bottom: 1px solid #fff;
     padding-bottom: 22px;
   }
+
+  [data-theme='light'] header > h1 {
+    border-color: #232323;
+  }
 }

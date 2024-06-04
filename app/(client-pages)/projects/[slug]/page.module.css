@@ -215,6 +215,7 @@
     padding: 18px 18px 20px;
     height: 266px;
     border-radius: 15px;
+    aspect-ratio: 186 / 133;
   }
 
   .adjacentProjectWrapper > a {
@@ -247,6 +248,10 @@
 @media screen and (max-width: 680px) {
   .headingAnimated {
     margin: 82px -17px 20px;
+  }
+
+  .headingAnimated.marginTop {
+    margin-top: 2.5rem;
   }
 
   .headingAnimated h2 {

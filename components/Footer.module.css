@@ -96,6 +96,11 @@
     -moz-columns: 2;
   }
 
+  [data-theme='light'] .footerMenu {
+    border-top-color: #232323;
+    border-bottom-color: #232323;
+  }
+
   .footerMenu > li:not(:first-child) {
     margin-top: 1rem;
   }

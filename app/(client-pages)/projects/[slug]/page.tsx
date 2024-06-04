@@ -97,7 +97,12 @@ export default async function Project({
             <VideoSlider videos={project.videos} />
           </div>
         )}
-        <div className={styles.headingAnimated}>
+        <div
+          className={[
+            styles.headingAnimated,
+            !areProjectVideosAvailable(project) ? styles.marginTop : undefined,
+          ].join(' ')}
+        >
           <h2>{project.loopText}</h2>
           <h2>{project.loopText}</h2>
           <h2>{project.loopText}</h2>
