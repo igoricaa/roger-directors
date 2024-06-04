@@ -10,10 +10,14 @@ export default function VideoItem({
   videos,
   autoplay,
   selectorClass,
+  firstVideoLoadedCallback,
+  preload,
 }: {
   videos: VideoPair;
   autoplay: boolean;
   selectorClass: string;
+  firstVideoLoadedCallback: () => void;
+  preload: boolean;
 }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -36,7 +40,7 @@ export default function VideoItem({
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [playerRef]);
+  }, []);
 
   const closeFullscreen = () => {
     setIsFullScreen(false);
@@ -63,6 +67,8 @@ export default function VideoItem({
         loop
         minResolution='1440p'
         maxResolution='2160p'
+        onLoadedData={firstVideoLoadedCallback}
+        preload={preload ? 'auto' : 'none'}
         placeholder={undefined}
         className={[styles.videoPlayer, 'videoPlayer', selectorClass].join(' ')}
         onClick={handleVideoClick}

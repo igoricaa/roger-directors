@@ -12,6 +12,7 @@ import {
 import VideoItem from './VideoItem';
 import CustomCursor from './CustomCursor';
 import { VideoPair } from '@/utils/types';
+import { useState } from 'react';
 
 const OPTIONS: EmblaOptionsType = {
   containScroll: false,
@@ -23,6 +24,7 @@ export default function VideoSlider({ videos }: { videos: VideoPair[] }) {
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
   const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
+  const [isFirstVideoDownloaded, setIsFirstVideoDownloaded] = useState(false);
 
   return (
     <section className={styles.embla}>
@@ -35,7 +37,11 @@ export default function VideoSlider({ videos }: { videos: VideoPair[] }) {
                 key={index}
                 videos={videoPair}
                 autoplay={selectedIndex === index}
+                preload={index === 0 || isFirstVideoDownloaded}
                 selectorClass={`slide-${index + 1}`}
+                firstVideoLoadedCallback={() => {
+                  setIsFirstVideoDownloaded(true);
+                }}
               />
             </div>
           ))}
