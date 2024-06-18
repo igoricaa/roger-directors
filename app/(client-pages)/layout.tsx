@@ -5,7 +5,6 @@ import Header from '../../components/Header';
 import { Providers } from '@/components/Providers';
 import { Footer } from '@/components/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
-// import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 import SplashScreen from '@/components/SplashScreen';
 
@@ -34,8 +33,24 @@ const montBook = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Roger Directors',
-  description: 'Official website of Roger Directors',
+  metadataBase: new URL('https://roger.rs'),
+  title: {
+    default: 'Roger Directors',
+    template: '%s | Roger Directors',
+  },
+  description: 'Official website of Roger Directors.',
+  openGraph: {
+    title: 'Roger Directors',
+    description: 'Official website of Roger Directors.',
+    url: 'https://roger.rs',
+    siteName: 'Roger Directors',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Roger Directors',
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
