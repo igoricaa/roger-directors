@@ -134,7 +134,9 @@ export default function Header() {
                 resolvedTheme ? resolvedTheme : 'dark'
               }.svg`}
               fill
+              sizes='(max-width: 680px) 110px, 284px'
               alt='Roger Directors logo'
+              priority
             />
           </Link>
           <div className={styles.wrapRightCorner}>
