@@ -86,6 +86,8 @@ export default function ContactForm() {
               message: 'Please enter a valid email address',
             },
           })}
+          id='email'
+          autoComplete='email'
           className={errors.email ? styles.error : ''}
         />
         <button type='submit'>Send</button>
