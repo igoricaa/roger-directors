@@ -4,8 +4,8 @@ import '../globals.css';
 import Header from '../../components/Header';
 import { Providers } from '@/components/Providers';
 import { Footer } from '@/components/Footer';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { Analytics } from '@vercel/analytics/react';
+// import { GoogleAnalytics } from '@next/third-parties/google';
+// import { Analytics } from '@vercel/analytics/react';
 import SplashScreen from '@/components/SplashScreen';
 
 const mont = localFont({
@@ -67,7 +67,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
-          <Analytics />
+          {/* <Analytics /> */}
         </Providers>
       </body>
       {/* <GoogleAnalytics gaId='G-S0L7XDFMYG' /> */}
