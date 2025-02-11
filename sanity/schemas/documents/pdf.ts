@@ -6,9 +6,9 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'slug',
+      name: 'title',
       type: 'string',
-      title: 'Slug',
+      title: 'title',
     }),
     defineField({
       name: 'pdfFile',

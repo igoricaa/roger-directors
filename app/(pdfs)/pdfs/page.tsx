@@ -1,5 +1,6 @@
 import { sanityFetch } from '@/utils/sanity/client';
 import { PDF } from '@/utils/types';
+import styles from './page.module.css';
 
 const PDFList = async () => {
   async function getPDFs() {
@@ -7,7 +8,7 @@ const PDFList = async () => {
 
     const pdfs: PDF[] = await sanityFetch({
       query: `*[_type == "pdf"]{
-      slug,
+      title,
       'url': pdfFile.asset->url,
     }`,
       tags: ['pdf'],
@@ -19,9 +20,13 @@ const PDFList = async () => {
   const pdfs: PDF[] = await getPDFs();
 
   return (
-    <div>
+    <div className={styles.pdfList}>
+      <h1>PDF Files:</h1>
       {pdfs.map((pdf) => (
-        <div key={pdf.slug}>{pdf.slug}</div>
+        <div key={pdf.title} className={styles.pdfItem}>
+          <p className={styles.pdfTitle}>title: {pdf.title}</p>
+          <p className={styles.pdfUrl}>url: {pdf.url}</p>
+        </div>
       ))}
     </div>
   );

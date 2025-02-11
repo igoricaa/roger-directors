@@ -76,6 +76,6 @@ export type Route = {
 };
 
 export type PDF = {
-  slug: string;
-  pdfFile: File;
+  title: string;
+  url: string;
 };
