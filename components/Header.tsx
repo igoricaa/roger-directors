@@ -9,6 +9,8 @@ import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
 import { routes } from '@/utils/data';
 
+// TODO: router back button - odvoji u poseban komponent
+// TODO: mobileMenu - odvoji u poseban komponent
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
